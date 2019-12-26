@@ -1,151 +1,54 @@
 @import "@/styles/variable.scss";
+
 #home {
-    // padding: 20px 20px;
-    background-color: #F6F6F6;
-}
 
-// 门店数据
-.panel {
-    &.a {
-        margin-left: 20px;
-        margin-right: 20px;
-        box-shadow: 0 8px 12px rgba(0,0,0,0.5);
-        border-radius: 10px;
-    }
-    
-    margin-bottom: 15px;
-    background-color: #fff;
-    .panel-header {
-        padding: 15px 15px;
-        display: flex;
-        align-items: center;
-        .more {
-            display: flex;
-            font-size: 14px;
-            align-items: center;
-            .right{
-                display: flex;
-                align-items: center;
-            }
+  .list {
+    margin: 10px;
+
+    .item {
+      background: white;
+      padding: 10px;
+      display: flex;
+      margin-bottom: 10px;
+
+      .left {
+        margin-right: 10px;
+
+        .img {
+          width: 90px;
+          height: 90px;
+          border-radius: 10px;
+          background-color: #eeeeee;
         }
-        .panel-title {
-            flex: 1;
-            font-size: 18px;
-        }
-    }
-    .panel-body {
-        padding: 0px 15px;
-        padding-bottom: 1px;
-    }
-    .zanwu{
-        display:flex;
-        justify-content: center;
-        align-items: center;
-    }
-}
+      }
 
-.data {
-    padding-top: 25px;
-    padding-bottom: 10px;
-    .data-order {
-        margin-bottom: 25px;
-        text-align: center;
-        .data-num {
-            font-size: 22px;
-        }
-        .data-title {
-            font-size: 14px;
-            color: #777777;
-            margin-top: 5px;
-        }
-    }
-}
-
-
-
-// 最新订单
-.order {
-    display: flex;
-    margin-bottom: 10px;
-    .order-left {
-        color: #333;
-        display: flex;
+      .center {
         flex: 1;
-        .order-head {
-            text-align: center;
-            img {
-                display: block;
-                width: 50px;
-                height: 50px;
-            }
-        }
-        .order-info {
-            margin-left: 6px;
-            display: flex;
-            flex-direction: column;
-            .goods-name {
-                flex: 1;
-                font-size: 14px;
-            }
-            .goods-num {
-                font-size: 12px;
-                color: #777777;
-                margin-top: 5px;
-            }
-        }
-        
-    }
-    .order-right {
-        font-size: 14px;
-    }
-}
-
-// 热门商品
-.goods {
-    margin-bottom: 10px;
-    display: flex;
-    .goods-head {
-        text-align: center;
-        img {
-            display: block;
-            width: 50px;
-            height: 50px;
-        }
-    }
-    .goods-info {
         display: flex;
-        font-size: 14px;
-        flex: 1;
-        margin-left: 7px;
-        align-items: center;
-    }
-    .price {
+        flex-direction: column;
+
+        .center-title {
+          font-size: 15px;
+          margin-top: 10px;
+        }
+
+        .center-info {
+          font-size: 13px;
+          color: #999;
+
+        }
+
+        .center-tag {
+          .tag {}
+        }
+      }
+
+      .right {
         display: flex;
         align-items: center;
-        font-size: 14px;
+      }
     }
-}
-
-// 门店信息
-.basics {
-    .basics-info {
-        font-size: 12px;
-        color: #999999;
-        margin-top: 5px;
-    }
-}
-.info {
-    padding-top: 7px;
-    padding-bottom: 3px;
-    font-size: 14px;
-    .info-infos {
-        margin-bottom: 5px;
-    }
-    .title {
-        display: inline-block;
-        // width: 70px;
-        color: #777777;
-    }
+  }
 }
 
 #home /deep/ {}

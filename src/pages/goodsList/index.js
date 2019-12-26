@@ -1,46 +1,52 @@
 export default {
-  name: 'home',
+  name: 'goodsList',
   data() {
     return {
-      list: [],
-      x: '',
-      y: ''
+      goodsclassA: [],
+      classTree: [],
+      active: "",
+      info:{}
     };
   },
   methods: {
     // 用于初始化一些数据
-    init() {
-      this.update();
+    async init() {
+      await this.httpstore();
+      await this.update();
     },
     // 用于更新一些数据
     async update() {
       try {
-        const res = await this.$http.post('/store/list', {});
+        const res = await this.$http.post('/class/list', {
+          store_id: this.$route.query.store_id
+        });
         if (res.code >= 0) {
-        
-
-            this.list = res.data.map(el => {
-                console.log(el)
-            el.distance = this.distance(this.x, this.y, el.x, el.y)
-            return el
-          })
-          console.log(this.list)
+          let list = res.data;
+          let classTree = list.map(el => ({
+            id: el.id,
+            name: el.name,
+            child: []
+          }));
+          this.goodsclass = list;
+          this.classTree = classTree;
+          this.active = res.data[0].id;
+          console.log(list)
+        } else {
+          this.goodsclass = [];
+          this.active = '';
         }
-
-
       } catch (error) {}
     },
-    distance(la1, lo1, la2, lo2) {
-        var La1 = la1 * Math.PI / 180.0;
-        var La2 = la2 * Math.PI / 180.0;
-        var La3 = La1 - La2;
-        var Lb3 = lo1 * Math.PI / 180.0 - lo2 * Math.PI / 180.0;
-        var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(La3 / 2), 2) + Math.cos(La1) * Math.cos(La2) * Math.pow(Math.sin(Lb3 / 2), 2)));
-        s = s * 6378.137; 
-        s = Math.round(s * 10000) / 10000;
-        s = s.toFixed(2);
-        return s;
+    async httpstore() {
+      try {
+        const res = await this.$http.post('/store/info', {store_id: this.$route.query.store_id});
+        if (res.code >= 0) {
+          this.info = res.data
+        }
+      } catch (error) {
+
       }
+    }
   },
   // 计算属性
   computed: {},

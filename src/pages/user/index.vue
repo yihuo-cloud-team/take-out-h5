@@ -1,6 +1,6 @@
 <template>
-  <div id="login">
-   
+  <div id="user">
+
   </div>
 </template>
 <script src="./index.js"></script>

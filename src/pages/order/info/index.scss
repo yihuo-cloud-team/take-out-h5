@@ -1,65 +1,6 @@
 @import "@/styles/variable.scss";
 #info {
-    background-color: #F6F6F6;
-}
-
-.order-type {
-    background-color: white;
-    padding: 15px 15px;
-    .type {
-        font-size: 20px;
-    }
-    .date {
-        margin-top: 10px;
-        font-size: 14px;
-    }
-}
-.goods-list {
-    background-color: #fff;
-    padding: 10px 15px;
-    .goods-info {
-        display: flex;
-        margin: 15px 0;
-        .info {
-            flex: 1;
-            font-size: 14px;
-            .copies {
-                margin-top: 3px;
-            }
-        }
-        .price {
-            font-size: 14px;
-        }
-    }
-    .info {
-        flex: 1;
-        font-size: 14px;
-        .copies {
-            margin-top: 3px;
-        }
-    }
-    .price {
-        font-size: 14px;
-    }
-}
-
-.address-info {
-    margin-top: 15px;
-    background-color: #fff;
-    .address-title {
-        margin-left: 15px;
-        padding-top: 15px;
-    }
-    .address {
-        margin-top: 10px;
-    }
-}
-.freight {
-    display: flex;
-    font-size: 14px;
-    .freight-name {
-        flex: 1;
-    }
+    padding: $page-padding;
 }
 
 #info /deep/ {}

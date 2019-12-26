@@ -1,5 +1,5 @@
 export default {
-    name: 'list',
+    name: 'user',
     data() {
         return {};
     },

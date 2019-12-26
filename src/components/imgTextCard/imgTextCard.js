@@ -1,17 +1,14 @@
 export default {
-    name: 'list',
+    name: 'imgTextCard',
+    props: {},
     data() {
         return {};
     },
     methods: {
         // 用于初始化一些数据
-        init() {
-            this.update();
-        },
+        init() { },
         // 用于更新一些数据
-        async update() {
-            // const res = await this.$http.post('', {});
-        },
+        update() { },
     },
     // 计算属性
     computed: {},
@@ -23,7 +20,6 @@ export default {
     beforeMount() { },
     // el 被新创建的 vm.el 替换，并挂载到实例上去之后调用该钩子。
     mounted() {
-        this.init();
         this.$nextTick(() => { });
     },
     // 数据更新时调用，发生在虚拟 DOM 打补丁之前。

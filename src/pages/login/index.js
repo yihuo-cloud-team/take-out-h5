@@ -1,13 +1,7 @@
 export default {
     name: 'login',
-    layout:'root',
     data() {
-        return {
-            form:{
-                phone:"",
-                user_pwd:""
-            }
-        };
+        return {};
     },
     methods: {
         // 用于初始化一些数据
@@ -18,21 +12,6 @@ export default {
         async update() {
             // const res = await this.$http.post('', {});
         },
-        async submit() {      
-            const res = await this.$http.post('/auth/login', this.form);     
-            // return 
-            if (res.code >= 1) {
-                localStorage.jwt = res.jwt;
-                // localStorage.domain_id=res.data.domain_id
-                // const userInfo = await this.$http.post('/user/info', {});
-                // localStorage.userInfo = JSON.stringify(userInfo.data);
-                // const power = await this.$http.post('/power/getUserPower', {});
-                // localStorage.power = JSON.stringify(power.data);
-                this.$router.push('/select');
-            } else {
-                this.$message.warning(res.msg);
-            }
-        }
     },
     // 计算属性
     computed: {},

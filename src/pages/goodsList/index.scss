@@ -1,0 +1,24 @@
+@import "@/styles/variable.scss";
+#goodsList {
+    .head{
+        .head-title{
+            position: relative;
+            $height:125px;
+        
+            .head-bg{
+                width: 100%;
+                height: 250px;
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+            .store_info{
+
+            }
+        }
+        
+    }
+ 
+}
+
+#goodsList /deep/ {}
