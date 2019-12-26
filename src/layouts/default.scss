@@ -1,0 +1,14 @@
+@import "@/styles/variable.scss";
+
+.default {
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+
+    .view-body {
+        flex: 1;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+}

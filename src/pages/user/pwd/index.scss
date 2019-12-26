@@ -1,0 +1,17 @@
+@import "@/styles/variable.scss";
+#pwd {
+}
+.update-pwd {
+    padding-top: 5px;
+    // background-color: #fff;
+    .title {
+        padding: 15px 15px;
+        font-size: 18px;
+        // color: rgb(245, 0, 0);
+    }
+    .btn {
+        margin-top: 25px;
+    }
+}
+
+#pwd /deep/ {}

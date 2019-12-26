@@ -1,0 +1,21 @@
+@import "@/styles/variable.scss";
+#coupons {
+    .onshow{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .panel{
+
+    }
+    .fixed{
+        position: fixed;
+        left: 0;
+        width: 100%;
+        right: 0;
+        bottom: 0;
+    }
+}
+
+#coupons /deep/ {}

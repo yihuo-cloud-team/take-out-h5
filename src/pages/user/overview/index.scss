@@ -1,0 +1,136 @@
+@import "@/styles/variable.scss";
+#overview {
+    .date {
+        display: flex;
+        align-items: center;
+        background-color: white;
+        margin-bottom: 1px;
+        padding: 10px 0;
+        .left {
+          flex: 1;
+          display: flex;
+          align-items: center;
+            justify-content: center;
+    
+          .footer-left {
+            margin-right: 10px;
+            font-size: 14px;
+          }
+    
+          .footer-right {
+            padding: 2px 10px;
+            font-size: 14px;
+            color: white;
+            text-align: center;
+            border-radius: 10px;
+          }
+        }
+    
+        .right {
+          flex: 1;
+    
+          display: flex;
+          align-items: right;
+    
+          .footer-left {
+            margin-right: 10px;
+            font-size: 14px;
+          }
+    
+          .footer-right {
+            padding: 2px 10px;
+            font-size: 14px;
+            color: white;
+            text-align: center;
+            border-radius: 10px;
+          }
+        }
+      }
+    .panel {
+        &.a {
+            margin-left: 20px;
+            margin-right: 20px;
+            box-shadow: 0 8px 12px rgba(0,0,0,0.5);
+            border-radius: 10px;
+        }
+        
+        margin-bottom: 15px;
+        background-color: #fff;
+        .panel-header {
+            padding: 15px 15px;
+            display: flex;
+            align-items: center;
+            .more {
+                display: flex;
+                font-size: 14px;
+                align-items: center;
+                .right{
+                    display: flex;
+                    align-items: center;
+                }
+            }
+            .panel-title {
+                flex: 1;
+                font-size: 18px;
+            }
+        }
+        .panel-body {
+            padding: 0px 15px;
+            padding-bottom: 1px;
+        }
+        .zanwu{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    .data {
+        padding-top: 25px;
+        padding-bottom: 10px;
+        .data-order {
+            margin-bottom: 25px;
+            text-align: center;
+            .data-num {
+                font-size: 22px;
+            }
+            .data-title {
+                font-size: 14px;
+                color: #777777;
+                margin-top: 5px;
+            }
+            .btn{
+                margin-top: 5px;
+                height: 33px;
+                line-height: 33px;
+            }
+        }
+    }
+    .panel-list {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        background-color: #fff;
+        .panel-header {
+            padding: 15px 15px;
+            display: flex;
+            align-items: center;
+            .more {
+                display: flex;
+                font-size: 14px;
+            }
+            .panel-title {
+                flex: 1;
+                font-size: 18px;
+            }
+        }
+        .panel-body {
+            padding: 0px 15px;
+            padding-bottom: 1px;;
+        }
+        .panel-footer {
+            padding-bottom: 15px;
+        }
+    }
+    
+}
+
+#overview /deep/ {}

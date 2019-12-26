@@ -1,0 +1,33 @@
+@import "@/styles/variable.scss";
+#list {
+    .user-info {
+        background-color: #fff;
+        padding-top: 36px;
+        padding-bottom: 36px;
+        .info-image {
+            text-align: center;
+            .img{
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+            }
+        }
+        .user-name {
+            margin-top: 10px;
+            text-align: center;
+        }
+    }
+    
+    .security {
+        margin-top: 15px;
+    }
+    
+    .btn {
+        text-align: center;
+        margin-top: 15px;
+        background-color: #fff;
+        padding: 15px 0;
+    }
+}
+
+#list /deep/ {}

@@ -1,0 +1,13 @@
+@import "@/styles/variable.scss";
+#eidt {
+    .footer {
+        position: fixed;
+        bottom: 0px;
+        width: 100%;
+        padding: 13px 0;
+        text-align: center;
+        background-color: #fff;
+    }
+}
+
+#eidt /deep/ {}
