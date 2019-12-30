@@ -3,7 +3,7 @@
     <div class="list">
       <div
         class="item"
-        @click="$router.push(`/goodsList?store_id=${item.store_id}`)"
+        @click="tiaozhuan(item)"
         v-for="(item,index) in list"
         :key="index"
       >

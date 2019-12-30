@@ -1,18 +1,26 @@
 export default {
   name: 'goodsList',
+  layout:"sub",
   data() {
     return {
-      goodsclassA: [],
+      goodsclass: [],
       classTree: [],
-      active: "",
-      info:{}
+      active: 0,
+      info:{},
+      activeIndex:0,
+      tab:0,
+      totalPrice:0
+
     };
   },
   methods: {
     // 用于初始化一些数据
     async init() {
-      await this.httpstore();
       await this.update();
+      await this.httpGoods();
+      await this.httpstore();
+   
+   
     },
     // 用于更新一些数据
     async update() {
@@ -29,13 +37,43 @@ export default {
           }));
           this.goodsclass = list;
           this.classTree = classTree;
+
           this.active = res.data[0].id;
-          console.log(list)
         } else {
           this.goodsclass = [];
           this.active = '';
         }
       } catch (error) {}
+    },
+    async httpGoods() {
+      try {
+        const res = await this.$http.post('/goods/list', {store_id: this.$route.query.store_id});
+        if (res.code < 0) return;
+        const list = res.data;
+        const classTree = this.classTree;
+   
+        list.forEach(el => {
+
+          
+          el.select_value = 0;
+          el.shows = false;
+          let classi = classTree.find(classItem => classItem.id == el.class_id);
+         
+          if (classi) {
+        
+            classi.child.push(el);
+        
+          }
+  
+  
+        });
+    
+  
+        this.classTree = classTree
+      } catch (e) {
+        console.warn(e);
+  
+      }
     },
     async httpstore() {
       try {
@@ -46,6 +84,57 @@ export default {
       } catch (error) {
 
       }
+    },
+    select(e){
+      this.active = e.id
+    },
+    xuan(item){
+      if(item.select_value==0){
+        item.shows = false
+      }else{
+        item.shows = true
+      }
+    },
+    submit(){
+      //去支付
+      // if (!this.$isLogin()) {
+      //   this.$router.push('/pages/auth/auth');
+      //   return;
+      // }
+  
+      const classTree = this.classTree;
+      let select = [];
+      classTree.forEach(el => {
+        let list = el.child.filter(el => el.select_value > 0);
+        select = [...select, ...list];
+      });
+      if (select.length > 0) {
+        // wx.setStorageSync('select', select);
+        localStorage.setItem('select',JSON.stringify(select));
+        console.log(select)
+        this.$router.push('/payInfo');
+      } else {
+        this.$toast("请至少选择一件商品");
+      }
+    },
+    setTotal() {
+      // let total = data.list.filter(el => el.select_value > 0).map(el => el.o_price * el.select_value).reduce((total, el) => total + el, 0);
+      const classTree = this.classTree;
+      let total = 0;
+      let totalText = 0;
+      classTree.forEach(el => {
+
+        total += el.child.map(goods => goods.price * goods.select_value).reduce((total, el) => total + el, 0);
+        totalText += el.child.map(goods => goods.select_value).reduce((total, el) => total + el, 0);
+      });
+      // this.setData({
+      //   totalPrice: total.toFixed(2),
+      //   totalText: totalText
+      // });
+      this.totalPrice =total.toFixed(2)
+      this.totalText =totalText.toFixed(2)
+  
+    
     }
   },
   // 计算属性

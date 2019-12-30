@@ -17,30 +17,33 @@ export default {
       try {
         const res = await this.$http.post('/store/list', {});
         if (res.code >= 0) {
-        
 
-            this.list = res.data.map(el => {
-                console.log(el)
+
+          this.list = res.data.map(el => {
+
             el.distance = this.distance(this.x, this.y, el.x, el.y)
             return el
           })
-          console.log(this.list)
+
         }
 
 
       } catch (error) {}
     },
     distance(la1, lo1, la2, lo2) {
-        var La1 = la1 * Math.PI / 180.0;
-        var La2 = la2 * Math.PI / 180.0;
-        var La3 = La1 - La2;
-        var Lb3 = lo1 * Math.PI / 180.0 - lo2 * Math.PI / 180.0;
-        var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(La3 / 2), 2) + Math.cos(La1) * Math.cos(La2) * Math.pow(Math.sin(Lb3 / 2), 2)));
-        s = s * 6378.137; 
-        s = Math.round(s * 10000) / 10000;
-        s = s.toFixed(2);
-        return s;
-      }
+      var La1 = la1 * Math.PI / 180.0;
+      var La2 = la2 * Math.PI / 180.0;
+      var La3 = La1 - La2;
+      var Lb3 = lo1 * Math.PI / 180.0 - lo2 * Math.PI / 180.0;
+      var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(La3 / 2), 2) + Math.cos(La1) * Math.cos(La2) * Math.pow(Math.sin(Lb3 / 2), 2)));
+      s = s * 6378.137;
+      s = Math.round(s * 10000) / 10000;
+      s = s.toFixed(2);
+      return s;
+    },
+    tiaozhuan(item){
+      this.$router.push(`/goodsList?store_id=${item.store_id}`)
+    }
   },
   // 计算属性
   computed: {},

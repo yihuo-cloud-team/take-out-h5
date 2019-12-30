@@ -1,21 +1,35 @@
 export default {
-    name: 'user',
+    name: 'payInfo',
+    layout:"sub",
     data() {
-        return {};
+        return {
+            list:[],
+            address:{}
+        };
     },
     methods: {
         // 用于初始化一些数据
         init() {
+           
             this.update();
         },
         // 用于更新一些数据
         async update() {
-        
-
+            this.list =JSON.parse(localStorage.getItem('select'));
+            
+            try {
+                const res = await this.$http.post('/address/list', {});
+                if (res.code >=0){
+                    this.address = res.data
+                } 
+                
+              } catch (error) {
+          
+              }
         },
     },
     // 计算属性
-    computed: {},
+    // computed: {},
     // 包含 Vue 实例可用过滤器的哈希表。
     filters: {},
     // 在实例创建完成后被立即调用
