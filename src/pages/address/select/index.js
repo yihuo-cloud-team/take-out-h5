@@ -1,56 +1,20 @@
 export default {
-    name: 'payInfo',
-    layout:"sub",
+    name: 'select',
     data() {
-        return {
-            list:[],
-            address:{},
-            message:""
-        };
-    },
-    computed:{
-        total(data) {
-            return data.list.map(el => el.select_value).reduce((total, el) => total + el, 0);
-          },
-          totalPrice(data) {
-            let total = data.list.filter(el => el.select_value > 0).map(el => el.price * el.select_value).reduce((total, el) => total + el, 0);
-            return total.toFixed(2);
-          },
-          addressinfo(data) {
-              console.log(data)
-            if (data.address.length <= 0) return false;
-            const addressarr = data.address.filter(el => el.is_default == 1)
-            if (addressarr.length > 0) return addressarr[0]
-            return data.address[0]
-          }
+        return {};
     },
     methods: {
         // 用于初始化一些数据
         init() {
-           
             this.update();
         },
         // 用于更新一些数据
         async update() {
-            this.list =JSON.parse(localStorage.getItem('select'));
-            
-            try {
-                const res = await this.$http.post('/address/list', {});
-                if (res.code >=0){
-                    this.address = res.data
-                    console.log(res.data)
-                } 
-                
-              } catch (error) {
-          
-              }
+            // const res = await this.$http.post('', {});
         },
-        submit(){
-
-        }
     },
     // 计算属性
-    // computed: {},
+    computed: {},
     // 包含 Vue 实例可用过滤器的哈希表。
     filters: {},
     // 在实例创建完成后被立即调用

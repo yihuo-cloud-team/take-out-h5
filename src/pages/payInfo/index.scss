@@ -1,91 +1,116 @@
 @import "@/styles/variable.scss";
+
 #payInfo {
-    .goods {
-        position: relative;
-        display: flex;
+  padding: 20px;
+  background-image: linear-gradient(180deg, #FFC700, #f0f0f0 100%);
+  height: 100vh;
 
-        .left {
-          .img {
-            width: 75px;
-            height: 75px;
-            border-radius: 5px;
+  .address {
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
 
-          }
-        }
+    .address-title {
+      flex: 1;
+    }
 
-        .center {
-          flex: 1;
-          display: flex;
-          margin-left: 10px;
-          flex-direction: column;
+    .address-info {
+      flex: 1;
+    }
+  }
 
-          .center-top {
-            font-size: 15px;
-            font-weight: bold;
-            margin: 10px 0;
-          }
+  .goods {
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
 
-          .center-footer {
-            color: #f66;
-            font-size: 28rpx;
-            font-weight: bold;
 
-          }
-        }
+    .goods-item {
+      display: flex;
 
-        .right {
-          position: absolute;
-          right: 0;
-          bottom: 0;
-
-          .van-stepper__input {
-            width: 0;
-          }
-
-          .stepper {
-            width: 100px;
-            border-radius: 100%;
-
-          }
+      .left {
+        .img {
+          width: 75px;
+          height: 75px;
+          border-radius: 5px;
 
         }
-
-    
       }
-    .f-tool {
-        position: fixed;
-        z-index: 20;
-        box-shadow: 1px 2px 20px 5px rgba($color: #000000, $alpha: 0.3);
-        bottom: 30px;
-        max-width: 80%;
-        width: 80%;
-        background-color: #333333;
-        color: #fff;
-        display: flex;
-        align-items: stretch;
-        border-radius: 25px;
-        overflow: hidden;
-        white-space: nowrap;
-        flex-wrap: nowrap;
-        left: 50%;
-        transform: translate3d(-50%, 0, 0);
 
-        .price {
-          flex: 1;
-          padding: 15px;
-          font-size: 18px;
+      .center {
+        flex: 1;
+        display: flex;
+        margin-left: 10px;
+        flex-direction: column;
+
+        .center-top {
+          font-size: 15px;
           font-weight: bold;
+          margin: 10px 0;
         }
 
-        .btn {
-          background: linear-gradient(90deg, rgba(255, 207, 89, 1) 0%, rgba(254, 184, 28, 1) 100%);
-          font-size: 16px;
-          padding: 15px;
-          display: flex;
-          align-items: center;
-          line-height: normal;
-        }
+        .center-footer {}
       }
+
+      .right {
+        font-size: 28rpx;
+        font-weight: bold;
+        color: #f66;
+        display: flex;
+        justify-content: center;
+        align-self: center;
+
+
+      }
+    }
+
+
+
+  }
+
+  .center-box {
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .f-tool {
+    position: fixed;
+    z-index: 20;
+    box-shadow: 1px 2px 20px 5px rgba($color: #000000, $alpha: 0.3);
+    bottom: 30px;
+    max-width: 80%;
+    width: 80%;
+    background-color: #333333;
+    color: #fff;
+    display: flex;
+    align-items: stretch;
+    border-radius: 25px;
+    overflow: hidden;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
+
+    .price {
+      flex: 1;
+      padding: 15px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .btn {
+      background: linear-gradient(90deg, rgba(255, 207, 89, 1) 0%, rgba(254, 184, 28, 1) 100%);
+      font-size: 16px;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      line-height: normal;
+    }
+  }
 }
 
 #payInfo /deep/ {}

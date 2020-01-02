@@ -102,3 +102,12 @@ body {
         background-color: #008982;
     }
 }
+.fixed{
+    border-top: 1px solid #dddddd;
+    z-index: 99999;
+    position: fixed;
+    left: 0;
+    width: 100%;
+    right: 0;
+    bottom: 0;
+}

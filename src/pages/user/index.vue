@@ -5,7 +5,7 @@
       <div class="user-name">下雨天不打伞</div>
     </div>
     <van-cell-group>
-  <van-cell is-link title="收货地址"/>
+  <van-cell is-link to="/address"  title="收货地址"/>
 
 </van-cell-group>
   </div>
