@@ -1,26 +1,25 @@
 export default {
-    name: 'Upload',
-    props: {
-        value: {
-            type: String,
-            defaule: '',
-        }
-    },
+    name: 'qualification',
     data() {
         return {
-            headers: {
-                Authorization: localStorage.jwt
-            }
+            info:{}
         };
     },
     methods: {
         // 用于初始化一些数据
-        init() { },
+        init() {
+            this.update();
+        },
         // 用于更新一些数据
-        update() { },
-        onSuccess(file, fileList) {
-            this.$emit('input', file.data.url);
-            this.$emit('on-success', file.data.url);
+        async update() {
+            const res = await this.$http.post("/store/domain/info",{})
+            if(res.code>=0){
+                this.info = res.data;
+            }
+
+        },
+        fangda(){
+
         }
     },
     // 计算属性
@@ -33,6 +32,7 @@ export default {
     beforeMount() { },
     // el 被新创建的 vm.el 替换，并挂载到实例上去之后调用该钩子。
     mounted() {
+        this.init();
         this.$nextTick(() => { });
     },
     // 数据更新时调用，发生在虚拟 DOM 打补丁之前。

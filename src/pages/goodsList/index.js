@@ -111,7 +111,6 @@ export default {
       if (select.length > 0) {
         // wx.setStorageSync('select', select);
         localStorage.setItem('select',JSON.stringify(select));
-        console.log(select)
         this.$router.push('/payInfo');
       } else {
         this.$toast("请至少选择一件商品");
@@ -133,8 +132,9 @@ export default {
       // });
       this.totalPrice =total.toFixed(2)
       this.totalText =totalText.toFixed(2)
-  
-    
+    },
+    router(info){
+      this.$router.push(`/qualification?store_id=${info.store_id}`)
     }
   },
   // 计算属性

@@ -1,0 +1,30 @@
+@import "@/styles/variable.scss";
+#qualification {
+
+    .panel{
+        background: white;
+        .title{
+            font-size: 18px;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .footer{
+            display: flex;
+            .left{
+                flex: 1;
+                margin: 10px;
+                border:1px solid #eee;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .img{
+                    width: 100px;
+                    height: 100px;
+                }
+            }
+          
+        }
+    }
+}
+
+#qualification /deep/ {}

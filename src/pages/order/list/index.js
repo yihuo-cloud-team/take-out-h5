@@ -55,7 +55,7 @@ export default {
                   el.snapshotInfo.forEach(els => {
           
                     num = num + els.data.quantity
-                    els.data.goods_head_list =  els.data.goods_head_list.map(item => this.$getUrl(item))
+                   
                   })
           
                   infos.push(el.snapshotInfo[0].title + "..." + "等" + num + "件商品")
@@ -65,7 +65,7 @@ export default {
                   el.infos = infos
                 });
           
-                this.list = [...this.data.list, ...list]
+                this.list = [...this.list, ...list]
                 this.total = res.total
                 this.page =  ++this.page
                 // this.setData({

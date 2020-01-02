@@ -4,8 +4,8 @@ let Url = {
   // serverUrl: 'http://offapi.local.com/mini',
   // serverUrl: 'https://api.yihuo-cloud.com/mini',//生产环境
   // serverUrl: 'http://192.168.0.143:8081/mini',//李子龙 
-  serverUrl: 'http://192.168.0.153:12138/mini',//李传浩的本地
-  // serverUrl: 'http://192.168.0.122:82/mini',//吴杰
+  // serverUrl: 'http://192.168.0.153:12138/mini',//李传浩的本地
+  serverUrl: 'http://192.168.0.122:82/mini',//吴杰
   // uploadUrl: '',
   uploadUrl: 'https://api.take-out.yihuo-cloud.com',
   // imageUrl: '',

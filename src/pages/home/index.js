@@ -14,10 +14,10 @@ export default {
     },
     // 用于更新一些数据
     async update() {
+
       try {
         const res = await this.$http.post('/store/list', {});
         if (res.code >= 0) {
-
 
           this.list = res.data.map(el => {
 

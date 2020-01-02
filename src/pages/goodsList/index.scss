@@ -1,7 +1,7 @@
 @import "@/styles/variable.scss";
 
 #goodsList {
-  background-color: white;
+  background-color:#f6f6f6;
 
   display: flex;
   flex-direction: column;
@@ -157,6 +157,35 @@
           align-items: center;
           line-height: normal;
         }
+      }
+    }
+    .panel-store{
+      .store-img{
+        padding: 20px;
+        margin-bottom: 10px;
+        background-color: white;
+        .store-title{
+          font-size: 14px;
+        }
+        .store-imgs{
+          img{
+            width: 80px;
+            height: 80px;
+            margin-right: 10px;
+          }
+        }
+        .store-content{
+          font-size: 12px;
+        }
+      }
+      .store-info{
+        margin-bottom: 10px;
+        .tag{
+          margin-left: 5px;
+        }
+      }
+      .store-qualification{
+
       }
     }
   }

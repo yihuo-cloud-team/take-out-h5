@@ -22,9 +22,9 @@
     <div class="box">
        <van-button class="bottom-btn " size="large" color="#FFC700" @click="save">保存</van-button>
     </div>
-      <!-- <div class="box">
-       <van-button class="bottom-btn " size="large" color="#FFC700" @click="save">删除</van-button>
-    </div>    -->
+      <div v-if="isEdit" class="box">
+       <van-button class="bottom-btn " size="large" color="#FFC700" @click="del">删除</van-button>
+    </div>   
   </div>
 </template>
 <script src="./index.js"></script>
