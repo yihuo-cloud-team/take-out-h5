@@ -44,44 +44,6 @@
     margin-bottom: 20px;
 
 
-    .goods-item {
-      display: flex;
-
-      .left {
-        .img {
-          width: 75px;
-          height: 75px;
-          border-radius: 5px;
-
-        }
-      }
-
-      .center {
-        flex: 1;
-        display: flex;
-        margin-left: 10px;
-        flex-direction: column;
-
-        .center-top {
-          font-size: 15px;
-          font-weight: bold;
-          margin: 10px 0;
-        }
-
-        .center-footer {}
-      }
-
-      .right {
-        font-size: 28rpx;
-        font-weight: bold;
-        color: #f66;
-        display: flex;
-        justify-content: center;
-        align-self: center;
-
-
-      }
-    }
 
 
 

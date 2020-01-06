@@ -17,19 +17,14 @@
         </div>
         <van-icon color="#777" name="arrow" />
       </div>
-
       <div class="goods">
         <div class="goods-item" v-for="(item,index) in list" :key="index">
-          <div class="left">
-            <img class="img" :src="$getUrl(item.goods_head_list)" alt />
-          </div>
-          <div class="center">
-            <div class="center-top">{{item.title}}</div>
-            <div class="center-footer">X{{item.select_value}}</div>
-          </div>
-          <div class="right">
-            <div>{{item.price}}</div>
-          </div>
+          <img-text-card
+            :img="item.goods_head_list[0]"
+            :price="item.price"
+            :title="item.title"
+            :select_value="item.select_value"
+          ></img-text-card>
         </div>
       </div>
       <div class="center-box">

@@ -1,29 +1,15 @@
 export default {
-    name: 'imgTextCard',
+    name: 'goodItem',
     props: {
-       
-        img:{
-            type:String,
-            default:""
-        },
-        price:{
-            type:Number,
-            default:0
-        },
-        title:{
-            type:String,
-            default:""
-        },
-        select_value:{
-            type:String,
-            default:""
-        },
-      
-       
+      info:{
+          type:Object,
+          default:{}
+      }
     },
     data() {
         return {};
     },
+    
     methods: {
         // 用于初始化一些数据
         init() { },

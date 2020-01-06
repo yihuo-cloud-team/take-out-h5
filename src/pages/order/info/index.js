@@ -1,7 +1,10 @@
 export default {
     name: 'info',
     data() {
-        return {};
+        return {
+            info:{},
+            state:''
+        };
     },
     methods: {
         // 用于初始化一些数据
@@ -10,8 +13,18 @@ export default {
         },
         // 用于更新一些数据
         async update() {
-            // const res = await this.$http.post('', {});
+            const res = await this.$http.post('/order/info', {
+                order_id: this.$route.query.order_id
+              });
+              if (res.code >= 0) {
+                this.info = res.data;
+                this.state = res.state;
+              }
+          
         },
+        pay(){
+            
+        }
     },
     // 计算属性
     computed: {},

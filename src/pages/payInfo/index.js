@@ -29,6 +29,7 @@ export default {
     async update() {
       
       this.list = JSON.parse(localStorage.getItem('select'));
+      console.log(this.list)
       try {
         const res = await this.$http.post('/address/list', {});
         if (res.code >= 0) {

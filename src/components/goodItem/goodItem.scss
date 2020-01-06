@@ -1,0 +1,24 @@
+@import "@/styles/variable.scss";
+.item {
+
+        border-top: 1px solid #dddddd;
+        padding: 12.5px 12.5px 25px;
+        display: flex;
+        .img{
+            margin-right: 10px;
+            img{
+                width: 80px;
+                height: 80px;
+                border-radius: 10px;
+            }
+        }
+        .content{
+            margin-top: 15px;
+            flex: 1;
+            font-size: 13px;
+            color: #999;
+        }
+    
+}
+
+.item /deep/ {}

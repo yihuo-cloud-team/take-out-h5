@@ -79,6 +79,9 @@ export default {
            
           
         },
+        pay(item){
+
+        }
     },
     // 计算属性
     computed: {},

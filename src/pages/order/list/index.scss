@@ -2,30 +2,39 @@
 #list {
     .order-list{
         display: flex;
-      
+        flex-direction: column;
+        padding: 20px 15px;
     }
     .order-item{
         flex: 1;
         display: flex;
         flex-direction: column;
         background-color: white;
+        margin-bottom: 10px;
+        border-radius: 12px;
+
+        
         .top{
             flex: 1;
             display: flex;
             flex-direction: colum;
+            padding: 12.5px;
 
             .left{
                 flex: 1;    
+                font-size: 13.5px;
             }
             .right{
-                flex: 1;
+                font-size: 14px;
+                color: #f66;
             }
         }
-        .center{
-
-        }
-        .right{
-
+   
+        .footer{
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #dddddd;
+            justify-content: flex-end;
         }
     }
 }

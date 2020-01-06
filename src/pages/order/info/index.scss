@@ -1,6 +1,215 @@
 @import "@/styles/variable.scss";
+
 #info {
-    padding: $page-padding;
+  padding: 15px;
+
+  .goods {
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+
+
+    .goods-item {
+      display: flex;
+      flex-direction: column;
+      border-radius: 12px;
+
+      .top {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        padding: 0 0 12.5px 0;
+        border-bottom: 1px solid #dddddd;
+
+        .left {
+          flex: 1;
+          font-size: 16px;
+          font-weight: bold;
+        }
+
+        .right {
+          font-size: 14px;
+          color: #f66;
+        }
+      }
+
+      .good-item {
+        display: flex;
+        flex-direction: row;
+        padding: 10px 0;
+
+        .left {
+          display: flex;
+
+          .img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+
+          }
+        }
+
+        .center {
+          flex: 1;
+          display: flex;
+          margin-left: 10px;
+          flex-direction: column;
+
+          .center-top {
+            font-size: 15px;
+            font-weight: bold;
+
+          }
+
+          .center-footer {}
+        }
+
+        .right {
+          font-size: 28rpx;
+          font-weight: bold;
+          color: #f66;
+          display: flex;
+          justify-content: center;
+          align-self: center;
+
+
+        }
+      }
+
+      .money {
+        margin-top: 20px;
+        display: flex;
+        padding: 10px;
+        border-top: 0.5px solid #ddd;
+        border-bottom: 0.5px solid #ddd;
+
+        .title {
+          flex: 1;
+        }
+
+        .content {
+           
+        }
+      }
+
+      .totalPrice {
+        display: flex;
+        justify-content: flex-end;
+        padding: 10px 0;
+        align-items: center;
+
+        .info-price {
+          font-size: 20px;
+          font-weight: bold;
+          line-height: 28px;
+          color: #f16761;
+
+        }
+      }
+    }
+
+
+
+  }
+
+  .address {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+
+    .top {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      padding: 0 0 12.5px 0;
+      border-bottom: 1px solid #dddddd;
+
+      .left {
+        flex: 1;
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .right {
+        font-size: 14px;
+        color: #f66;
+      }
+    }
+
+    .content {
+        margin-top: 20px;
+      .give-info {
+        display: flex;
+
+        .left {
+    
+        }
+
+        .right {
+          flex: 1;
+          text-align: right;
+        }
+      }
+
+      .text-align {
+        text-align: right;
+      }
+    }
+  }
+
+  .order {
+    background-color: white;
+    padding: 15px;
+    border-radius: 12px;
+
+    .top {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      padding: 0 0 12.5px 0;
+      border-bottom: 1px solid #dddddd;
+
+      .left {
+        flex: 1;
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .right {
+        font-size: 14px;
+        color: #f66;
+      }
+    
+    }
+    .content {
+        margin-top: 20px;
+        .give-info {
+          display: flex;
+  
+          .left {
+            color: #777;
+          }
+  
+          .right {
+            flex: 1;
+            text-align: right;
+          }
+        }
+  
+        .text-align {
+          text-align: right;
+        }
+      }
+  }
+  .pay{
+      margin: 20px;
+      color: white;
+      background-color: red;
+      padding:13px;
+    text-align: center;
+  }
 }
 
 #info /deep/ {}
