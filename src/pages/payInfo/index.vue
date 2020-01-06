@@ -49,7 +49,7 @@
       <div class="price">￥{{totalPrice}}</div>
       <div class="btn" @click="submit">去支付</div>
     </div>
-    <van-popup position="bottom" style="height:100vh" v-model="show">
+    <van-popup position="bottom" style="height:90vh" v-model="show">
       <div id="select">
         <van-divider
           v-if="address.length==0"

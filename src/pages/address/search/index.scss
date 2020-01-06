@@ -1,6 +1,85 @@
 @import "@/styles/variable.scss";
 
-#search {
+body {
+  box-sizing: border-box;
+
+  #address {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+    .address-head {
+      border-bottom: 1px solid #ebedf0;
+      display: flex;
+      padding: 6px 15px;
+      align-items: center;
+
+      .location {
+        display: flex;
+        margin-right: 10px;
+        padding: 2px 0;
+
+        .text {
+          font-size: 14px;
+          line-height: 15px;
+          margin: 0 8px;
+        }
+      }
+
+      .search {
+        display: flex;
+        background-color: rgba($color: #000000, $alpha: 0.1);
+        flex: 1;
+        border-radius: 4px;
+        font-size: 18px;
+        padding: 10px;
+        align-items: center;
+
+        .input {
+          font-size: 14px;
+          margin-left: 10px;
+          padding: 0;
+          border: none;
+          background-color: transparent;
+        }
+      }
+    }
+
+    .address-body {
+      padding: 15px;
+      flex: 1;
+      overflow-x: auto;
+
+      .title {
+        display: flex;
+        color: #787878;
+        align-items: center;
+
+        .text {
+          margin-left: 10px;
+        }
+      }
+
+      .address-list {
+        padding: 10px;
+
+        .item {
+          border-bottom: 1px solid #ebeef5;
+          padding: 10px 0;
+
+          .item-title {
+            font-size: 16px;
+            margin-bottom: 10px;
+          }
+
+          .item-text {
+            font-size: 12px;
+            color: #8896b3;
+          }
+        }
+      }
+    }
+  }
 }
 
 #search /deep/ {}

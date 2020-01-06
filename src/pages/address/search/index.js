@@ -1,7 +1,22 @@
+import areaList from "@/plugins/lib/area";
+const map = new AMap.Map('container', {
+    resizeEnable: true
+});
 export default {
     name: 'search',
     data() {
-        return {};
+        return {
+            keyword: '',
+            addressKeyword: '',
+            show: false,
+            areaList: areaList,
+            Areaval: [],
+            TipsArr: [],
+            areaval: '',
+            addresstitle: '',
+            CurrentAddress: '',
+            location: ''
+        };
     },
     methods: {
         // 用于初始化一些数据
@@ -10,19 +25,91 @@ export default {
         },
         // 用于更新一些数据
         async update() {
-            let tipinput = new AMap.Autocomplete({
-                input: "tipinput",
-                
-              });
-              
+            AMap.plugin('AMap.Geolocation', () => {
+                var geolocation = new AMap.Geolocation({
+                    enableHighAccuracy: true,//是否使用高精度定位，默认:true
+                    timeout: 10000,          //超过10秒后停止定位，默认：5s
+                });
+                map.addControl(geolocation);
+                geolocation.getCurrentPosition((status, result) => {
+                    if (status == 'complete') {
+                        this.CurrentAddress = result.addressComponent
+                        this.addressKeyword = result.addressComponent.street + result.addressComponent.streetNumber
+                        this.location = `${result.position.lng},${result.position.lat}`
+                        this.areaval = result.addressComponent.adcode
+                        this.addresstitle = result.addressComponent.province
+                    } else {
+                        console.log(result)
+                    }
+                });
+            });
+
         },
-        search(){
-            
+        Obtaintips(word) {
+            AMap.plugin('AMap.Autocomplete', () => {
+                let autoOptions = {
+                    city: this.addresstitle,
+                    citylimit: true,
+                }
+                let autoComplete = new AMap.Autocomplete(autoOptions);
+                autoComplete.search(word || this.addressKeyword, (status, result) => {
+                    // 搜索成功时，result即是对应的匹配数据
+                    if (status == 'complete') {
+                        this.TipsArr = result.tips
+                    } else {
+                        console.log(result)
+                    }
+                })
+            })
+
+            // myAmapFun.getInputtips({
+            //     keywords: this.data.keyword,
+            //     city: this.data.areaval,
+            //     citylimit: true,
+            //     location: this.data.location,
+            //     success(data) {
+            //         vm.setData({
+            //             TipsArr: data.tips
+            //         })
+            //     }
+            // })
+        },
+        select() {
+            this.show = true
+        },
+        selectaddress(e) {
+            this.show = false
+            this.areaval = e[2].code
+            this.addresstitle = e[1].name
+            this.Areaval = e
+            this.Obtaintips()
+        },
+        canceladdress(e) {
+            this.show = false
+        },
+        choice(e) {
+            let location = e.location
+            let addressdata = {
+                name: e.name,
+                x: location.lat,
+                y: location.lng,
+                province: e.adcode.slice(0, 2) + '0000',
+                city: e.adcode.slice(0, 4) + '00',
+                region: e.adcode
+            }
+            if (this.Areaval.length > 0) {
+                addressdata.province = this.Areaval[0].code
+                addressdata.city = this.Areaval[1].code
+                addressdata.region = this.Areaval[2].code
+            }
+            localStorage.setItem('addressinfo', JSON.stringify(addressdata))
+            this.$router.go(-1)
         }
 
     },
     // 计算属性
-    computed: {},
+    computed: {
+    },
     // 包含 Vue 实例可用过滤器的哈希表。
     filters: {},
     // 在实例创建完成后被立即调用
@@ -31,7 +118,6 @@ export default {
     beforeMount() { },
     // el 被新创建的 vm.el 替换，并挂载到实例上去之后调用该钩子。
     mounted() {
-        
         this.init();
         this.$nextTick(() => { });
     },
@@ -50,7 +136,14 @@ export default {
     // 包含 Vue 实例可用指令的哈希表。
     directives: {},
     // 一个对象，键是需要观察的表达式，值是对应回调函数。
-    watch: {},
+    watch: {
+        keyword(word) {
+            this.Obtaintips(word)
+        },
+        addressKeyword() {
+            this.Obtaintips()
+        }
+    },
     // 组件列表
     components: {},
 };
