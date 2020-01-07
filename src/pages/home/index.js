@@ -14,7 +14,6 @@ export default {
     },
     // 用于更新一些数据
     async update() {
-
       try {
         const res = await this.$http.post('/store/list', {});
         if (res.code >= 0) {
@@ -42,7 +41,7 @@ export default {
       return s;
     },
     tiaozhuan(item){
-      this.$router.push(`/goodsList?store_id=${item.store_id}`)
+      this.$router.push(`/goodsList?store_id=${item.store_id}&&domain_id=${item.domain_id}`)
     }
   },
   // 计算属性

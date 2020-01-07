@@ -59,8 +59,8 @@
             </div>
             <div class="item-center">{{item.address}},{{item.address_num}}</div>
             <div class="item-footer">
-              <div class="footer-left">设为默认</div>
-              <!-- <div class="footer-left btn-color">默认地址</div> -->
+              <div class="footer-left btn-color" v-if="item.is_default == 1">默认地址</div>
+              <div @click.stop="save(item)" v-else class="footer-left">设为默认</div>
               <div class="footer-right">
                 <div class="operate">
                   <van-icon

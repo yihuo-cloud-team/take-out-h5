@@ -12,6 +12,7 @@ export default {
             this.show();
         },
         show() {
+            this.$router.replace("home");
             // this.$refs['select-child'].show();
             // this.$refs['select-contact'].show();
         },

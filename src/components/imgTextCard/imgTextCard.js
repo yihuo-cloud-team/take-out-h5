@@ -7,16 +7,16 @@ export default {
             default:""
         },
         price:{
-            type:Number,
-            default:0
+            type:String,
+            default:1
         },
         title:{
             type:String,
             default:""
         },
         select_value:{
-            type:String,
-            default:""
+            type:Number,
+            default:0
         },
       
        

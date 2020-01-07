@@ -12,7 +12,7 @@ export default {
         gender: 1, //性别
         phone: '', //手机号
         address_num: '', //具体门牌号
-        address: '松江区平高大厦', //收货地址
+        address: '', //收货地址
       }
     };
   },
@@ -23,6 +23,10 @@ export default {
     },
     // 用于更新一些数据
     async update() {
+    
+      if(localStorage.addressinfo){
+        this.form.address = JSON.parse(localStorage.addressinfo).name;
+      }
       if (!this.isAdd) {
         this.isEdit = true;
         const res = await this.$http.post('/address/info', {
@@ -68,6 +72,7 @@ export default {
       const res = await this.$http.post('/address/save', this.form);
       if (res.code >= 0) {
         this.$toast('添加成功');
+        localStorage.addressinfo=null;
         this.$router.go(-1);
       } else {
         this.$toast(res.msg);
@@ -122,7 +127,9 @@ export default {
   // keep-alive 组件停用时调用。
   deactivated() {},
   // 实例销毁之前调用。在这一步，实例仍然完全可用。
-  beforeDestroy() {},
+  beforeDestroy() {
+    localStorage.addressinfo=null;
+  },
   //Vue 实例销毁后调用。
   destroyed() {},
   // 当捕获一个来自子孙组件的错误时被调用。

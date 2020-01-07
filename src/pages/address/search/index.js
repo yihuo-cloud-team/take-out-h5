@@ -33,13 +33,13 @@ export default {
                 map.addControl(geolocation);
                 geolocation.getCurrentPosition((status, result) => {
                     if (status == 'complete') {
-                        this.CurrentAddress = result.addressComponent
-                        this.addressKeyword = result.addressComponent.street + result.addressComponent.streetNumber
-                        this.location = `${result.position.lng},${result.position.lat}`
-                        this.areaval = result.addressComponent.adcode
-                        this.addresstitle = result.addressComponent.province
+                        this.CurrentAddress = result.addressComponent;
+                        this.addressKeyword = result.addressComponent.street + result.addressComponent.streetNumber;
+                        this.location = `${result.position.lng},${result.position.lat}`;
+                        this.areaval = result.addressComponent.adcode;
+                        this.addresstitle = result.addressComponent.province;
                     } else {
-                        console.log(result)
+                        console.log(result);
                     }
                 });
             });
@@ -55,9 +55,9 @@ export default {
                 autoComplete.search(word || this.addressKeyword, (status, result) => {
                     // 搜索成功时，result即是对应的匹配数据
                     if (status == 'complete') {
-                        this.TipsArr = result.tips
+                        this.TipsArr = result.tips;
                     } else {
-                        console.log(result)
+                        
                     }
                 })
             })
@@ -75,20 +75,21 @@ export default {
             // })
         },
         select() {
-            this.show = true
+            this.show = true;
         },
         selectaddress(e) {
-            this.show = false
-            this.areaval = e[2].code
-            this.addresstitle = e[1].name
-            this.Areaval = e
-            this.Obtaintips()
+            this.show = false;
+            this.areaval = e[2].code;
+            this.addresstitle = e[1].name;
+            this.Areaval = e;
+            this.Obtaintips();
         },
         canceladdress(e) {
-            this.show = false
+            this.show = false;
         },
         choice(e) {
-            let location = e.location
+            console.log(1)
+            let location = e.location;
             let addressdata = {
                 name: e.name,
                 x: location.lat,
@@ -98,12 +99,12 @@ export default {
                 region: e.adcode
             }
             if (this.Areaval.length > 0) {
-                addressdata.province = this.Areaval[0].code
-                addressdata.city = this.Areaval[1].code
-                addressdata.region = this.Areaval[2].code
+                addressdata.province = this.Areaval[0].code;
+                addressdata.city = this.Areaval[1].code;
+                addressdata.region = this.Areaval[2].code;
             }
-            localStorage.setItem('addressinfo', JSON.stringify(addressdata))
-            this.$router.go(-1)
+            localStorage.setItem('addressinfo', JSON.stringify(addressdata));
+            this.$router.go(-1);
         }
 
     },

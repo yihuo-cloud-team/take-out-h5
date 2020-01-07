@@ -3,6 +3,8 @@
 #payInfo {
   padding: 20px;
   background-image: linear-gradient(180deg, #FFC700, #f0f0f0 100%);
+  overflow: auto;
+  display: flex;
   height: 100vh;
 
   .address {
@@ -19,17 +21,20 @@
 
     .address-info {
       flex: 1;
-      .address-title{
-     
-        .address-top{
+
+      .address-title {
+
+        .address-top {
           font-size: 20px;
           margin-bottom: 5px;
         }
-        .address-content{
+
+        .address-content {
 
           font-size: 14px;
           color: #666;
-          span{
+
+          span {
             margin-right: 10px;
           }
         }
@@ -52,6 +57,7 @@
   .center-box {
     border-radius: 4px;
     overflow: hidden;
+
   }
 
   .f-tool {
@@ -88,6 +94,7 @@
       line-height: normal;
     }
   }
+
   #select {
     background-color: #f6f6f6;
 
@@ -96,50 +103,50 @@
         background-color: white;
         margin-bottom: 10px;
         padding: 5px 10px;
-  
+
         .item-top {
           padding: 5px 0;
           display: flex;
           align-items: center;
-  
+
           span {
             margin-right: 5px;
           }
-  
+
           .tags {
             background-color: #FFC700;
           }
         }
-  
+
         .item-center {
           font-size: 12px;
           color: #707070;
           padding-bottom: 10px;
         }
-  
+
         .item-footer {
           display: flex;
           align-items: center;
           border-top: 0.5px solid #f6f6f6;
           padding: 5px 0;
-  
+
           .footer-left {
             font-size: 13px;
             padding: 3px 12px;
             background-color: #999999;
             border-radius: 12px;
             color: #F5F5F5;
-  
+
             &.btn-color {
               background-color: #E10004 !important;
             }
           }
-  
+
           .footer-right {
             flex: 1;
             display: flex;
             justify-content: flex-end;
-  
+
             .operate {
               display: flex;
               font-size: 13px;
@@ -151,7 +158,7 @@
         }
       }
     }
-  
+
   }
 }
 

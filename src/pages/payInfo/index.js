@@ -7,7 +7,10 @@ export default {
       address: [],
       message: "",
       show: false,
-      addressInfo:{}
+      addressInfo: {},
+      remarks: "",
+      address_id: "",
+      store_id: ""
     };
   },
   computed: {
@@ -27,30 +30,73 @@ export default {
     },
     // 用于更新一些数据
     async update() {
-      
       this.list = JSON.parse(localStorage.getItem('select'));
       console.log(this.list)
       try {
         const res = await this.$http.post('/address/list', {});
         if (res.code >= 0) {
           this.address = res.data
-          this.address.forEach((el)=>{
-            if(el.is_default==1){
+          this.address.forEach((el) => {
+            if (el.is_default == 1) {
               this.addressInfo = el
               return false
             }
           })
 
-          this.addressInfo = res.data[0]  
-        
+
+
         }
 
       } catch (error) {
 
       }
     },
-    submit() {
+    async submit() {
+      if (!this.addressInfo.id) {
+        this.$toast("请填写收货地址")
+        return false
+      }
+      //提交订单设置缓存清空tabbar右上角数字
 
+      let data = {
+        address_id: this.addressInfo.id,
+        goods: this.list.map(el => ({
+          id: el.id,
+          quantity: el.select_value,
+          sku_id: ''
+        })),
+        buy_type: 'TAKE',
+        remarks: this.remarks,
+        // id:this.data.coupons.id,
+        // price:this.data.coupons.price
+      }
+      const res = await this.$http.post('/order/create', data);
+
+      /**调用接口获取支付参数 */
+      if (res.code >= 0) {
+        const payInfo = await this.$http.post('/order/getMini', {
+          pay_id: res.data.pay_id
+        });
+        const order_id = res.data.order_id;
+        wx.redirectTo({
+          url: `/pages/order/orderInfo/orderInfo?order_id=${order_id}`
+        })
+      } else {
+        wx.showToast({
+          title: "提交失败",
+          icon: "none"
+        })
+      }
+    },
+    async save(item) {
+      item.is_default = 1
+      const res = await this.$http.post('/address/save', item);
+      if (res.code >= 0) {
+        this.$toast("修改成功");
+        this.update();
+      } else {
+        this.$toast(res.msg);
+      }
     },
     del(item) {
       this.$dialog.confirm({
