@@ -15,12 +15,12 @@
     .people {
         display: flex;
         flex-direction: column;
-
+        justify-content: center;
+        align-items: center;
         .img {
             width: 80px;
             height: 80px;
-            margin-left: 165px;
-            margin-top: 55px;
+      
             border-radius: 5px;
             display: block;
             background-color: #dddddd;

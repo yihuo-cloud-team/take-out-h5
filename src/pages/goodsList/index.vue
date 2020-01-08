@@ -73,11 +73,13 @@
                 <van-cell title="商家名称" :value="info.name" />
                 <van-cell title="商家地址" :value="info.address" />
                 <van-cell title="商家电话" :value="info.phone" />
-                <van-cell title="营业时间" :value="info.start_time+'--'+info.end_time">
-                  <div slot="label">
-                    <van-tag class="tag" v-for="(item,index) in info.week" :key="index">{{item}}</van-tag>
+          
+                  <van-panel  title="营业时间"  :status="info.start_time+'--'+info.end_time">
+                  <div class="tag-box" >
+                       <van-tag class="tag" v-for="(item,index) in info.week" :key="index">{{item}}</van-tag>
                   </div>
-                </van-cell>
+                
+                </van-panel>
                 <van-cell title="标签">
                   <div>
                     <van-tag
@@ -87,6 +89,7 @@
                     >{{item}}</van-tag>
                   </div>
                 </van-cell>
+              
               </van-cell-group>
             </div>
             <div class="store-qualification">

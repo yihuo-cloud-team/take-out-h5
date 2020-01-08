@@ -38,7 +38,7 @@ export default {
           this.address = res.data
           this.address.forEach((el) => {
             if (el.is_default == 1) {
-              this.addressInfo = el
+              this.addressinfo = el
               return false
             }
           })
@@ -52,6 +52,7 @@ export default {
       }
     },
     async submit() {
+        
       if (!this.addressInfo.id) {
         this.$toast("请填写收货地址")
         return false
@@ -67,6 +68,7 @@ export default {
         })),
         buy_type: 'TAKE',
         remarks: this.remarks,
+        store_id:this.$route.query.store_id
         // id:this.data.coupons.id,
         // price:this.data.coupons.price
       }
@@ -74,7 +76,7 @@ export default {
 
       /**调用接口获取支付参数 */
       if (res.code >= 0) {
-        const payInfo = await this.$http.post('/order/getMini', {
+        const payInfo = await this.$http.post('/order/getH5', {
           pay_id: res.data.pay_id
         });
         const order_id = res.data.order_id;

@@ -13,6 +13,8 @@ export default {
         phone: '', //手机号
         address_num: '', //具体门牌号
         address: '', //收货地址
+        x:"",
+        y:""
       }
     };
   },
@@ -23,10 +25,6 @@ export default {
     },
     // 用于更新一些数据
     async update() {
-    
-      if(localStorage.addressinfo){
-        this.form.address = JSON.parse(localStorage.addressinfo).name;
-      }
       if (!this.isAdd) {
         this.isEdit = true;
         const res = await this.$http.post('/address/info', {
@@ -37,6 +35,14 @@ export default {
         }
 
       }
+
+      if(localStorage.addressinfo){
+        console.log(localStorage.addressinfo)
+        this.form.address = JSON.parse(localStorage.addressinfo).name;
+        this.form.x = JSON.parse(localStorage.addressinfo).x;
+        this.form.y = JSON.parse(localStorage.addressinfo).y;
+      }
+      
 
     },
     del() {
@@ -72,7 +78,7 @@ export default {
       const res = await this.$http.post('/address/save', this.form);
       if (res.code >= 0) {
         this.$toast('添加成功');
-        localStorage.addressinfo=null;
+        localStorage.addressinfo= '';
         this.$router.go(-1);
       } else {
         this.$toast(res.msg);
@@ -105,6 +111,7 @@ export default {
   },
   // 计算属性
   computed: {
+  
     isAdd() {
       return typeof this.$route.query.id == 'undefined';
     }
@@ -128,7 +135,7 @@ export default {
   deactivated() {},
   // 实例销毁之前调用。在这一步，实例仍然完全可用。
   beforeDestroy() {
-    localStorage.addressinfo=null;
+    localStorage.addressinfo="";
   },
   //Vue 实例销毁后调用。
   destroyed() {},

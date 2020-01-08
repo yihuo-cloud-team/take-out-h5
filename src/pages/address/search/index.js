@@ -88,7 +88,7 @@ export default {
             this.show = false;
         },
         choice(e) {
-            console.log(1)
+                console.log(e)
             let location = e.location;
             let addressdata = {
                 name: e.name,
@@ -103,6 +103,7 @@ export default {
                 addressdata.city = this.Areaval[1].code;
                 addressdata.region = this.Areaval[2].code;
             }
+            console.log(addressdata)
             localStorage.setItem('addressinfo', JSON.stringify(addressdata));
             this.$router.go(-1);
         }

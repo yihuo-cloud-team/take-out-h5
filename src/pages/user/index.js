@@ -1,7 +1,9 @@
 export default {
     name: 'user',
     data() {
-        return {};
+        return {
+            userInfo:{}
+        };
     },
     methods: {
         // 用于初始化一些数据
@@ -10,8 +12,7 @@ export default {
         },
         // 用于更新一些数据
         async update() {
-        
-
+            this.userInfo = JSON.parse(localStorage.userInfo);
         },
     },
     // 计算属性

@@ -101,7 +101,7 @@ export default {
       //   this.$router.push('/pages/auth/auth');
       //   return;
       // }
-  
+
       const classTree = this.classTree;
       let select = [];
       classTree.forEach(el => {
@@ -111,7 +111,7 @@ export default {
       if (select.length > 0) {
         // wx.setStorageSync('select', select);
         localStorage.setItem('select',JSON.stringify(select));
-        this.$router.push('/payInfo');
+        this.$router.push(`/payInfo?store_id=${this.$route.query.store_id}`);
       } else {
         this.$toast("请至少选择一件商品");
       }

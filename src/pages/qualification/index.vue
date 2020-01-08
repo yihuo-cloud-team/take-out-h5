@@ -4,10 +4,10 @@
     <div class="title">商家从业资格</div>
     <div class="footer">
         <div class="left">
-            <img @click="fangda" class="img"  :src="info.qy_business"/>
+            <img @click="fangda" class="img"  :src="$getUrl(info.business)"/>
         </div>
         <div class="left">
-            <img @click="fangda"  class="img"  :src="info.qy_licence"/>
+            <img @click="fangda"  class="img"  :src="$getUrl(info.licence)"/>
         </div>
     </div>
 </div>

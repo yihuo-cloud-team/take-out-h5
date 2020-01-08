@@ -12,7 +12,7 @@ export default {
         },
         // 用于更新一些数据
         async update() {
-            const res = await this.$http.post("/store/domain/info",{})
+            const res = await this.$http.post("/store/info",{store_id:this.$route.query.store_id})
             if(res.code>=0){
                 this.info = res.data;
             }
