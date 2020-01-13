@@ -1,6 +1,10 @@
 <template>
   <div id="info">
-    <div id="container" v-if="info.state!=4 && info.state!=5 && info.state !=0 &&info.state !=1 &&info.state != 21" style="height:400px"></div>
+    <div
+      id="container"
+      v-if="info.state!=4 & info.state!=5 & info.state !=0 &info.state !=1 &info.state != 21"
+      style="height:400px"
+    ></div>
     <div class="goods">
       <div class="goods-item">
         <div class="top">
@@ -39,7 +43,9 @@
     </div>
     <div class="address">
       <div class="top">
-        <div class="left">配送信息</div>
+        <div
+          class="left"
+        >配送信息</div>
       </div>
       <div class="content">
         <div class="give-info">
@@ -77,7 +83,7 @@
         </div>
       </div>
     </div>
-    <div class="pay" @click="pay">立即支付</div>
+    <van-button class="zhifu" v-show="info.state==0"  @click="pay">立即支付</van-button>
   </div>
 </template>
 <script src="./index.js"></script>

@@ -39,7 +39,6 @@ export default {
         })
       },
       change(item){
-          console.log(item)
             localStorage.change = item.id;
             this.$router.go(-1);
       }

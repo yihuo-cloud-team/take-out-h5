@@ -1,5 +1,5 @@
 export default {
-  name: 'address',
+  name: 'Address',
   layout: "sub",
   data() {
     return {

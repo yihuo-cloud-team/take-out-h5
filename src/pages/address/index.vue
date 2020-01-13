@@ -1,5 +1,5 @@
 <template>
-  <div id="address">
+  <div id="Address">
     <van-divider
       v-if="list.length==0"
       :style="{ color: 'black', borderColor: '#1989fa', padding: '0 16px' }"

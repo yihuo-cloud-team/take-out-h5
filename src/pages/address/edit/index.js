@@ -37,7 +37,6 @@ export default {
       }
 
       if(localStorage.addressinfo){
-        console.log(localStorage.addressinfo)
         this.form.address = JSON.parse(localStorage.addressinfo).name;
         this.form.x = JSON.parse(localStorage.addressinfo).x;
         this.form.y = JSON.parse(localStorage.addressinfo).y;

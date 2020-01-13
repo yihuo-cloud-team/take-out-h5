@@ -6,6 +6,8 @@ export default {
             list: [],
             total: 1,
             userInfo: null,
+            finished:false,
+            loading:false
         }
     },
     methods: {
@@ -15,12 +17,15 @@ export default {
         },
         // 用于更新一些数据
         async update() {
+          this.loading = true;
+
             const res = await this.$http.post('/order/list', {
-                page_size: 5,
+                page_size: 10,
                 page: this.page
               });
           
               if (res.code > 0) {
+          
                 // 有数据
                 const list = res.data;
           
@@ -48,26 +53,26 @@ export default {
                   if (el.state == 5) {
                     el.state_label = '订单取消';
                   }
-                  let infos = []
-                  infos.push("下单时间：" + el.add_time)
+                  let infos = [];
+                  infos.push("下单时间：" + el.add_time);
           
-                  var num = 0
+                  var num = 0;
                   el.snapshotInfo.forEach(els => {
           
-                    num = num + els.data.quantity
+                    num = num + els.data.quantity;
                    
                   })
           
-                  infos.push(el.snapshotInfo[0].title + "..." + "等" + num + "件商品")
+                  infos.push(el.snapshotInfo[0].title + "..." + "等" + num + "件商品");
           
-                  infos.push("总价：￥" + (el.price * 1 + el.freight_price * 1))
-                  // console.log(infos)
-                  el.infos = infos
+                  infos.push("总价：￥" + (el.price * 1 + el.freight_price * 1));
+
+                  el.infos = infos;
                 });
           
-                this.list = [...this.list, ...list]
-                this.total = res.total
-                this.page =  ++this.page
+                this.list = [...this.list, ...list];
+                this.loading = false;
+                this.total = res.total;
                 // this.setData({
                 //   list: [...this.data.list, ...list],
                 //   total: res.total,
@@ -75,12 +80,15 @@ export default {
                 // });
               } else {
                 // 没有数据了
+                this.finished = true;
               }
            
           
         },
-        pay(item){
-
+        loadMore() {
+          this.page = ++this.page;
+          this.update();
+     
         }
     },
     // 计算属性

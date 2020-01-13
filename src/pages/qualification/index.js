@@ -1,5 +1,6 @@
 export default {
     name: 'qualification',
+    layout:"sub",
     data() {
         return {
             info:{}

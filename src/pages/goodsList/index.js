@@ -24,6 +24,13 @@ export default {
     },
     // 用于更新一些数据
     async update() {
+      const time = await this.$http.post('/order/checkOpen',{  store_id: this.$route.query.store_id});
+      if(time.code==0){
+        this.$toast(time.msg);
+      }
+      if(time.code==-1){
+        this.$toast(time.msg);
+      }
       try {
         const res = await this.$http.post('/class/list', {
           store_id: this.$route.query.store_id
@@ -71,7 +78,6 @@ export default {
   
         this.classTree = classTree
       } catch (e) {
-        console.warn(e);
   
       }
     },

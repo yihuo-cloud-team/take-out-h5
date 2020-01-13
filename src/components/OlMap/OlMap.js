@@ -50,7 +50,7 @@ export default {
         // 监听右下角小圆点
         AMap.event.addListener(geolocation, 'complete', (e) => {
           // this.setPosition();
-          console.log(11)
+     
           this.setPosition(e.position.lat, e.position.lng);
         });
 

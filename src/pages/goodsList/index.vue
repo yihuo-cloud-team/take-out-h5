@@ -41,6 +41,7 @@
                     </div>
                     <div class="right">
                       <van-stepper
+                        :disable-input="true"
                         class="stepper"
                         @change="xuan(item),setTotal()"
                         v-model="item.select_value"

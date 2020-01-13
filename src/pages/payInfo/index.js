@@ -31,14 +31,13 @@ export default {
     // 用于更新一些数据
     async update() {
       this.list = JSON.parse(localStorage.getItem('select'));
-      console.log(this.list)
       try {
         const res = await this.$http.post('/address/list', {});
         if (res.code >= 0) {
           this.address = res.data
           this.address.forEach((el) => {
             if (el.is_default == 1) {
-              this.addressinfo = el
+              this.addressInfo = el
               return false
             }
           })
@@ -52,7 +51,7 @@ export default {
       }
     },
     async submit() {
-        
+
       if (!this.addressInfo.id) {
         this.$toast("请填写收货地址")
         return false
@@ -68,7 +67,7 @@ export default {
         })),
         buy_type: 'TAKE',
         remarks: this.remarks,
-        store_id:this.$route.query.store_id
+        store_id: this.$route.query.store_id
         // id:this.data.coupons.id,
         // price:this.data.coupons.price
       }
@@ -79,15 +78,15 @@ export default {
         const payInfo = await this.$http.post('/order/getH5', {
           pay_id: res.data.pay_id
         });
-        const order_id = res.data.order_id;
-        wx.redirectTo({
-          url: `/pages/order/orderInfo/orderInfo?order_id=${order_id}`
-        })
+        if (payInfo.code >= 0) {
+          const order_id = res.data.order_id;
+          this.$router.replace(`/order/info?order_id=${order_id}`);
+        } else {
+          this.$toast(res.msg);
+        }
+
       } else {
-        wx.showToast({
-          title: "提交失败",
-          icon: "none"
-        })
+        this.$toast(res.msg);
       }
     },
     async save(item) {

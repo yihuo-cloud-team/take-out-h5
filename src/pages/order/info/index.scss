@@ -88,9 +88,7 @@
           flex: 1;
         }
 
-        .content {
-           
-        }
+        .content {}
       }
 
       .totalPrice {
@@ -139,13 +137,12 @@
     }
 
     .content {
-        margin-top: 20px;
+      margin-top: 20px;
+
       .give-info {
         display: flex;
 
-        .left {
-    
-        }
+        .left {}
 
         .right {
           flex: 1;
@@ -181,33 +178,36 @@
         font-size: 14px;
         color: #f66;
       }
-    
+
     }
+
     .content {
-        margin-top: 20px;
-        .give-info {
-          display: flex;
-  
-          .left {
-            color: #777;
-          }
-  
-          .right {
-            flex: 1;
-            text-align: right;
-          }
+      margin-top: 20px;
+
+      .give-info {
+        display: flex;
+
+        .left {
+          color: #777;
         }
-  
-        .text-align {
+
+        .right {
+          flex: 1;
           text-align: right;
         }
       }
+
+      .text-align {
+        text-align: right;
+      }
+    }
   }
-  .pay{
-      margin: 20px;
-      color: white;
-      background-color: red;
-      padding:13px;
+
+  .zhifu {
+    margin-top: 20px;
+    color: white;
+    background-color: red;
+    width: 100%;
     text-align: center;
   }
 }
