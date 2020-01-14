@@ -7,58 +7,63 @@
   display: flex;
   height: 100vh;
 
-  .address {
-    background-color: white;
-    padding: 15px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
 
-    .address-title {
-      flex: 1;
-    }
-
-    .address-info {
-      flex: 1;
-
+  .head{
+    width: 100%;
+    .address {
+      background-color: white;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+  
       .address-title {
-
-        .address-top {
-          font-size: 20px;
-          margin-bottom: 5px;
-        }
-
-        .address-content {
-
-          font-size: 14px;
-          color: #666;
-
-          span {
-            margin-right: 10px;
+        flex: 1;
+      }
+  
+      .address-info {
+        flex: 1;
+  
+        .address-title {
+  
+          .address-top {
+            font-size: 20px;
+            margin-bottom: 5px;
+          }
+  
+          .address-content {
+  
+            font-size: 14px;
+            color: #666;
+  
+            span {
+              margin-right: 10px;
+            }
           }
         }
       }
     }
+  
+    .goods {
+      background-color: white;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+  
+  
+  
+  
+  
+    }
+  
+    .center-box {
+      border-radius: 4px;
+      overflow: hidden;
+  
+    }
   }
-
-  .goods {
-    background-color: white;
-    padding: 15px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-
-
-
-
-
-  }
-
-  .center-box {
-    border-radius: 4px;
-    overflow: hidden;
-
-  }
+ 
 
   .f-tool {
     position: fixed;

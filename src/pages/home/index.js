@@ -40,6 +40,7 @@ export default {
           } else {
             this.$toast("无法获取位置信息，请授权");
             this.show = true;
+                   this.storeList();
           }
         });
       });
@@ -47,8 +48,10 @@ export default {
    async storeList() {
       this.loading = true;
       const res = await this.$http.post('/store/list', {
-        x: this.x,
-        y: this.y,
+        // x: this.y,
+        // y: this.x,
+        x: 31.00674,
+        y: 121.235348,
         page: this.page,
         page_size: 10
       })
@@ -75,7 +78,7 @@ export default {
       return s;
     },
     tiaozhuan(item) {
-      this.$router.push(`/sgoodsList?store_id=${item.store_id}&&domain_id=${item.domain_id}`)
+      this.$router.push(`/goodsList?store_id=${item.store_id}&&domain_id=${item.domain_id}`)
     },
 
 
