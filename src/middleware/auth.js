@@ -4,7 +4,7 @@ export default function (context) {
     if (typeof localStorage.jwt == 'undefined') {
         // 未登录
         if (context.route.name != 'login') {
-            // context.app.router.replace('/login');
+            context.app.router.replace('/login');
         }
 
     } else {
