@@ -8,6 +8,10 @@
         ></div>
         <div class="store-info">
           <img class="img" :src="$getUrl(info.logo)" alt />
+          <div class="name">{{info.name}}</div>
+          <div class="tag">
+            <van-tag v-for=" (item,index) in info.label" :key="index">{{item}}</van-tag>
+          </div>
         </div>
       </div>
     </div>
@@ -69,17 +73,18 @@
               </div>
               <div class="store-content">{{info.info}}</div>
             </div>
+
             <div class="store-info">
               <van-cell-group>
                 <van-cell title="商家名称" :value="info.name" />
+
                 <van-cell title="商家地址" :value="info.address" />
                 <van-cell title="商家电话" :value="info.phone" />
-          
-                  <van-panel  title="营业时间"  :status="info.start_time+'--'+info.end_time">
-                  <div class="tag-box" >
-                       <van-tag class="tag" v-for="(item,index) in info.week" :key="index">{{item}}</van-tag>
+
+                <van-panel title="营业时间" :status="info.start_time+'--'+info.end_time">
+                  <div class="tag-box">
+                    <van-tag class="tag" v-for="(item,index) in info.week" :key="index">{{item}}</van-tag>
                   </div>
-                
                 </van-panel>
                 <van-cell title="标签">
                   <div>
@@ -90,11 +95,11 @@
                     >{{item}}</van-tag>
                   </div>
                 </van-cell>
-              
               </van-cell-group>
             </div>
             <div class="store-qualification">
               <van-cell-group>
+                <van-cell title="商家二维码" @click="ToQrcode(info)" is-link />
                 <van-cell title="营业资质" @click="router(info)" is-link />
               </van-cell-group>
             </div>

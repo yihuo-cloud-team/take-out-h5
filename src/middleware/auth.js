@@ -1,11 +1,12 @@
 import Http from '../plugins/Http'
 
 export default function (context) {
+ 
     if (typeof localStorage.jwt == 'undefined') {
         // 未登录
-        if (context.route.name != 'login') {
-            context.app.router.replace('/login');
-        }
+        // if (context.route.name != 'login') {
+        //     context.app.router.replace('/login');
+        // }
 
     } else {
 

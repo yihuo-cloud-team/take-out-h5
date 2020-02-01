@@ -1,15 +1,15 @@
 export default {
   name: 'goodsList',
-  layout:"sub",
+  layout: "sub",
   data() {
     return {
       goodsclass: [],
       classTree: [],
       active: 0,
-      info:{},
-      activeIndex:0,
-      tab:0,
-      totalPrice:0
+      info: {},
+      activeIndex: 0,
+      tab: 0,
+      totalPrice: 0,
 
     };
   },
@@ -19,16 +19,18 @@ export default {
       await this.update();
       await this.httpGoods();
       await this.httpstore();
-   
-   
     },
+
+
     // 用于更新一些数据
     async update() {
-      const time = await this.$http.post('/order/checkOpen',{  store_id: this.$route.query.store_id});
-      if(time.code==0){
+      const time = await this.$http.post('/order/checkOpen', {
+        store_id: this.$route.query.store_id
+      });
+      if (time.code == 0) {
         this.$toast(time.msg);
       }
-      if(time.code==-1){
+      if (time.code == -1) {
         this.$toast(time.msg);
       }
       try {
@@ -54,36 +56,40 @@ export default {
     },
     async httpGoods() {
       try {
-        const res = await this.$http.post('/goods/list', {store_id: this.$route.query.store_id});
+        const res = await this.$http.post('/goods/list', {
+          store_id: this.$route.query.store_id
+        });
         if (res.code < 0) return;
         const list = res.data;
         const classTree = this.classTree;
-   
+
         list.forEach(el => {
 
-          
+
           el.select_value = 0;
           el.shows = false;
           let classi = classTree.find(classItem => classItem.id == el.class_id);
-         
+
           if (classi) {
-        
+
             classi.child.push(el);
-        
+
           }
-  
-  
+
+
         });
-    
-  
+
+
         this.classTree = classTree
       } catch (e) {
-  
+
       }
     },
     async httpstore() {
       try {
-        const res = await this.$http.post('/store/info', {store_id: this.$route.query.store_id});
+        const res = await this.$http.post('/store/info', {
+          store_id: this.$route.query.store_id
+        });
         if (res.code >= 0) {
           this.info = res.data
         }
@@ -91,17 +97,17 @@ export default {
 
       }
     },
-    select(e){
+    select(e) {
       this.active = e.id
     },
-    xuan(item){
-      if(item.select_value==0){
+    xuan(item) {
+      if (item.select_value == 0) {
         item.shows = false
-      }else{
+      } else {
         item.shows = true
       }
     },
-    submit(){
+    submit() {
       //去支付
       // if (!this.$isLogin()) {
       //   this.$router.push('/pages/auth/auth');
@@ -116,7 +122,7 @@ export default {
       });
       if (select.length > 0) {
         // wx.setStorageSync('select', select);
-        localStorage.setItem('select',JSON.stringify(select));
+        localStorage.setItem('select', JSON.stringify(select));
         this.$router.push(`/payInfo?store_id=${this.$route.query.store_id}`);
       } else {
         this.$toast("请至少选择一件商品");
@@ -136,11 +142,14 @@ export default {
       //   totalPrice: total.toFixed(2),
       //   totalText: totalText
       // });
-      this.totalPrice =total.toFixed(2)
-      this.totalText =totalText.toFixed(2)
+      this.totalPrice = total.toFixed(2)
+      this.totalText = totalText.toFixed(2)
     },
-    router(info){
+    router(info) {
       this.$router.push(`/qualification?store_id=${info.store_id}`)
+    },
+    ToQrcode(info) {
+      this.$router.push(`/qrcode?store_id=${info.store_id}&&name=${info.name}`)
     }
   },
   // 计算属性
@@ -154,7 +163,9 @@ export default {
   // el 被新创建的 vm.el 替换，并挂载到实例上去之后调用该钩子。
   mounted() {
     this.init();
-    this.$nextTick(() => {});
+    this.$nextTick(() => {
+
+    });
   },
   // 数据更新时调用，发生在虚拟 DOM 打补丁之前。
   beforeUpdate() {},
@@ -171,7 +182,9 @@ export default {
   // 包含 Vue 实例可用指令的哈希表。
   directives: {},
   // 一个对象，键是需要观察的表达式，值是对应回调函数。
-  watch: {},
+  watch: {
+
+  },
   // 组件列表
   components: {},
 };
