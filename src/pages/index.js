@@ -3,6 +3,7 @@ export default {
     title: '首页',
     data() {
         return {
+            
         };
     },
     methods: {

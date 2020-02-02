@@ -1,25 +1,22 @@
 <template>
   <div id="qrcode">
-    <div class="box">
+    <div class="box" ref="bigBox">
       <div class="title">
         <div class="img">
-          <img :src="$getUrl(info.logo)" alt />
+          <img :src="img" alt />
         </div>
         <div class="right">
-           <div class="name">{{info.name}}</div>
-
+          <div class="name">{{info.name}}</div>
         </div>
-       
       </div>
       <div ref="Qrcode"></div>
     </div>
-    <div class="button">
-    
-      <van-icon name="down" @click="show=true"/>
-      <div>  保存到相册</div>
+    <div @click="shows" class="button">
+      <van-icon name="down" />
+      <div>保存到相册</div>
     </div>
-    <van-popup >
-      
+    <van-popup v-model="show">
+      <img :src="imgUrl" 	crossOrigin="anonymous"     style="height:300px;width:240px;">
     </van-popup>
   </div>
 </template>

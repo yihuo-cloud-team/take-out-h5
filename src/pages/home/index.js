@@ -11,7 +11,46 @@ export default {
       show: false,
       finished: false,
       loading: false,
-      page: 1
+      page: 1,
+      apis : [
+        'updateAppMessageShareData',
+        'updateTimelineShareData',
+        'onMenuShareTimeline',
+        'onMenuShareAppMessage',
+        'onMenuShareQQ',
+        'onMenuShareWeibo',
+        'onMenuShareQZone',
+        'startRecord',
+        'stopRecord',
+        'onVoiceRecordEnd',
+        'playVoice',
+        'pauseVoice',
+        'stopVoice',
+        'onVoicePlayEnd',
+        'uploadVoice',
+        'downloadVoice',
+        'chooseImage',
+        'previewImage',
+        'uploadImage',
+        'downloadImage',
+        'translateVoice',
+        'getNetworkType',
+        'openLocation',
+        'getLocation',
+        'hideOptionMenu',
+        'showOptionMenu',
+        'hideMenuItems',
+        'showMenuItems',
+        'hideAllNonBaseMenuItem',
+        'showAllNonBaseMenuItem',
+        'closeWindow',
+        'scanQRCode',
+        'chooseWXPay',
+        'openProductSpecificView',
+        'addCard',
+        'chooseCard',
+        'openCard',
+      ]
     };
   },
   methods: {
@@ -22,41 +61,42 @@ export default {
       localStorage.jwt = "eyJpdiI6IjFiMjJnU1B1cW9oZUJGbHE4WFlUUHc9PSIsInZhbHVlIjoiTlAwNUk1ZTVZaU5FNTZoR2N0WHRYSWRjNWkwVm1TXC9rbHpPUlUwTGlcL0pDcm83bk5mS3ptYk1meHY4RGhiSHNHM3dFMzhaTG9jcnZmeGwrZzBXelloR1FVZUpEZE1hM0pLUUxwRFRCTXFKSlwvcm1nK2x3eUlyWkpwb3hYUEJcL1FBNU1GbWtqWVYwaHBKXC9RQU5rYm5hZVwvcWNQNk9saTVwdTNPQWRDdHYzUnl1dDVmY3hGWWs1VnVsRWpWNzZmUHI3RitKcG5QaTFmam9jUnF6WWVjVHJidEQ5VUxuYkNBcTF5N2o1ejZLRzBwbGJwMUQwdThKdUdRRVVcL0tHaHFENmQwTllqa3N6QjJyYXFDN1BTdGdYYmlhdE91S2dIV1RlK1hhY0tuOTh4cWFKcjJ1V0dUTXZjaGJnbXY5OG8yaGE4QlU2MXhnUHpxWTNqSFQxc2o0UVNTSjBMV2FaVVJaam1rOEd5RlI3eE4rR3BlRGR3cEdROXF3WmpEbUZLTmI5ejdpRWJ2Z0pCQ1R1bGkramJJaUpMUktqVStBcm01QWlmZGlib3JzcDd1bnR6eUhoM3QrcWRlWG9OWkxLSldzRG5zTkIxOHgrOTgwdzZrNVRGTDJQN2Q5ZGpoVmZWbVBQS2tFTlpyWnRCWlV4QVBLd2hXS0NLaDJockRpRHVcLzMwczZUM3BcLzR2YzFQYkNUR3YxTnhGY1ZSR21NaHRuRXRxbWdCYjF6VXMyK0xCQVJ3NW0wNzA0b1dld1FcL1wvcW9NcWlFMDdPSHVEbk5IdFVjekRQT0kyTStvSkZiQW5TTnRLTm5ySlBFaUxtT0tBYnRaSzc2ZTlValVMNkE5eTZSdFdQRHBld3ZNWXVpOHREemVkalZjWXdsVVdkVkdSZWNBQmtSekJhM0N2d1RacWZKaUwxM293VkNcL256ODU2Q3dZU0swYlpXbG5hUmdZRWdmS0hmbGxOM2R5SUF3ZytRQWhBUG5RaG95Ymh5M3Y1Vjh6ckVOT1NONHdlWjZoM3M1QXhoWkIzRzdNK1d5V2ZST21ZaUF5ZjhFcDlyNzcxQUMwVXhwa2lKMkRHbjZIamxXQnV4XC9McVJkQ1hidGJwcUErZldaNkI3ZE1hYjBZRmYzMUtpd2pGR1Z1a0d6ZzVQS20wSnBUVGxaZnFoKzJXSTVma0lRSTNEZjF6N1BNYTlnU1d3ZFJOMGowQ05PM205azJHZXJFcmc0Vm4raTYzNHBRdVZsQytCR3drV0RLMnZnXC9nWXFYWHJXbFFQcENrOEIrSHh5RXc0WWhtbXlLXC9STWNPeXl4ZExJaFJxeG1tWlFnUnVneG9Ob1ZDWXp3bmdnM3FQTWFyRmQ5RkQ0XC9pbmo5bWJSUGF4T3NwK2ZDWTNqa0Y1MzdsanNcLys4YkUzUWpYd2FMcUNXMTV0NHZ2Tmg1MGVjWEN6bHJmeVwvMTNiUzM0b0lBV25zcmdJOXUyMVJIbmw5QXNvVGJUYWswK2srTnZiQ1NPclFmeFk3SzUxa0dBXC9MUDZaY1BTbERsUng1SFUxYkIwWGRRYnpOTnBpZmduZUZvSFRRNVB1SEY2M3NTZURoaDFUdTVSSEFzSjB6UjRVNUZKdHhhajU2OHZtN1dFUFhZTVwveVdFcVBKTXREakZZYmFSUG5zTDFXQTdUc1FCcTFaaVwvdzdxQ1JJM1Z4QlFYRTMrNE9kenhXekg0ZHBTZGw1MFV1WEN2dVZKSTFmVWpQeVVqNzM2SHJiREVDUkQ4dVpwSVhVT2xRVDRCNGE2RUdWbExjVWQxandcL25ZOHphSCIsIm1hYyI6IjE0M2ZkMTlmMTk4ZmU0YzNmY2U1NjhlMmVkZWJmYmU5ZmU1ODNlZmRjNjNkMTU2ZjU2NGZlMjA0YTk0YWI0YTUifQ==";
     },
     async getInfo() {
-      const res = await this.$http.post('/jdk/sign', {})
-      
-    },
-    fenxiang() {
+      const res = await this.$http.post('/jdk/sign', {
+        apis: this.apis,
+        url:"https://h5.take-out.yihuo-cloud.com"+this.$route.fullPath
+      });
       wx.config({
         debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-        appId: '', // 必填，公众号的唯一标识
-        timestamp: '', // 必填，生成签名的时间戳
-        nonceStr: '', // 必填，生成签名的随机串
-        signature: '', // 必填，签名
-        jsApiList: [] // 必填，需要使用的JS接口列表
+        appId: 'wx5bf6a90a691706d0', // 必填，公众号的唯一标识
+        timestamp: res.timestamp, // 必填，生成签名的时间戳
+        nonceStr: res.nonceStr, // 必填，生成签名的随机串
+        signature: res.signature, // 必填，签名z
+        jsApiList: res.jsApiList// 必填，需要使用的JS接口列表
       });
-      //  朋友分享
-      wx.ready(function () { //需在用户可能点击分享按钮前就先调用
-        wx.updateAppMessageShareData({
-          title: '', // 分享标题
-          desc: '', // 分享描述
-          link: '', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-          imgUrl: '', // 分享图标
-          success: function () {
-            // 设置成功
-          }
-        })
-      });
+    
       //  朋友圈分享
-      wx.ready(function () { //需在用户可能点击分享按钮前就先调用
-        wx.updateTimelineShareData({
-          title: '', // 分享标题
-          link: '', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-          imgUrl: '', // 分享图标
-          success: function () {
+      wx.ready(() => { //需在用户可能点击分享按钮前就先调用
+        wx.updateAppMessageShareData({
+          title: '逐天外卖', // 分享标题
+          link: 'https://h5.take-out.yihuo-cloud.com', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+          imgUrl: 'https://api.take-out.yihuo-cloud.com/public/files/20200202/202002020250332716.jpg', // 分享图标
+          success () {
             // 设置成功
+
+          }
+        });
+        wx.updateAppMessageShareData({
+          title: '逐天外卖', // 分享标题
+          desc: '', // 分享描述
+          link: 'https://h5.take-out.yihuo-cloud.com/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+          imgUrl: 'https://api.take-out.yihuo-cloud.com/public/files/20200202/202002020250332716.jpg', // 分享图标
+          success () {
+            // 设置成功
+      
           }
         })
       });
+
     },
     // 用于更新一些数据
     async update() {
