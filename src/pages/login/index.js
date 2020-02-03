@@ -22,7 +22,6 @@ export default {
     vCode() {
       if (typeof this.$route.query['code'] == 'undefined') {
         // 跳转
-        
         const APPID = 'wx5bf6a90a691706d0';
         const REDIRECT_URI = encodeURIComponent(window.location.href);
         
