@@ -50,14 +50,16 @@
       overflow: auto;
 
       .class-list {
-        min-width: 60px;
+        width: 80px;
         overflow: auto;
+        
         background-color: #f6f6f6;
 
         .class-item {
-          padding: 25px 15px;
+          padding: 25px 5px;
           box-sizing: border-box;
-          font-size: 14px;
+         
+          font-size: 12px;
           text-align: center;
 
           &.active {

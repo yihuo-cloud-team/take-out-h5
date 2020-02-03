@@ -20,7 +20,7 @@
         <div class="center">
           <div class="center-title">{{item.name}}</div>
           <div class="center-info">{{item.info}}</div>
-          <div class="center-tag">
+          <div class="center-tag">  
             <van-tag class="tag" v-for="(item,index) in item.label" :key="index">{{item}}</van-tag>
           </div>
         </div>
