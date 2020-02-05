@@ -8,6 +8,7 @@ export default {
         wx_name: ""
       },
       msg: '',
+      url:""
     };
   },
   methods: {
@@ -22,9 +23,10 @@ export default {
     vCode() {
       if (typeof this.$route.query['code'] == 'undefined') {
         // 跳转
+   
         const APPID = 'wx5bf6a90a691706d0';
         const REDIRECT_URI = encodeURIComponent(window.location.href);
-        
+        this.url = localStorage.location
         window.location.replace(`https://open.weixin.qq.com/connect/oauth2/authorize?appid=${APPID}&redirect_uri=${REDIRECT_URI}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`);
       } else {
         // 登陆
@@ -37,7 +39,6 @@ export default {
       const res1 = await this.$http.post('/h5/auth/openid', {
         code: code
       });
-
       const res = await this.$http.post('/h5/auth/login',
         res1.data
       );
@@ -45,7 +46,8 @@ export default {
         localStorage.jwt = res.jwt;
         localStorage.userInfo = JSON.stringify(res.data);
         this.userInfo = res.data;
-        this.$router.push('/home');
+        alert(this.url);
+        this.$router.push(this.url);
       }
     },
   },

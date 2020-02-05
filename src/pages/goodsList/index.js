@@ -1,6 +1,5 @@
 export default {
   name: 'goodsList',
-  layout: "sub",
   data() {
     return {
       goodsclass: [],
@@ -16,6 +15,7 @@ export default {
   methods: {
     // 用于初始化一些数据
     async init() {
+
       await this.update();
       await this.httpGoods();
       await this.httpstore();
@@ -24,6 +24,7 @@ export default {
 
     // 用于更新一些数据
     async update() {
+      
       const time = await this.$http.post('/order/checkOpen', {
         store_id: this.$route.query.store_id
       });

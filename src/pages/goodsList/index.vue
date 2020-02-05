@@ -58,6 +58,7 @@
                 </div>
               </div>
             </div>
+
             <div class="f-tool">
               <div class="price">￥{{totalPrice}}</div>
               <div class="btn" @click="submit">去支付</div>

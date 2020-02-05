@@ -1,10 +1,10 @@
 <template>
   <div class="default">
     <nuxt class="view-body" />
-    <van-tabbar route v-model="active" :fixed="false">
-      <van-tabbar-item replace to="/home" icon="wap-home-o">首页</van-tabbar-item>
-      <van-tabbar-item replace to="/order/list" icon="orders-o">订单</van-tabbar-item>
-      <van-tabbar-item replace to="/user" icon="user-o">我的</van-tabbar-item>
+    <van-tabbar route v-model="active" :fixed="false"> 
+      <van-tabbar-item replace :to="`/goodsList${url}`" icon="wap-home-o">首页</van-tabbar-item>
+        <van-tabbar-item replace to="/order/list" icon="orders-o">订单</van-tabbar-item>
+        <van-tabbar-item replace to="/user" icon="user-o">我的</van-tabbar-item>
     </van-tabbar>
   </div>
 </template>
@@ -15,10 +15,13 @@ export default {
   layout: "root",
   data() {
     return {
-      active: 0
+      active: 0,
+      url:location.search
     };
   },
-  mounted() {},
+  mounted() {
+
+  },
   methods: {
     signOut() {
       localStorage.clear();
@@ -27,6 +30,7 @@ export default {
       this.$router.replace("/login");
     }
   },
+ 
   computed: {},
   watch: {
     $route(to) {},

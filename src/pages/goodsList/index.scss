@@ -1,7 +1,7 @@
 @import "@/styles/variable.scss";
 
 #goodsList {
-  background-color:#f6f6f6;
+  background-color: #f6f6f6;
 
   display: flex;
   flex-direction: column;
@@ -12,6 +12,7 @@
       $height: 125px;
       text-align: center;
       background-color: white;
+
       .head-bg {
         width: 100%;
         height: 125px;
@@ -31,11 +32,11 @@
           height: 80px;
           width: 80px;
         }
-        .name{
 
-        }
-        .tag{
-          padding-bottom:10px;
+        .name {}
+
+        .tag {
+          padding-bottom: 10px;
         }
       }
     }
@@ -47,18 +48,18 @@
 
     .panel {
       display: flex;
-      overflow: auto;
+
 
       .class-list {
         width: 80px;
-        overflow: auto;
-        
+
+
         background-color: #f6f6f6;
 
         .class-item {
           padding: 25px 5px;
           box-sizing: border-box;
-         
+
           font-size: 12px;
           text-align: center;
 
@@ -69,9 +70,9 @@
       }
 
       .goods-list {
-        padding: 15px 5px 15px 15px;
+        padding: 15px 5px 80px 15px;
         flex: 1;
-        overflow-y: auto;
+
 
         background-color: #ffffff;
 
@@ -135,7 +136,7 @@
         position: fixed;
         z-index: 20;
         box-shadow: 1px 2px 20px 5px rgba($color: #000000, $alpha: 0.3);
-        bottom: 30px;
+        bottom: 60px;
         max-width: 80%;
         width: 80%;
         background-color: #333333;
@@ -166,39 +167,45 @@
         }
       }
     }
-    .panel-store{
-      .store-img{
+
+    .panel-store {
+      .store-img {
         padding: 20px;
         margin-bottom: 10px;
         background-color: white;
-        .store-title{
+
+        .store-title {
           font-size: 14px;
           margin-bottom: 5px;
         }
-        .store-imgs{
-          img{
+
+        .store-imgs {
+          img {
             width: 80px;
             height: 80px;
             margin-right: 10px;
           }
         }
-        .store-content{
+
+        .store-content {
           font-size: 12px;
         }
       }
-      .store-info{
+
+      .store-info {
         margin-bottom: 10px;
-        .tag-box{
+
+        .tag-box {
           padding: 0 10px;
-          .tag{
+
+          .tag {
             margin-left: 5px;
           }
         }
-     
-      }
-      .store-qualification{
 
       }
+
+      .store-qualification {}
     }
   }
 

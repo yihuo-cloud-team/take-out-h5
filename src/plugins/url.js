@@ -14,6 +14,6 @@ let Url = {
 
 Vue.prototype.$Url = Url;
 
-export default Url;
+export default Url; 
 
 

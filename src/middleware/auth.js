@@ -4,10 +4,12 @@ export default function (context) {
  
     if (typeof localStorage.jwt == 'undefined') {
         // // 未登录
+        
+        localStorage.location = location;
         if (context.route.name != 'login') {
             context.app.router.replace('/login');
         }
-
+     
     } else {
 
         return new Promise(async (next) => {
