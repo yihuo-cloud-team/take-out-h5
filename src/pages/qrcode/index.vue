@@ -17,6 +17,7 @@
     </div>
     <van-popup v-model="show">
       <img :src="imgUrl" 	crossOrigin="anonymous"     style="height:300px;width:240px;">
+        <div class="text">长按保存到相册</div>
     </van-popup>
   </div>
 </template>

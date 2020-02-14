@@ -51,6 +51,15 @@
     border-radius: 8px;
     text-align: center;
   }
+  .van-popup {
+    background-color: transparent;
+  }
+
+  .text {
+    padding: 20px 0;
+    text-align: center;
+    color: white;
+  }
 }
 
 #qrcode /deep/ {}
