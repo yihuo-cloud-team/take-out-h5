@@ -44,8 +44,14 @@ export default {
       if (res.code >= 1) {
         localStorage.jwt = res.jwt;
         localStorage.userInfo = JSON.stringify(res.data);
-        this.userInfo = res.data;
-        this.$router.push(`/goodsList${localStorage.location}`);
+        this.userInfo = res.data;    
+        if(typeof localStorage.location == 'undefined'){
+          this.$router.replace("/home")
+        }else{
+          this.$router.replace(`/goodsList${localStorage.location}`);
+         
+        }
+    
       }
     },
   },
