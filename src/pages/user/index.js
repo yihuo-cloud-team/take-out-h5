@@ -14,6 +14,9 @@ export default {
         async update() {
             this.userInfo = JSON.parse(localStorage.userInfo);
         },
+        signOut() {
+            localStorage.clear();
+        }
     },
     // 计算属性
     computed: {},

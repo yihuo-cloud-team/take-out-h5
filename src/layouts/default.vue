@@ -2,7 +2,7 @@
   <div class="default">
     <nuxt class="view-body" />
     <van-tabbar route v-model="active" :fixed="false">
-      <van-tabbar-item replace :to="`/goodsList${url}`" icon="wap-home-o">首页</van-tabbar-item>
+      <van-tabbar-item replace to="/home" icon="wap-home-o">首页</van-tabbar-item>
       <van-tabbar-item replace to="/order/list" icon="orders-o">订单</van-tabbar-item>
       <van-tabbar-item replace to="/user" icon="user-o">我的</van-tabbar-item>
     </van-tabbar>
@@ -16,15 +16,11 @@ export default {
   data() {
     return {
       active: 0,
-      url: localStorage.location
+      // url: localStorage.location
     };
   },
   mounted() {
-    if (location.indexOf("store_id") != -1) {
-      localStorage.location = location.search;
-      // alert(location.search);
-      this.url = localStorage.location;
-    }
+ 
   },
   methods: {
     signOut() {
