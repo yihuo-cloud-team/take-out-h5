@@ -108,6 +108,9 @@
         </van-tab>
       </van-tabs>
     </div>
+     <div @click="$router.replace('/home')" class="position">
+        <van-icon size="25" name="arrow-left" color="white"></van-icon>
+    </div>
   </div>
 </template>
 <script src="./index.js"></script>

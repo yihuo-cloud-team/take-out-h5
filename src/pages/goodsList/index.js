@@ -1,5 +1,6 @@
 export default {
   name: 'goodsList',
+  layout: "sub",
   data() {
     return {
       goodsclass: [],

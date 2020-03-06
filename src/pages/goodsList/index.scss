@@ -208,7 +208,16 @@
       .store-qualification {}
     }
   }
-
+  .position {
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+  }
 
 
 }
