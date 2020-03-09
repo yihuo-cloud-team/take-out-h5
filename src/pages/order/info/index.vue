@@ -32,12 +32,12 @@
         </div>
         <div class="money">
           <div class="title">配送费</div>
-          <div v-if="info.freight_price==0" class="content">商家免运费</div>
-          <text v-if="info.freight_price>0">￥{{info.freight_price}}</text>
+          <div v-if="info.freight_price <= 0" >免运费</div>
+          <div   v-if="info.freight_price > 0">￥{{info.freight_price}}</div>
         </div>
         <div class="totalPrice">
           总计
-          <div class="info-price">￥{{info.price}}</div>
+          <div class="info-price">￥{{info.payInfo.price}}</div>
         </div>
       </div>
     </div>
