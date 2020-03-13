@@ -9,7 +9,7 @@ export default {
       marker1: {},
       marker2: {},
       time: "",
-      markerList: []
+      markerList: [],
     };
   },
   methods: {
@@ -141,7 +141,18 @@ export default {
 
       map.add(markerList);
     },
-
+    async closeOrder(){
+      
+      const res = await this.$http.post('/order/closeOrder', {
+        order_id: this.$route.query.order_id
+      })
+      if(res.code>=0){
+    
+        this.$toast(res.msg);
+      }else{
+        this.$toast(res.msg);
+      }
+    },
     async dada() {
       const res = await this.$http.post('/order/dadaMap', {
         store_id: this.info.store_id,
@@ -166,8 +177,10 @@ export default {
   beforeMount() {},
   // el 被新创建的 vm.el 替换，并挂载到实例上去之后调用该钩子。
   mounted() {
-    this.init();
-    this.$nextTick(() => {});
+  
+    this.$nextTick(() => {
+      this.init();
+    });
   },
   // 数据更新时调用，发生在虚拟 DOM 打补丁之前。
   beforeUpdate() {},

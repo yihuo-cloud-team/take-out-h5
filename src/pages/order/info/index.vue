@@ -9,6 +9,9 @@
       <div class="goods-item">
         <div class="top">
           <div class="left" v-if="info.storeInfo">{{info.storeInfo.name}}</div>
+          <div class="center">
+              <van-button @click="closeOrder" v-if="info.state!=0" size="mini" color="red" >申请退款</van-button>
+          </div>
           <div class="right">
             <div v-if="info.state==0">待支付</div>
             <div v-if="info.state==1">商家已接单</div>
@@ -32,20 +35,18 @@
         </div>
         <div class="money">
           <div class="title">配送费</div>
-          <div v-if="info.freight_price <= 0" >免运费</div>
-          <div   v-if="info.freight_price > 0">￥{{info.freight_price}}</div>
+          <div v-if="info.freight_price <= 0">免运费</div>
+          <div v-if="info.freight_price > 0">￥{{info.freight_price}}</div>
         </div>
         <div class="totalPrice">
           总计
-          <div class="info-price">￥{{info.payInfo.price}}</div>
+          <div class="info-price" v-if="info.payInfo">￥{{info.payInfo.price}}</div>
         </div>
       </div>
     </div>
     <div class="address">
       <div class="top">
-        <div
-          class="left"
-        >配送信息</div>
+        <div class="left">配送信息</div>
       </div>
       <div class="content">
         <div class="give-info">
@@ -83,7 +84,8 @@
         </div>
       </div>
     </div>
-    <van-button class="zhifu" v-show="info.state==0"  @click="pay">立即支付</van-button>
+    <van-button class="zhifu" v-if="info.state==0" @click="pay">立即支付</van-button>
+
   </div>
 </template>
 <script src="./index.js"></script>
