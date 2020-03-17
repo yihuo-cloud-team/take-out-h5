@@ -7,9 +7,9 @@ export default function (context) {
         if(location.search.indexOf('store_id') != -1){
             localStorage.location = location.search;
         };
-        if (context.route.name != 'login') {
-            context.app.router.replace('/login');
-        }
+        // if (context.route.name != 'login') {
+        //     context.app.router.replace('/login');
+        // }
      
     } else {
 

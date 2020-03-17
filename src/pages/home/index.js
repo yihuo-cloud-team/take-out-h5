@@ -126,10 +126,10 @@ export default {
     async storeList() {
       this.loading = true;
       const res = await this.$http.post('/store/list', {
-        x: this.y,
-        y: this.x,
-        // x: 31.00674,
-        // y: 121.235348,
+        // x: this.y,
+        // y: this.x,
+        x: 31.00674,
+        y: 121.235348,
         page: this.page,
         page_size: 10
       })
@@ -156,7 +156,7 @@ export default {
       return s;
     },
     tiaozhuan(item) {
-      this.$router.push(`/goodsList?store_id=${item.store_id}&&domain_id=${item.domain_id}`)
+      this.$router.push(`/goodsList?store_id=${item.store_id}&distance=${item.distance}`)
     },
 
 
@@ -164,7 +164,11 @@ export default {
   // 计算属性
   computed: {},
   // 包含 Vue 实例可用过滤器的哈希表。
-  filters: {},
+  filters: {
+    juli(val){
+      return val/1000 
+    }
+  },
   // 在实例创建完成后被立即调用
   created() {},
   // 在挂载开始之前被调用：相关的 render 函数首次被调用。

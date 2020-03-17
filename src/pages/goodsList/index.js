@@ -10,13 +10,15 @@ export default {
       activeIndex: 0,
       tab: 0,
       totalPrice: 0,
-
+      juli:false
     };
   },
   methods: {
     // 用于初始化一些数据
     async init() {
-
+      if(this.$route.query.distance > 5000){
+        this.juli = true;
+      }
       await this.update();
       await this.httpGoods();
       await this.httpstore();
@@ -103,11 +105,13 @@ export default {
       this.active = e.id
     },
     xuan(item) {
+      
       if (item.select_value == 0) {
         item.shows = false
       } else {
         item.shows = true
       }
+    
     },
     submit() {
       //去支付
@@ -115,7 +119,6 @@ export default {
       //   this.$router.push('/pages/auth/auth');
       //   return;
       // }
-
       const classTree = this.classTree;
       let select = [];
       classTree.forEach(el => {
@@ -130,13 +133,21 @@ export default {
         this.$toast("请至少选择一件商品");
       }
     },
+    bukexuan(){
+      if(this.$route.query.distance>300){
+        this.$toast('超出距离，无法点餐');
+        return false;
+      }
+    },
     setTotal() {
+
+  
+
       // let total = data.list.filter(el => el.select_value > 0).map(el => el.o_price * el.select_value).reduce((total, el) => total + el, 0);
       const classTree = this.classTree;
       let total = 0;
       let totalText = 0;
       classTree.forEach(el => {
-
         total += el.child.map(goods => goods.price * goods.select_value).reduce((total, el) => total + el, 0);
         totalText += el.child.map(goods => goods.select_value).reduce((total, el) => total + el, 0);
       });

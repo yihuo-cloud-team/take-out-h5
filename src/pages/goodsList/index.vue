@@ -45,9 +45,11 @@
                     </div>
                     <div class="right">
                       <van-stepper
+                        :disabled='juli'
                         :disable-input="true"
                         class="stepper"
                         @change="xuan(item),setTotal()"
+                        @overlimit="bukexuan()"
                         v-model="item.select_value"
                         :min="0"
                         :show-minus="item.shows"
@@ -108,8 +110,8 @@
         </van-tab>
       </van-tabs>
     </div>
-     <div @click="$router.replace('/home')" class="position">
-        <van-icon size="25" name="arrow-left" color="white"></van-icon>
+    <div @click="$router.replace('/home')" class="position">
+      <van-icon size="25" name="arrow-left" color="white"></van-icon>
     </div>
   </div>
 </template>
