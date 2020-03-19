@@ -23,7 +23,7 @@ export default {
     vCode() {
       if (typeof this.$route.query['code'] == 'undefined') {
         // 跳转
-   
+        
         const APPID = 'wx5bf6a90a691706d0';
         const REDIRECT_URI = encodeURIComponent(window.location.href);
         window.location.replace(`https://open.weixin.qq.com/connect/oauth2/authorize?appid=${APPID}&redirect_uri=${REDIRECT_URI}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`);
@@ -49,7 +49,7 @@ export default {
           this.$router.replace("/home")
         }else{
           this.$router.replace(`/goodsList${localStorage.location}`);
-         
+          
         }
     
       }

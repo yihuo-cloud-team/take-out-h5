@@ -41,11 +41,14 @@
                     </div>
                     <div class="center">
                       <div class="center-top">{{item.title}}</div>
-                      <div class="center-footer">{{item.price}}</div>
+                      <div class="center-footer">
+                        <div class="old">{{item.o_price}}</div>
+                        <div class="new">{{item.price}}</div>
+                      </div>
                     </div>
                     <div class="right">
                       <van-stepper
-                        :disabled='juli'
+                        :disabled="juli"
                         :disable-input="true"
                         class="stepper"
                         @change="xuan(item),setTotal()"
@@ -63,7 +66,14 @@
 
             <div class="f-tool">
               <div class="price">￥{{totalPrice}}</div>
-              <div class="btn" @click="submit">去支付</div>
+
+              <div class="btn" v-if="totalPrice>=info.minimum_price" @click="submit">去支付</div>
+
+              <div class="btn1" v-if="totalPrice==0">￥{{jiage?jiage:'--'}}元起送</div>
+              <div
+                class="btn1"
+                v-if="totalPrice!=0 && totalPrice < info.minimum_price"
+              >差￥{{jiage | tofixed}}起送</div>
             </div>
           </div>
         </van-tab>

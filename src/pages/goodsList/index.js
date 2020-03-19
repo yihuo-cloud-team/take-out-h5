@@ -10,7 +10,8 @@ export default {
       activeIndex: 0,
       tab: 0,
       totalPrice: 0,
-      juli:false
+      juli:false,
+ 
     };
   },
   methods: {
@@ -166,7 +167,11 @@ export default {
     }
   },
   // 计算属性
-  computed: {},
+  computed: {
+    jiage(){
+      return parseFloat(this.info.minimum_price-this.totalPrice);
+    }
+  },
   // 包含 Vue 实例可用过滤器的哈希表。
   filters: {},
   // 在实例创建完成后被立即调用
