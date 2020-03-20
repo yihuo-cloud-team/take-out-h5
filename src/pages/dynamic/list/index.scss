@@ -1,0 +1,58 @@
+@import "@/styles/variable.scss";
+#list {
+    // padding: $page-padding;
+    background: #FFF;
+}
+
+#list /deep/ {
+    .dynamic-box{
+        padding: 10px $page-padding;
+        border-bottom: 1px solid #F6F6F6;
+        display: flex;
+        &-img{
+             border-radius: 8px;
+             overflow: hidden;
+             background: white;
+        }
+        &-info{
+            flex: 1;
+            padding-left: 10px;
+            font-size: 16px;
+            &-name{
+                font-weight: bold;
+            }
+            &-date{
+                color:#707070;
+                font-size: 12px;
+            }
+            &-text{
+                padding:5px 0;
+            }
+            &-img{
+                .dynamic-list-img{
+                    margin-bottom: 5px;
+                    width: 100%;
+                    display: block;
+                    padding-bottom: 100%;
+                    background-size: cover;
+                    background-position: 50%;
+                }
+            }
+           
+        }
+    }
+
+    #plus-btn{
+        position: fixed;
+        background: #0ABF60;
+        right: 20px;
+        bottom: 70px;
+        border: 2px solid #F6F6F6;
+        width: 40px;
+        height: 40px;
+        border-radius: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

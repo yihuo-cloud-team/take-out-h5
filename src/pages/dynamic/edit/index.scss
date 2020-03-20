@@ -1,0 +1,12 @@
+@import "@/styles/variable.scss";
+#edit {
+    padding: $page-padding;
+}
+
+#edit /deep/ {
+    background: #FFF;
+    .van-cell:not(:last-child)::after{
+        border: 0;
+    }
+}
+
