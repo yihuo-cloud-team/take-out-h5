@@ -77,7 +77,7 @@ export default {
           order_id: this.info.order_id,
         })
         var icon = new AMap.Icon({
-          size: new AMap.Size(40, 50),    // 图标尺寸
+          size: new AMap.Size(  40, 50),    // 图标尺寸
           image: 'https://api.take-out.yihuo-cloud.com/public/files/20200109/202001090420036164.jpg', // Icon的图像
     
       });
@@ -114,6 +114,7 @@ export default {
         map.addControl(geolocation);
         geolocation.getCurrentPosition((status, result) => {
           if (status == 'complete') {
+        
             // this.CurrentAddress = result.addressComponent;
             // this.addressKeyword = result.addressComponent.street + result.addressComponent.streetNumber;
             this.location[0] = result.position.lat;
