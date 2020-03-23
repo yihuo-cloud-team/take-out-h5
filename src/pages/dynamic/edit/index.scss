@@ -8,5 +8,9 @@
     .van-cell:not(:last-child)::after{
         border: 0;
     }
+    .themeColorBtn{
+        background: #FFC700;
+        color: #FFF;
+    }
 }
 
