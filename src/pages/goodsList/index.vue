@@ -69,7 +69,7 @@
 
               <div class="btn" v-if="totalPrice>=info.minimum_price" @click="submit">去支付</div>
 
-              <div class="btn1" v-if="totalPrice==0">￥{{jiage?jiage:'--'}}元起送</div>
+              <div class="btn1" v-if="totalPrice==0 && info.minimum_price != 0">￥{{jiage?jiage:'--'}}元起送</div>
               <div
                 class="btn1"
                 v-if="totalPrice!=0 && totalPrice < info.minimum_price"

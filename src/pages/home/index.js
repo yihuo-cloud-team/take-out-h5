@@ -126,10 +126,10 @@ export default {
     async storeList() {
       this.loading = true;
       const res = await this.$http.post('/store/list', {
-        x: this.y,
-        y: this.x,
-        // x: 31.00674,
-        // y: 121.235348,
+        // x: this.y,
+        // y: this.x,
+        x: 31.00674,
+        y: 121.235348,
         page: this.page,
         page_size: 10
       })

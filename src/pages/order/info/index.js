@@ -70,10 +70,11 @@ export default {
 
     },
     async map(info) {
+      
       if (info.state == 3 || info.state == 2) {
         const res = await this.$http.post('/order/dadaMap', {
           store_id: this.info.store_id,
-          order_id: this.$route.query.order_id
+          order_id: this.info.order_id,
         })
         var icon = new AMap.Icon({
           size: new AMap.Size(40, 50),    // 图标尺寸
