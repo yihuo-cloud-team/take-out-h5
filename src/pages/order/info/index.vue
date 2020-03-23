@@ -2,8 +2,8 @@
   <div id="info">
     <div
       id="container"
-      v-if="info.state!=4 & info.state!=5 & info.state !=0 &info.state !=1 &info.state != 21"
-      style="height:400px"
+      v-show="info.state!=4 && info.state!=5 && info.state !=0  && info.state !=1 && info.state != 21"
+      style="height:300px;margin-bottom:10px"
     ></div>
     <div class="goods">
       <div class="goods-item">

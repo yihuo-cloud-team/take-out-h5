@@ -16,6 +16,7 @@ export default {
         },
         signOut() {
             localStorage.clear();
+            this.$router.replace('/login');
         }
     },
     // 计算属性
