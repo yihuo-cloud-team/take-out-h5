@@ -45,38 +45,43 @@
                         <div class="old">原价{{item.o_price}}</div>
                         <div class="new">优惠价{{item.price}}</div>
                       </div>
-                       <div class="right">
-                      <van-stepper
-                        :disabled="juli"
-                        :disable-input="true"
-                        class="stepper"
-                        @change="xuan(item),setTotal()"
-                        @overlimit="bukexuan()"
-                        v-model="item.select_value"
-                        :min="0"
-                        :show-minus="item.shows"
-                        :input-width="0"
-                      />
+                      <div class="right">
+                        <van-stepper
+                          :disabled="juli"
+                          :disable-input="true"
+                          class="stepper"
+                          @change="xuan(item),setTotal()"
+                          @overlimit="bukexuan()"
+                          v-model="item.select_value"
+                          :min="0"
+                          :show-minus="item.shows"
+                          :input-width="0"
+                        />
+                      </div>
                     </div>
-                    </div>
-                   
                   </div>
                 </div>
               </div>
             </div>
-  
+
             <div class="f-tool">
               <div class="price">
-                <div class="left">
-                  <div v-if="oldPrice!=0" class="top">原价{{oldPrice}}</div>
-                  <div class="bottom" ><span v-if="totalPrice!=0">优惠价</span>{{totalPrice}}</div>
+                <div v-show="totalPrice!=0" class="left">
+                  <div  class="top">原价{{oldPrice}}</div>
+                  <div class="bottom" >
+                    <span>优惠价</span>
+                    {{totalPrice}}
+                  </div>
                 </div>
-                <div v-if="youhui!=0" class="right">已优惠{{youhui}}元</div>
+                <div v-show="oldPrice!=0" class="right">已优惠{{youhui}}元</div>
               </div>
 
               <div class="btn" v-if="totalPrice>=info.minimum_price" @click="submit">去支付</div>
 
-              <div class="btn1" v-if="totalPrice==0 && info.minimum_price != 0">￥{{jiage?jiage:'--'}}元起送</div>
+              <div
+                class="btn1"
+                v-if="totalPrice==0 && info.minimum_price != 0"
+              >￥{{jiage?jiage:'--'}}元起送</div>
               <div
                 class="btn1"
                 v-if="totalPrice!=0 && totalPrice < info.minimum_price"
