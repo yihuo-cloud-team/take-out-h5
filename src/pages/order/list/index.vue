@@ -25,7 +25,7 @@
       
         <good-item :info="item"></good-item>
         <div class="footer">
-          <van-button size="small" type="danger" @click.stop="$rouer.push(`/order/info?order_id=${item.order_id}`)" v-if="item.state==0">立即支付</van-button>
+          <van-button size="small" type="danger" @click.stop="$router.push(`/order/info?order_id=${item.order_id}`)" v-if="item.state==0">立即支付</van-button>
         </div>
       </div>
     </van-list>
