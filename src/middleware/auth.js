@@ -8,9 +8,9 @@ export default function (context) {
             localStorage.location = location.search;
         }
 
-        // if (context.route.name != 'login') {
-        //     context.app.router.replace('/login');
-        // }
+        if (context.route.name != 'login') {
+            context.app.router.replace('/login');
+        }
      
     } else {
 
