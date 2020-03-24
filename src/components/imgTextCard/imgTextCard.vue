@@ -6,10 +6,15 @@
       </div>
       <div class="center">
         <div class="center-top">{{title}}</div>
-        <div class="center-footer">X{{select_value}}</div>
-      </div>
-      <div class="right">
-        <div>{{price}}</div>
+        <div class="center-footer">
+          <div class="left">X{{select_value}}</div>
+          <div class="right">
+            <div>
+              <span style="color:grey;font-size:12px">原价{{oldPrice}}</span>
+              优惠价 {{price}}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -21,6 +21,14 @@ export default {
       let total = this.list.filter(el => el.select_value > 0).map(el => el.price * el.select_value).reduce((total, el) => total + el, 0);
       return total.toFixed(2);
     },
+    oldPrice1() {
+      let old = this.list.filter(el => el.select_value > 0).map(el => el.o_price * el.select_value).reduce((old, el) => old + el, 0);
+        console.log(old)
+      return old.toFixed(2);
+    },
+    youhui(){
+      return parseFloat(this.oldPrice1-this.totalPrice).toFixed(2);
+    }
 
   },
   methods: {
@@ -31,6 +39,7 @@ export default {
     // 用于更新一些数据
     async update() {
       this.list = JSON.parse(localStorage.getItem('select'));
+      console.log(this.list)
       try {
         const res = await this.$http.post('/address/list', {});
         if (res.code >= 0) {

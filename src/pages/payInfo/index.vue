@@ -23,6 +23,7 @@
             :img="item.goods_head_list[0]"
             :price="item.price"
             :title="item.title"
+            :oldPrice='item.o_price'
             :select_value="item.select_value"
           ></img-text-card>
         </div>
@@ -41,7 +42,13 @@
       </div>
     </div>
     <div class="f-tool">
-      <div class="price">￥{{totalPrice}}</div>
+     <div class="price">
+                <div class="left">
+                  <div v-if="oldPrice1!=0" class="top">原价{{oldPrice1}}</div>
+                  <div class="bottom" ><span v-if="totalPrice!=0">优惠价</span>{{totalPrice}}</div>
+                </div>
+                <div v-if="youhui!=0" class="right">已优惠{{youhui}}元</div>
+              </div>
       <div class="btn" @click="submit">去支付</div>
     </div>
     <van-popup position="bottom" style="height:90vh" v-model="show">

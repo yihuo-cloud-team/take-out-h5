@@ -9,8 +9,9 @@ export default {
       info: {},
       activeIndex: 0,
       tab: 0,
-      totalPrice: 0,
+      totalPrice: 0,//优惠价
       juli:false,
+      oldPrice:0,//原价
  
     };
   },
@@ -143,19 +144,23 @@ export default {
     setTotal() {
 
   
-
+    
       // let total = data.list.filter(el => el.select_value > 0).map(el => el.o_price * el.select_value).reduce((total, el) => total + el, 0);
       const classTree = this.classTree;
       let total = 0;
       let totalText = 0;
+      let old = 0;
       classTree.forEach(el => {
+        old += el.child.map(goods => goods.o_price * goods.select_value).reduce((old, el) => old + el, 0);
         total += el.child.map(goods => goods.price * goods.select_value).reduce((total, el) => total + el, 0);
         totalText += el.child.map(goods => goods.select_value).reduce((total, el) => total + el, 0);
+
       });
       // this.setData({
       //   totalPrice: total.toFixed(2),
       //   totalText: totalText
       // });
+      this.oldPrice = old.toFixed(2)
       this.totalPrice = total.toFixed(2)
       this.totalText = totalText.toFixed(2)
     },
@@ -170,6 +175,9 @@ export default {
   computed: {
     jiage(){
       return parseFloat(this.info.minimum_price-this.totalPrice);
+    },
+    youhui(){
+      return parseFloat(this.oldPrice-this.totalPrice).toFixed(2);
     }
   },
   // 包含 Vue 实例可用过滤器的哈希表。

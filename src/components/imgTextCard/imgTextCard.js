@@ -18,7 +18,10 @@ export default {
             type:Number,
             default:0
         },
-      
+        oldPrice:{
+            type:String,
+            default:1
+        }
        
     },
     data() {

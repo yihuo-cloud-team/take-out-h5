@@ -42,11 +42,10 @@
                     <div class="center">
                       <div class="center-top">{{item.title}}</div>
                       <div class="center-footer">
-                        <div class="old">{{item.o_price}}</div>
-                        <div class="new">{{item.price}}</div>
+                        <div class="old">原价{{item.o_price}}</div>
+                        <div class="new">优惠价{{item.price}}</div>
                       </div>
-                    </div>
-                    <div class="right">
+                       <div class="right">
                       <van-stepper
                         :disabled="juli"
                         :disable-input="true"
@@ -59,13 +58,21 @@
                         :input-width="0"
                       />
                     </div>
+                    </div>
+                   
                   </div>
                 </div>
               </div>
             </div>
-
+  
             <div class="f-tool">
-              <div class="price">￥{{totalPrice}}</div>
+              <div class="price">
+                <div class="left">
+                  <div v-if="oldPrice!=0" class="top">原价{{oldPrice}}</div>
+                  <div class="bottom" ><span v-if="totalPrice!=0">优惠价</span>{{totalPrice}}</div>
+                </div>
+                <div v-if="youhui!=0" class="right">已优惠{{youhui}}元</div>
+              </div>
 
               <div class="btn" v-if="totalPrice>=info.minimum_price" @click="submit">去支付</div>
 

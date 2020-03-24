@@ -24,19 +24,25 @@
         margin: 10px 0;
       }
 
-      .center-footer {}
+      .center-footer {
+        flex: 1;
+        display: flex;
+        .left{
+          margin-right: 20px;
+        }
+        .right {
+          flex: 1;
+          font-size: 28rpx;
+          font-weight: bold;
+          color: #f66;
+     
+    
+        }
+      }
+     
     }
 
-    .right {
-      font-size: 28rpx;
-      font-weight: bold;
-      color: #f66;
-      display: flex;
-      justify-content: center;
-      align-self: center;
-
-
-    }
+    
   }
 
 

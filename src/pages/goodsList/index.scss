@@ -79,6 +79,7 @@
         .goods-item {
           position: relative;
           display: flex;
+          padding: 0 0 20px 0;
 
           .left {
             .img {
@@ -98,43 +99,47 @@
             .center-top {
               font-size: 15px;
               font-weight: bold;
-              margin: 10px 0;
+              margin: 5px 0;
             }
 
             .center-footer {
-            
-            
+
+
               font-weight: bold;
               display: flex;
               align-items: center;
-              .old{
+
+              .old {
                 color: grey;
                 font-size: 11px;
-                margin-right: 10px;
-                text-decoration:line-through;
+                margin-right: 5px;
               }
-              .new{
+
+              .new {
+
                 color: #f66;
                 font-size: 14px;
               }
             }
-          }
 
-          .right {
-            position: absolute;
-            right: 0;
-            bottom: 0;
+            .right {
+              margin-top: 2px;
+              display: flex;
+              justify-content: flex-end;
 
-            .van-stepper__input {
-              width: 0;
+              .van-stepper__input {
+                width: 0;
+              }
+
+              .stepper {
+                width: 100px;
+                border-radius: 100%;
+              }
+
             }
 
-            .stepper {
-              width: 100px;
-              border-radius: 100%;
-            }
-
           }
+
 
           .van-stepper__plus {
             border-radius: 100% !important;
@@ -163,8 +168,26 @@
         .price {
           flex: 1;
           padding: 15px;
-          font-size: 18px;
+          font-size: 12px;
           font-weight: bold;
+          display: flex;
+          align-items: center;
+          text-align: center;
+
+          .left {
+            flex: 1;
+
+            .top {
+              color: grey;
+            }
+            .bottom{
+              font-size: 16px;
+            }
+          }
+
+          .right {
+            flex: 1;
+          }
         }
 
         .btn {
@@ -175,14 +198,15 @@
           align-items: center;
           line-height: normal;
         }
+
         .btn1 {
-        color: grey;
+          color: grey;
           font-size: 14px;
           padding: 15px;
           display: flex;
           align-items: center;
           line-height: normal;
-      
+
         }
       }
     }
@@ -227,6 +251,7 @@
       .store-qualification {}
     }
   }
+
   .position {
     border-radius: 100%;
     width: 25px;

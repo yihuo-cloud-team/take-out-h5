@@ -10,7 +10,7 @@
         <div class="top">
           <div class="left" v-if="info.storeInfo">{{info.storeInfo.name}}</div>
           <div class="center">
-              <van-button @click="closeOrder" v-if="info.state!=0" size="mini" color="red" >申请退款</van-button>
+            <van-button @click="closeOrder" v-if="info.state!=0" size="mini" color="red">申请退款</van-button>
           </div>
           <div class="right">
             <div v-if="info.state==0">待支付</div>
@@ -29,6 +29,7 @@
               :img="item.data.goods_head_list[0]"
               :price="item.data.price"
               :title="item.title"
+              :oldPrice="item.data.o_price"
               :select_value="item.data.quantity"
             ></img-text-card>
           </template>
@@ -85,7 +86,6 @@
       </div>
     </div>
     <van-button class="zhifu" v-if="info.state==0" @click="pay">立即支付</van-button>
-
   </div>
 </template>
 <script src="./index.js"></script>
