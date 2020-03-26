@@ -1,0 +1,85 @@
+@import "@/styles/variable.scss";
+
+#prizedraw {
+  background-image: linear-gradient(#FFB325, #FF5F18);
+  height: 100vh;
+
+  .bg {
+    background-image: url('../../static/images/装饰@2x.png');
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: 0% 35%;
+    background-size: 100% 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .title-img {
+      width: 90vw;
+      margin-top: 60px;
+      margin-bottom: 10px;
+    }
+
+    .rotator {
+      width: 80vw;
+      position: relative;
+
+      .box {
+        background-image: url('../../static/images/空心转盘@3x.png');
+        background-position: center;
+        background-size: 100% 100%;
+        width: 100%;
+        padding-bottom: 100%;
+        display: flex;
+        justify-content: center;
+
+        &.transform {
+          transition: all 3s;
+        }
+
+        .item {
+          position: absolute;
+          transform-origin: bottom;
+          width: calc(100% / 3);
+          height: 50%;
+          font-size: 13px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding-top: 18px;
+          &:nth-child(2n) {
+            color: #000;
+          }
+      
+          &:nth-child(odd) {
+            color: #fff;
+          }
+
+          .title {
+            margin-bottom: 5px;
+          }
+        }
+      }
+
+      .img {
+        position: absolute;
+        top: calc(50% - 60px);
+        left: calc(50% - 35px);
+        width: 70px;
+        height: 100px;
+      }
+    }
+
+
+  }
+}
+
+.list-enter{
+  opacity: 0;
+}
+
+.list-enter-active {
+  transition: all 1s;
+}
+
+#prizedraw /deep/ {}
