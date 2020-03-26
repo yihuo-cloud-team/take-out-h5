@@ -27,6 +27,13 @@ export default {
       let total = this.list.filter(el => el.select_value > 0).map(el => el.price * el.select_value).reduce((total, el) => total + el, 0);
       return total.toFixed(2);
     },
+    lastPrice() {
+      const coupon = this.coupons[this.chosenCoupon];
+      if (coupon.type == 1) {
+        return (this.totalPrice * Number(coupon.value_zen)).toFixed(2)
+      }
+      return (this.totalPrice - Number(coupon.value_zen)).toFixed(2)
+    },
     oldPrice1() {
       let old = this.list.filter(el => el.select_value > 0).map(el => el.o_price * el.select_value).reduce((old, el) => old + el, 0);
       return old.toFixed(2);
@@ -44,6 +51,7 @@ export default {
     // 用于更新一些数据
     async update() {
       this.list = JSON.parse(localStorage.getItem('select'));
+      let _this = this;
       try {
         const res = await this.$http.post('/address/list', {});
         if (res.code >= 0) {
@@ -55,38 +63,48 @@ export default {
             }
           })
         }
-
         let params = new FormData(); //创建form对象
         const couponRes = await this.$http.post('/coupon/list', {});
         if (couponRes.code >= 0) {
           this.couponList = couponRes.data;
           console.log(this.couponList);
           this.couponList.forEach((_res, i) => {
-
-
-// condition	满减条件	string
-// startAt	卡有效开始时间 (时间戳, 单位秒)	number
-// endAt	卡失效日期 (时间戳, 单位秒)	number
-// description	描述信息，优惠券可用时展示	string
-// reason	不可用原因，优惠券不可用时展示	string
-// value	折扣券优惠金额，单位分	number
-// valueDesc	折扣券优惠金额文案	string
-// unitDesc	单位文案	string
-            _res.startAt=_res.start_at;
-            _res.endAt=new Date(_res.startAt).getDateStr(3);
-            _res.value=Number(_res.value);
-            _res.valueDesc=_res.value/100;
-            _res.unitDesc='元';
-            //store_id店铺
-
+            _res.startAt = _res.start_at;
+            _res.condition_value = Number(_res.condition_value);
+            _res.endAt = (new Date(_res.startAt).getDateStr(_res.startAt * 1000, 3)) / 1000;
+            if (_res.type == 1) {
+              _res.valueDesc = Number(_res.value_zen) * 10;
+              _res.unitDesc = '折';
+              _res.condition = '满' + _res.condition_value + '元\n打' + _res.valueDesc + _res.unitDesc;
+            } else {
+              _res.valueDesc = _res.value_zen;
+              _res.unitDesc = '元';
+              _res.condition = '满' + _res.condition_value + '元\n减' + _res.valueDesc + _res.unitDesc;
+            }
             //判断是否本店，时间，门槛
-
-
-
-
-
-
-
+            _res.reason = [];
+            if (_res.store_id != this.$route.query.store_id) {
+              _res.reason.push('非本店优惠券');
+              _res.can = 1;
+            }
+            if (new Date() / 1000 < _res.startAt) {
+              _res.reason.push('优惠券未到使用时间');
+              _res.can = 1;
+            }
+            if (new Date() / 1000 > _res.endAt) {
+              _res.reason.push('优惠券已过期');
+              _res.can = 1;
+            }
+            if (_res.condition_value > _this.totalPrice) {
+              _res.reason.push('未达到门槛');
+              _res.can = 1;
+            }
+            if (_res.can == 1) {
+              _res.reason = _res.reason.toString();
+              _this.disabledCoupons.push(_res);
+            } else {
+              _this.coupons.push(_res);
+            }
           })
         }
       } catch (error) {
@@ -164,6 +182,10 @@ export default {
     couponChange(index) {
       this.showList = false;
       this.chosenCoupon = index;
+      if (this.chosenCoupon == -1) return
+      const coupon = this.coupons[this.chosenCoupon];
+      coupon.value = (this.totalPrice - this.lastPrice) * 100;
+
     },
   },
   // 计算属性
