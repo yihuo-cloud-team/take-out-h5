@@ -171,7 +171,7 @@ export default {
   // 包含 Vue 实例可用过滤器的哈希表。
   filters: {
     juli(val) {
-      return val / 1000
+      return (val / 1000).toFixed(1)
     }
   },
   // 在实例创建完成后被立即调用

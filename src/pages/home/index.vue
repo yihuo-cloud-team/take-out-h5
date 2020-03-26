@@ -1,12 +1,12 @@
 <template>
   <div id="home">
-    <div class="home-head">
+    <!-- <div class="home-head">
       <div class="search">
         <van-cell-group>
           <van-field v-model="name" clearable @keyup.enter="test" placeholder="搜索店名" />
         </van-cell-group>
       </div>
-    </div>
+    </div> -->
     <div class="home-body">
       <van-list
         v-model="loading"

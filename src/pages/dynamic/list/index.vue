@@ -2,7 +2,7 @@
   <div id="list">
     <van-divider
       v-if="list.length==0"
-      :style="{ color: 'black', borderColor: '#1989fa', padding: '0 16px' }"
+      :style="{ color: 'black', borderColor: '#FFC700', padding: '0 16px' }"
     >暂无数据</van-divider>
 
     <van-list v-model="loading" :finished="finished" style=" width: 100%;" @load="update">
