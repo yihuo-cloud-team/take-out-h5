@@ -35,7 +35,7 @@ export default {
         timestamp: res.timestamp, // 必填，生成签名的时间戳
         nonceStr: res.nonceStr, // 必填，生成签名的随机串
         signature: res.signature, // 必填，签名z
-        jsApiList: res.jsApiList// 必填，需要使用的JS接口列表
+        jsApiList: res.jsApiList // 必填，需要使用的JS接口列表
       });
 
       //  朋友圈分享
@@ -126,12 +126,13 @@ export default {
         page_size: 10
       })
       if (res.code > 0) {
-        this.loading = false;
         this.list = [...this.list, ...res.data];
         this.page++;
       } else {
         this.finished = true;
       }
+      this.loading = false;
+      this.page++;
     },
     scroll(e) {
       let s = document.getElementById('home').scrollTop
