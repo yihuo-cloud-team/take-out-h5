@@ -1,5 +1,5 @@
 <template>
-  <div id="home">
+ <div id="first">
     <div class="home-head">
       <div class="search">
         <van-cell-group>

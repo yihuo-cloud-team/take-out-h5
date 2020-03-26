@@ -17,8 +17,8 @@ module.exports = {
         '~/plugins/main.js',
     ],
     server: {
-        port: 80,  
-        host: '192.168.0.107',
+        port: 8070,  
+        // host: '192.168.2.1',
         // // default: 80
         // // default: localhost
     },
