@@ -55,6 +55,13 @@ Date.prototype.Format = function (fmt) { //author: meizz
   return fmt;
 };
 
+Date.prototype.getDateStr = function (dayCount) { //author: meizz
+  let dd = new Date()
+  dd.setDate(dd.getDate() + dayCount)
+  let time = dd.getTime()
+  return time
+};
+
 /**
      * 
      * 产生随机字符串

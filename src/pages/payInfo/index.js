@@ -10,7 +10,13 @@ export default {
       addressInfo: {},
       remarks: "",
       address_id: "",
-      store_id: ""
+      store_id: "",
+
+      showList: false,
+      chosenCoupon: -1,
+      couponList: [],
+      coupons: [],
+      disabledCoupons: [],
     };
   },
   computed: {
@@ -23,11 +29,10 @@ export default {
     },
     oldPrice1() {
       let old = this.list.filter(el => el.select_value > 0).map(el => el.o_price * el.select_value).reduce((old, el) => old + el, 0);
-        console.log(old)
       return old.toFixed(2);
     },
-    youhui(){
-      return parseFloat(this.oldPrice1-this.totalPrice).toFixed(2);
+    youhui() {
+      return parseFloat(this.oldPrice1 - this.totalPrice).toFixed(2);
     }
 
   },
@@ -39,7 +44,6 @@ export default {
     // 用于更新一些数据
     async update() {
       this.list = JSON.parse(localStorage.getItem('select'));
-      console.log(this.list)
       try {
         const res = await this.$http.post('/address/list', {});
         if (res.code >= 0) {
@@ -50,23 +54,51 @@ export default {
               return false
             }
           })
-
-
-
         }
 
+        let params = new FormData(); //创建form对象
+        const couponRes = await this.$http.post('/coupon/list', {});
+        if (couponRes.code >= 0) {
+          this.couponList = couponRes.data;
+          console.log(this.couponList);
+          this.couponList.forEach((_res, i) => {
+
+
+// condition	满减条件	string
+// startAt	卡有效开始时间 (时间戳, 单位秒)	number
+// endAt	卡失效日期 (时间戳, 单位秒)	number
+// description	描述信息，优惠券可用时展示	string
+// reason	不可用原因，优惠券不可用时展示	string
+// value	折扣券优惠金额，单位分	number
+// valueDesc	折扣券优惠金额文案	string
+// unitDesc	单位文案	string
+            _res.startAt=_res.start_at;
+            _res.endAt=new Date(_res.startAt).getDateStr(3);
+            _res.value=Number(_res.value);
+            _res.valueDesc=_res.value/100;
+            _res.unitDesc='元';
+            //store_id店铺
+
+            //判断是否本店，时间，门槛
+
+
+
+
+
+
+
+          })
+        }
       } catch (error) {
 
       }
     },
     async submit() {
-
       if (!this.addressInfo.id) {
         this.$toast("请填写收货地址")
         return false
       }
       //提交订单设置缓存清空tabbar右上角数字
-
       let data = {
         address_id: this.addressInfo.id,
         goods: this.list.map(el => ({
@@ -128,34 +160,37 @@ export default {
     change(item) {
       this.show = false;
       this.addressInfo = item
-
-    }
+    },
+    couponChange(index) {
+      this.showList = false;
+      this.chosenCoupon = index;
+    },
   },
   // 计算属性
   // computed: {},
   // 包含 Vue 实例可用过滤器的哈希表。
   filters: {},
   // 在实例创建完成后被立即调用
-  created() {},
+  created() { },
   // 在挂载开始之前被调用：相关的 render 函数首次被调用。
-  beforeMount() {},
+  beforeMount() { },
   // el 被新创建的 vm.el 替换，并挂载到实例上去之后调用该钩子。
   mounted() {
     this.init();
-    this.$nextTick(() => {});
+    this.$nextTick(() => { });
   },
   // 数据更新时调用，发生在虚拟 DOM 打补丁之前。
-  beforeUpdate() {},
+  beforeUpdate() { },
   // keep-alive 组件激活时调用。
-  activated() {},
+  activated() { },
   // keep-alive 组件停用时调用。
-  deactivated() {},
+  deactivated() { },
   // 实例销毁之前调用。在这一步，实例仍然完全可用。
-  beforeDestroy() {},
+  beforeDestroy() { },
   //Vue 实例销毁后调用。
-  destroyed() {},
+  destroyed() { },
   // 当捕获一个来自子孙组件的错误时被调用。
-  errorCaptured() {},
+  errorCaptured() { },
   // 包含 Vue 实例可用指令的哈希表。
   directives: {},
   // 一个对象，键是需要观察的表达式，值是对应回调函数。
