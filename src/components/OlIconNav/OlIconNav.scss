@@ -1,0 +1,20 @@
+@import "@/styles/variable.scss";
+
+.ol-icon-nav {}
+
+.ol-icon-nav /deep/ {
+
+    .van-swipe__indicators {
+        bottom: 12px !important;
+
+        .van-swipe__indicator {
+            width: 20px !important;
+            border-radius: 0;
+            height: 3px;
+        }
+    }
+
+    .van-swipe-item {
+        padding-bottom: 30px;
+    }
+}

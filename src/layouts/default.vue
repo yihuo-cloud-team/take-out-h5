@@ -1,6 +1,6 @@
 <template>
   <div class="default">
-    <nuxt class="view-body" />
+    <nuxt class="view-body" keep-alive />
     <van-tabbar route v-model="active" active-color="#FFC700" :fixed="false">
       <van-tabbar-item replace to="/home" icon="wap-home-o">首页</van-tabbar-item>
       <van-tabbar-item replace to="/order/list" icon="orders-o">订单</van-tabbar-item>

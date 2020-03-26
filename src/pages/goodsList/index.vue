@@ -67,8 +67,8 @@
             <div class="f-tool">
               <div class="price">
                 <div v-show="totalPrice!=0" class="left">
-                  <div  class="top">原价{{oldPrice}}</div>
-                  <div class="bottom" >
+                  <div class="top">原价{{oldPrice}}</div>
+                  <div class="bottom">
                     <span>优惠价</span>
                     {{totalPrice}}
                   </div>

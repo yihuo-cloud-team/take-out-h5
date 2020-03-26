@@ -1,65 +1,35 @@
 @import "@/styles/variable.scss";
 
 #home {
-  display: flex;
-  flex-direction: column;
-  .home-head{
-    margin-bottom: 10px;
+  // display: flex;
+  // flex-direction: column;
+  background-color: #ffffff;
+
+  .search-box {
+    padding: 10px;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    z-index: 2000;
+
+    .search-input {
+      background-color: #EEEFF0;
+      padding: 10px;
+      border-radius: 25px;
+      font-size: 11px;
+      color: #666;
+      box-shadow: 0 0 0 transparent;
+      transition: all 0.3s;
+    }
+
   }
 
+
   .home-body {
-    flex: 1;
-    overflow-y: auto;
-
-    .list {
-      padding: 0 10px 10px 10px;
-
-      .item {
-        background: white;
-        padding: 10px;
-        display: flex;
-        margin-bottom: 10px;
-
-        .left {
-          margin-right: 10px;
-
-          .img {
-            width: 90px;
-            height: 90px;
-            border-radius: 10px;
-            background-color: #eeeeee;
-          }
-        }
-
-        .center {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-
-          .center-title {
-            font-size: 15px;
-            margin-top: 10px;
-          }
-
-          .center-info {
-            font-size: 13px;
-            color: #999;
-
-          }
-
-          .center-tag {
-            .tag {
-              margin-right: 10px;
-            }
-          }
-        }
-
-        .right {
-          display: flex;
-          align-items: center;
-        }
-      }
-    }
+    position: relative;
+    padding-top: 60px;
+    z-index: 1;
   }
 
 

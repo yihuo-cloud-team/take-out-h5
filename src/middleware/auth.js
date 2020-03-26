@@ -1,17 +1,18 @@
 import Http from '../plugins/Http'
+import config from '../plugins/config'
 
 export default function (context) {
-   
-    if (typeof localStorage.jwt == 'undefined') {
+
+    if (typeof config.jwt() == 'undefined') {
         // 未登录
-        if(location.search.indexOf('store_id') != -1){
+        if (location.search.indexOf('store_id') != -1) {
             localStorage.location = location.search;
         }
 
         if (context.route.name != 'login') {
             context.app.router.replace('/login');
         }
-     
+
     } else {
 
         return new Promise(async (next) => {
