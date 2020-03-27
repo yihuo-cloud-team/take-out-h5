@@ -18,8 +18,10 @@
         padding-bottom: 30px;
     }
     .van-grid-item__text{
-        text-overflow: ellipsis;
         white-space: nowrap;
+        text-overflow:ellipsis;
+
+     
     }
     .van-grid-item__icon+.van-grid-item__text {
         margin-top: 4px;
