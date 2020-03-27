@@ -1,27 +1,37 @@
 export default {
-    name: 'list',
+    name: 'get',
+    layout: "sub",
     data() {
         return {
-            list: [],
+            src:'',
+            qrcode1:''
         };
     },
     methods: {
         // 用于初始化一些数据
         init() {
             this.update();
+            this.qrcode();
         },
         // 用于更新一些数据
         async update() {
-            const res = await this.$http.post('/coupon/list', {});
-            console.log(res)
-            this.list = res.data;
+            // const res = await this.$http.post('', {});
         },
+        qrcode() {
+            // this.qrcode1 = new QRCode(this.$refs.Qrcode, {
+            //   text: `https://h5.take-out.yihuo-cloud.com/`,
+            //   width: 200,
+            //   height: 200,
+            //   colorDark: "#000000",
+            //   colorLight: "#ffffff",
+            //   correctLevel: QRCode.CorrectLevel.H
+            // })
+          },
     },
     // 计算属性
     computed: {},
     // 包含 Vue 实例可用过滤器的哈希表。
-    filters: {
-    },
+    filters: {},
     // 在实例创建完成后被立即调用
     created() { },
     // 在挂载开始之前被调用：相关的 render 函数首次被调用。
