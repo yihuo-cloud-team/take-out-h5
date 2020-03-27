@@ -13,6 +13,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: hidden;
 
     .title-img {
       width: 90vw;
@@ -42,20 +43,27 @@
           transform-origin: bottom;
           width: calc(100% / 3);
           height: 50%;
-          font-size: 13px;
+          font-size: 12px;
           display: flex;
           flex-direction: column;
           align-items: center;
-          padding-top: 18px;
+          padding-top: 25px;
+
           &:nth-child(2n) {
-            color: #000;
+            color: #f00;
           }
-      
+
           &:nth-child(odd) {
-            color: #fff;
+            color: #f00;
           }
 
           .title {
+            font-weight: bold;
+            width: 75%;
+            text-align: center;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
             margin-bottom: 5px;
           }
         }
@@ -63,18 +71,64 @@
 
       .img {
         position: absolute;
-        top: calc(50% - 60px);
-        left: calc(50% - 35px);
-        width: 70px;
-        height: 100px;
+        top: calc(50% - 110px);
+        left: calc(50% - 100px);
+        width: 200px;
+        height: 200px;
       }
     }
 
+    .tiems {
+      font-weight: bold;
+      padding-right: 20px;
+      width: 100%;
+      color: #fff;
+      font-size: 12px;
+      text-align: right;
+    }
+
+    .prize-logo {
+      width: 45px;
+      height: 55px;
+      margin-bottom: 5px;
+    }
+
+    .prize-namelist {
+      background-color: rgba($color: #FFBD07, $alpha: 0.5);
+      padding: 5px 10px;
+      border-radius: 5px;
+      width: 70%;
+
+      .title {
+        text-align: center;
+        color: #f00;
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 5px;
+      }
+
+      .viewable {
+        height: 80px;
+        overflow: hidden;
+      }
+
+      .namelist-box {
+
+        .item {
+          display: flex;
+          justify-content: space-between;
+          font-size: 12px;
+          font-weight: bold;
+          color: #f00;
+          margin-bottom: 3px;
+        }
+      }
+    }
 
   }
 }
 
-.list-enter{
+.list-enter {
   opacity: 0;
 }
 
