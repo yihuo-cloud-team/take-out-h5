@@ -1,0 +1,67 @@
+@import "@/styles/variable.scss";
+#list {
+    padding: $page-padding;
+}
+
+#list /deep/ {
+    .card{
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        background: #FFF;
+        padding: 20px 18px;
+        border-radius: 10px;
+        &-left{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FA6400;
+            align-items: center;
+            text-align: center;
+            .text{
+                font-size: 12px;
+            }
+        }
+        &-mid{
+            flex: 1;
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            padding: 0 16px;
+            width: 50%;
+            .title{
+                color: #333333;
+                font-size: 16px;
+                font-weight: bold;
+                .shop_name{
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+            .endTime{
+                font-size: 12px;
+                color:#595958;
+                white-space: nowrap;
+            }
+            .condition_value{
+                color: #FA6400;
+                font-size: 12px;
+            }
+        }
+        &-right{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .btn{
+                color: #FFF;
+                background-image: linear-gradient(to right,  #FC8539, #F65648);
+                border: 0;
+                padding: 6px 7px;
+                border-radius:50px;
+                font-size: 12px;
+                white-space: nowrap;
+            }
+        }
+    }
+}

@@ -16,10 +16,23 @@
             :key="item.id"
           >
             <span class="title">{{item.title}}</span>
-            <van-image width="30" height="30" radius="4" fit="cover" :src="$getUrl(item.img)" />
+            <van-image fit="contain" width="30" height="30" radius="4" :src="$getUrl(item.img)" />
           </div>
         </transition-group>
         <img class="img" @click="httpJx" src="../../static/images/转盘中心@3x.png" alt />
+      </div>
+      <div class="tiems">我的积分：{{number_tiems * 10}}</div>
+      <img class="prize-logo" src="../../static/images/奖杯@2x.png" alt />
+      <div class="prize-namelist">
+        <div class="title">中奖名单</div>
+        <div class="viewable">
+          <div class="namelist-box" :style="[{'margin-top':`${0-number}px`}]">
+            <div class="item" v-for="(item,index) in prize_namelist" :key="index">
+              <div class="user-num">{{item.phone}}</div>
+              <div class="text">获得{{item.name}}</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

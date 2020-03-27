@@ -3,12 +3,16 @@ export default {
     layout: "sub",
     data() {
         return {
-            click: true,
+            number: -5,
+            times: '',
+            number_tiems: 0,
+            click: false,
             default_rotate: 100,
             bl_index: 0,
             classMap: ['box'],
             list: [],
-            blArr: []
+            blArr: [],
+            prize_namelist: [],
         };
     },
     methods: {
@@ -22,6 +26,14 @@ export default {
             if (res.code > 0) {
                 this.list = res.data
             }
+            this.httpitems()
+            this.times = setInterval(() => {
+                this.number += 1
+                if (this.number > 116) {
+                    this.number = 0
+                }
+            }, 100);
+            this.getMoble()
         },
         build() { // 将从接口拿的概率进行百分比化
             this.blArr = [];
@@ -34,6 +46,13 @@ export default {
         },
         rotateNum(index) {
             return (360 / this.list.length) * (index + 1)
+        },
+        async httpitems() {
+            const res = await this.$http.post('/prize/prize_num', {});
+            if (res.code > 0) {
+                this.number_tiems = res.data.num
+                if (res.data.num > 0) { this.click = true }
+            }
         },
         async httpJx() {
             if (!this.click) return //判断是否正在抽奖
@@ -73,7 +92,7 @@ export default {
                 } catch (error) {
 
                 }
-                this.click = true
+                this.httpitems()
             }, 3000);
 
 
@@ -90,6 +109,33 @@ export default {
                     }, 300);
                 })
             })
+        },
+        getMoble() {
+            let prefixArray = ["130", "131", "132", "133", "135", "137", "138", "170", "187", "189"];
+            this.prize_namelist = prefixArray.map(el => {
+                let home = ''
+                for (let index = 0; index < 4; index++) {
+                    home = home + Math.floor(Math.random() * 10);
+                }
+                return {
+                    phone: `${prefixArray[Math.floor(Math.random() * 10)]}****${home}`,
+                    name: `${this.list[Math.floor(Math.random() * 10)].title}`
+                }
+            })
+        },
+        async wxFx() { // 微信分享
+            const res = await this.$http.post('/jdk/sign', {
+                apis: this.apis,
+                url: "https://h5.take-out.yihuo-cloud.com" + this.$route.fullPath
+            });
+            wx.config({
+                debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                appId: 'wx5bf6a90a691706d0', // 必填，公众号的唯一标识
+                timestamp: res.timestamp, // 必填，生成签名的时间戳
+                nonceStr: res.nonceStr, // 必填，生成签名的随机串
+                signature: res.signature,// 必填，签名
+                jsApiList: res.jsApiList // 必填，需要使用的JS接口列表
+            });
         }
     },
     // 计算属性
