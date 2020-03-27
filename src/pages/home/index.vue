@@ -1,6 +1,6 @@
 <template>
   <div id="home">
-    <div @click="$router.push('search')" class="search-box">
+    <div @click="$router.push('/search')" class="search-box">
       <div
         class="search-input"
         :style="`box-shadow: 0 0 20px rgba(0, 0, 0, ${shadow});`"

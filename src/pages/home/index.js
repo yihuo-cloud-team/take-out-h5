@@ -122,6 +122,8 @@ export default {
       const res = await this.$http.post('/v2/store/list', {
         x: this.y,
         y: this.x,
+          // x: 31.00674,
+        // y: 121.235348,
         page: this.page,
         page_size: 10
       })
@@ -150,7 +152,7 @@ export default {
       }
     },
     routers(data){
-      this.$router.push(`search?id=${data}`)
+      this.$router.push(`/search?id=${data.id}&&name=${data.name}`)
     }
 
   },

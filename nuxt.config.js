@@ -48,6 +48,9 @@ module.exports = {
         //     }
         // }
     },
+    head:{
+        title:"逐天外卖"
+    },
     mode: 'spa',
     srcDir: 'src/',
     build: {
