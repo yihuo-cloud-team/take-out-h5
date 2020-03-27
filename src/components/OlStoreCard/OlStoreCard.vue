@@ -25,7 +25,9 @@
           <div class="brand-tag t1" v-if="info.store_head_tag==1">品牌</div>
           <div class="brand-tag t2" v-if="info.store_head_tag==2">星选</div>
           <div class="brand-tag t3" v-if="info.store_head_tag==3">推荐</div>
-          <div class="brand-tag t4" v-if="info.store_head_tag==4">火爆</div>
+          <div class="brand-tag t4" v-if="info.store_head_tag==4">
+            <i>火爆</i>
+          </div>
           <div class="brand-tag t5" v-if="info.store_head_tag==5">品质</div>
 
           <div>{{info.name}}</div>
