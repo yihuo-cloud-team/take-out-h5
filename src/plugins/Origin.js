@@ -55,8 +55,8 @@ Date.prototype.Format = function (fmt) { //author: meizz
   return fmt;
 };
 
-Date.prototype.getDateStr = function (dayCount) { //author: meizz
-  let dd = new Date()
+Date.prototype.getDateStr = function (startAt,dayCount) {
+  let dd = new Date(startAt);
   dd.setDate(dd.getDate() + dayCount)
   let time = dd.getTime()
   return time

@@ -192,4 +192,12 @@
   }
 }
 
-#payInfo /deep/ {}
+#payInfo /deep/ {
+  .van-coupon-list__list{
+      padding: 16px 0 64px !important;
+  }
+}
+
+
+
+
