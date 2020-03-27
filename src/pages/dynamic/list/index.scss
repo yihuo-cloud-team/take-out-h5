@@ -3,74 +3,6 @@
 #list {
   // padding: $page-padding;
   background: #FFF;
-}
-
-#list /deep/ {
-  .dynamic-box {
-    padding: 10px $page-padding;
-    border-bottom: 1px solid #F6F6F6;
-    display: flex;
-
-    &-img {
-      border-radius: 8px;
-      overflow: hidden;
-      background: white;
-    }
-
-    &-info {
-      flex: 1;
-      padding-left: 10px;
-      font-size: 16px;
-
-      &-name {
-        font-weight: bold;
-      }
-
-      &-date {
-        color: #707070;
-        font-size: 12px;
-      }
-
-      &-text {
-        padding: 5px 0;
-      }
-
-      &-img {
-        .dynamic-list-img {
-          margin-bottom: 5px;
-          width: 100%;
-          display: block;
-          padding-bottom: 100%;
-          background-size: cover;
-          background-position: 50%;
-        }
-      }
-
-      &-comment {
-        display: flex;
-        flex-direction: row;
-        
-        .left{
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;    
-        }
-        .right{
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;    
-        }
-      }
-      &-info {
-          padding: 4px 0;
-          background-color: #F7F7F7;
-      }
-
-    }
-
-  }
 
   #plus-btn {
     position: fixed;
@@ -86,3 +18,5 @@
     align-items: center;
   }
 }
+
+#list /deep/ {}
