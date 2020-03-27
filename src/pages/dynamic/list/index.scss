@@ -49,95 +49,23 @@
       &-comment {
         display: flex;
         flex-direction: row;
-        height: 50px;
-
-        .left {
-          flex: 1;
-        }
-
-        .right {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          margin-right: 10px;
-
-
-          .dian {
-            position: relative;
+        
+        .left{
             flex: 1;
             display: flex;
-            background-color: #F8F8F8;
-            width: 40px;
-            height: 26px;
-            border-radius: 4px;
-            flex-direction: row;
             justify-content: center;
-            align-items: center;
-
-            .circle {
-              width: 4px;
-              height: 4px;
-              border-radius: 100%;
-              background-color: #596F9A;
-              margin: 0 2px;
-            }
-
-          
-
-            .btn-box {
-              display: flex;
-              flex-direction: row;
-              background-color: #2D2D2D;
-              position: absolute;
-              left: -42vw;
-              transition: all 1s;
-              color: white;
-              border-radius: 4px;
-              opacity: 1;
-              .box {
-                flex: 1;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                padding: 10px 10px;
-                position: relative;
-                font-size: 14px;
-            
-                .left-margin {
-                  margin-right: 2px;
-                }
-
-                .sanjiaoxing {
-                  position: absolute;
-                  left: 83px;
-                  width: 0;
-                  height: 0;
-                  border-top: 8px dashed transparent;
-                  border-bottom: 8px dashed transparent;
-                  border-left: 8px solid #2D2D2D;
-
-
-                }
-              }
-
-
-            }
-
-            .active {
-
-              width: 40vw;
-            }
-
-            .hidden {
-                opacity: 0;
-              width: 40vw;
-            }
-          }
-
-
-
-
+            align-items: center;    
         }
+        .right{
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;    
+        }
+      }
+      &-info {
+          padding: 4px 0;
+          background-color: #F7F7F7;
       }
 
     }

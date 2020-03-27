@@ -28,21 +28,18 @@
             </van-col>
           </van-row>
           <div class="dynamic-box-info-comment">
-            <div class="left"></div>
-            <div class="right"  @click="shows(item,i)">
-              <div class="dian">
-                <div class="circle"></div>
-                <div class="circle"></div>
-                <div class="btn-box"  :class="item.check==true?'active':'hidden'">
-                  <div class="box" @click="dianzan(item.id)">
-                    <van-icon class="left-margin" name="like-o"  />赞
-                  </div>
-                  <div class="box">
-                    <van-icon class="left-margin" name="other-pay" @click="comment()" />评论
-                    <div class="sanjiaoxing"></div>
-                  </div>
-                </div>
-              </div>
+            <div class="left">
+              <van-icon @click="tiaozhuan(item.id)" name="other-pay" />
+            </div>
+            <div class="right">
+              <van-icon @click="dianzan(item.id)" v-if="item.is_star==0" name="like-o" />
+              <van-icon @click="dianzan(item.id)" v-else name="like" color="#FFC700" />
+              {{item.star_num}}
+            </div>
+          </div>
+          <div class="dynamic-box-info-info">
+            <div style='font-size:12px;margin-bottom:3px' v-for="(item,index) in item.evaluate" :key="index">
+            <span style="color:#596188;">{{item.name}}</span>:{{item.content}}
             </div>
           </div>
         </div>
@@ -52,10 +49,17 @@
     <van-image-preview v-model="show" :images="images" :startPosition="index" @change="onChange">
       <template v-slot:index>第{{ index+1 }}页</template>
     </van-image-preview>
-    
+
     <div id="plus-btn" @click="$router.push(`/dynamic/edit`)">
       <van-icon name="plus" size="30" color="#FFF" />
     </div>
+    <van-popup v-model="hidden" position="bottom">
+      <van-field v-model="content" center   placeholder="输入您的评论">
+        <template #button>
+          <van-button size="small" @click="comment" type="primary">发送</van-button>
+        </template>
+      </van-field>
+    </van-popup>
   </div>
 </template>
 

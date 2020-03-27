@@ -10,8 +10,10 @@ export default {
       show: false,
       index: 0,
       images: [],
-      down:false
-
+      down: false,
+      content:"",
+      hidden:false,
+      dynamic_id:""
     };
   },
   methods: {
@@ -71,21 +73,38 @@ export default {
       }
       this.index = index
     },
-    async dianzan(id){
-      if(this.down){
+    async dianzan(id) {
+      if (this.down) {
         return false;
       }
       this.down = true
-      const res = await this.$http.post('/dynamic/star',{dynamic_id:id});
-      if(res.code>=0){
+      const res = await this.$http.post('/dynamic/star', {
+        dynamic_id: id
+      });
+      if (res.code >= 0) {
         this.$toast('操作成功');
-    
-      }else{
+
+      } else {
         this.$toast(res.msg);
       }
       this.down = false
     },
-    comment(){
+   async comment(id) {
+      const res = await this.$http.post('/dynamic/evaluate', {
+        dynamic_id: this.dynamic_id,
+        content: this.content
+      });
+      if(res.code>=0){
+        this.content='';
+        this.finished = false;
+      }else{
+        this.$toast(res.msg);
+      }
+      this.hidden = false;
+    },
+    tiaozhuan(id){
+      this.dynamic_id = id
+      this.hidden =true;
 
     }
   },
