@@ -68,27 +68,25 @@ export default {
                         message: '奖励生成中...',
                         overlay: true,
                     });
+                    let title, message;
+                    if (item.indexOf('谢谢惠顾') < 0) {
+                        title = '中奖了！！';
+                        message = `获得${item}一个！！`
+                    } else {
+                        title = item;
+                    }
                     let res = await this.$http.post('/prize/save', {
                         id: this.list[this.default_rotate].id
                     });
                     loading.clear()
-                    if (res.code > 0) {
-                        let title, message;
-                        if (item.indexOf('谢谢惠顾') < 0) {
-                            title = '中奖了！！';
-                            message = `获得${item}一个！！`
-                        } else {
-                            title = item;
-                        }
-                        let pd = await this.$dialog.alert({
-                            title: title,
-                            message: message
-                        })
-                        if (this.list[this.default_rotate].type == 1) {
-                            window.location.href = this.list[this.default_rotate].url
-                        }
-
+                    let pd = await this.$dialog.alert({
+                        title: title,
+                        message: message
+                    })
+                    if (this.list[this.default_rotate].type == 1) {
+                        window.location.href = this.list[this.default_rotate].url
                     }
+
                 } catch (error) {
 
                 }
