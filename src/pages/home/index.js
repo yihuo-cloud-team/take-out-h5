@@ -15,13 +15,15 @@ export default {
       loading: false,
       page: 1,
       apis: wxApis,
-      shadow: 0
+      shadow: 0,
+      menuList:[]
     };
   },
   methods: {
     // 用于初始化一些数据
     async init() {
       this.geolocation();
+      this.httpMenu();
       this.wxConfig();
     },
     async wxConfig() {
@@ -120,8 +122,6 @@ export default {
       const res = await this.$http.post('/v2/store/list', {
         x: this.y,
         y: this.x,
-        // x: 31.00674,
-        // y: 121.235348,
         page: this.page,
         page_size: 10
       })
@@ -132,15 +132,25 @@ export default {
         this.finished = true;
       }
       this.loading = false;
-      this.page++;
     },
     scroll(e) {
       let s = document.getElementById('home').scrollTop
       if (s > 30) {
-        this.shadow = 0.3
+
+        this.shadow = 0.3;
       } else {
-        this.shadow = 0
+ 
+        this.shadow = 0;
       }
+    },
+    async httpMenu(){
+      const res = await this.$http.post('/v2/store/store_class',{});
+      if(res.code>=0){
+        this.menuList = res.data;
+      }
+    },
+    routers(data){
+      this.$router.push(`search?id=${data}`)
     }
 
   },

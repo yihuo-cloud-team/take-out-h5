@@ -1,14 +1,25 @@
 export default {
     name: 'OlIconNav',
-    props: {},
+    props: {
+        list:{
+            type:Array,
+            default:[]
+        }
+    },
     data() {
-        return {};
+        return {
+            msg:'dsadasjdasjda'
+        };
     },
     methods: {
         // 用于初始化一些数据
-        init() { },
+        init() {
+         },
         // 用于更新一些数据
         update() { },
+        tiaozhuang(data){
+            this.$emit('fnc',data)
+        }
     },
     // 计算属性
     computed: {},

@@ -1,14 +1,19 @@
 <template>
   <div class="ol-icon-nav">
+
     <van-swipe class="my-swipe" :loop="false" indicator-color="#FED363">
       <van-swipe-item>
         <van-grid icon-size="12vw" :border="false" square :column-num="5">
-          <van-grid-item v-for="i in 10" :key="i" icon="/images/navicon/能量西餐.png" text="能量西餐"></van-grid-item>
+          <template  v-for="(i,index) in list">
+            <van-grid-item @click="tiaozhuang(i.id)" v-if="index<10" :key="index" :icon="$getUrl(i.img)" :text="i.name"></van-grid-item>
+          </template>
         </van-grid>
       </van-swipe-item>
       <van-swipe-item>
         <van-grid icon-size="12vw" :border="false" square :column-num="5">
-          <van-grid-item v-for="i in 4" :key="i" icon="/images/navicon/能量西餐.png" text="能量西餐"></van-grid-item>
+          <template v-for="(i,index) in list">
+            <van-grid-item v-if="index>=10" @click="tiaozhuang(i.id)" :key="index" :icon="$getUrl(i.img)" :text="i.name"></van-grid-item>
+          </template>
         </van-grid>
       </van-swipe-item>
     </van-swipe>

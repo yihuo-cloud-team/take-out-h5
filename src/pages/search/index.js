@@ -1,6 +1,5 @@
-const map = new AMap.Map('container', {
-  resizeEnable: true
-});
+import Map from '../../plugins/lib/Map'
+
 export default {
   name: 'search',
   layout: "sub",
@@ -14,7 +13,9 @@ export default {
         y: 0,
         orderBy: "",
         page: 1,
-        page_size: 10
+        page_size: 10,
+        name:"",
+        store_class_id:''
       },
       show: false,
       finished: false,
@@ -25,10 +26,10 @@ export default {
           name: "综合排序"
         },
         {
-          name: "距离最近"
+          name: "距离优先"
         },
         {
-          name: "销量最高"
+          name: "销量优先"
         },
       ]
     };
@@ -36,56 +37,102 @@ export default {
   methods: {
     // 用于初始化一些数据
     init() {
-      this.update();
+      if(this.$route.query.id){
+        this.form.store_class_id = this.$route.query.id
+      }
+      this.geolocation();
     },
     // 用于更新一些数据
-    async update() {
-      AMap.plugin('AMap.Geolocation', () => {
-        var geolocation = new AMap.Geolocation({
-          enableHighAccuracy: true, //是否使用高精度定位，默认:true
-          timeout: 10000, //超过10秒后停止定位，默认：5s
-        });
-        map.addControl(geolocation);
-        geolocation.getCurrentPosition(async (status, result) => {
-          if (status == 'complete') {
-            this.CurrentAddress = result.addressComponent;
-            this.addressKeyword = result.addressComponent.street + result.addressComponent.streetNumber;
-            this.x = result.position.lng;
-            this.y = result.position.lat;
-            this.areaval = result.addressComponent.adcode;
-            this.addresstitle = result.addressComponent.province;
-            this.storeList();
-          } else {
-            this.$toast("无法获取位置信息，请授权");
-            this.show = true;
-            this.storeList();
-          }
-        });
-      });
-    },
+
     select(index) {
       this.index = index
       this.bindex = index;
 
     },
-    async storeList() {
-      if (this.finished) return;
+
+
+    // 定位
+    async geolocation() {
+
+      //定位失败处理函数
+      let fail = () => {
+        this.$notify({
+          message: '定位失败！请授权！'
+        });
+        this.show = true;
+        this.httpStoreList();
+      };
+
+      // 打开注释可模拟定位失败
+      // fail();
+      // return;
+
+      const map = new Map();
+      // 注册插件
+      await map.plugin('AMap.Geolocation');
+      // 注册定位插件
+      map.registerGeolocation();
+      try {
+        // 获取定位，模式：超级定位
+        const result = await map.geolocation();
+        // 拿到定位
+        this.x = result.position.lng;
+        this.y = result.position.lat;
+        // 获取列表
+        this.httpStoreList();
+        return
+      } catch (error) {
+        // 报错，向下执行，尝试ip定位
+
+      }
+
+      // 尝试IP定位
+      try {
+        // 获取定位，模式：ip
+        const result = await map.geolocation('ip');
+        this.x = result.center[0];
+        this.y = result.center[1];
+        // 获取列表
+        this.httpStoreList();
+        this.$notify({
+          message: '定位失败~已切换ip定位~',
+          type: "warning"
+        });
+        return;
+      } catch (error) {
+
+      }
+      // 定位失败
+      fail();
+    },
+    async httpStoreList() {
       this.loading = true;
       const res = await this.$http.post('/v2/store/list', this.form)
       if (res.code > 0) {
         this.list = [...this.list, ...res.data];
-      }
-      if (this.list.length >= res.total) {
+        this.form.page++;
+      } else {
         this.finished = true;
       }
       this.loading = false;
-      this.form.page++;
+  
+    },
+    scroll(e) {
+      let s = document.getElementById('search').scrollTop
+      if (s > 30) {
+        this.shadow = 0.3
+      } else {
+        this.shadow = 0
+      }
     },
     tiaozhuan(item) {
       this.$router.push(`/goodsList?store_id=${item.store_id}&distance=${item.distance}`)
     },
     async search() {
-
+      this.form.page =1;
+      this.finished = false;
+      this.list =[];
+      this.httpStoreList();
     },
 
   },
@@ -95,9 +142,7 @@ export default {
   },
   // 包含 Vue 实例可用过滤器的哈希表。
   filters: {
-    juli(val) {
-      return (val / 1000).toFixed(1)
-    }
+  
   },
   // 在实例创建完成后被立即调用
   created() {},
@@ -135,7 +180,7 @@ export default {
       this.list = [];
       this.finished = false;
       this.form.page = 1;
-      this.storeList();
+      this.httpStoreList();
 
 
     }

@@ -12,7 +12,7 @@
     left: 0;
     top: 0;
     z-index: 2000;
-
+    background-color: #ffffff;
     .search-input {
       background-color: #EEEFF0;
       padding: 10px;
@@ -24,9 +24,11 @@
     }
 
   }
+  
 
 
   .home-body {
+    margin-top: 70px;
     position: relative;
     // padding-top: 60px;
     z-index: 1;
