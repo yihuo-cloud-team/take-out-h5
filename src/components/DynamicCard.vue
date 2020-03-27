@@ -41,7 +41,7 @@
         </div>
       </div>
     </div>
-    <van-popup v-model="hidden" position="bottom">
+    <van-popup v-model="hidden"  position="bottom" style="height:50vh">
       <van-field v-model="content" center placeholder="输入您的评论">
         <template #button>
           <van-button size="small" @click="comment" type="primary">发送</van-button>
