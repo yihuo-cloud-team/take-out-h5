@@ -41,7 +41,7 @@
               void-color="#eee"
               allow-half
               readonly
-              :value="star"
+              :value="star_value"
             />
           </div>
           <div class="fraction">{{star}}</div>

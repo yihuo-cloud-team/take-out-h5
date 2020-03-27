@@ -22,6 +22,9 @@ export default {
     // 计算属性
     computed: {
         star() {
+            return parseFloat(this.info.star).toFixed(1);
+        },
+        star_value() {
             return parseFloat(parseFloat(this.info.star).toFixed(1));
         },
         distance() {
