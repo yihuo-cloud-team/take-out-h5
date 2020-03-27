@@ -22,7 +22,7 @@ export default {
     // 计算属性
     computed: {
         star() {
-            return parseFloat(this.info.star).toFixed(1);
+            return parseFloat(parseFloat(this.info.star).toFixed(1));
         },
         distance() {
             let v = this.info.distance
@@ -50,9 +50,6 @@ export default {
         },
         state() {
             // // (new Date()).Format("yyyy-M-d h:m:s.S")      ==> 2006-7-2 8:9:4.18
-
-            console.warn(this.info.is_open);
-
             return this.info.is_open == 0 ? '商家已休息' : '';
             let week = this.info.week;
             if (typeof week == 'string') {
