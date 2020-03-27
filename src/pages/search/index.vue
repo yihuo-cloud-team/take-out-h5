@@ -3,11 +3,10 @@
     <div class="search-head">
       <div class="search">
         <van-cell-group>
-          <van-field  clearable v-model="form.name" placeholder="输入店名以搜索" />
-      
+          <van-field clearable v-model="form.name" placeholder="输入店名以搜索" />
         </van-cell-group>
       </div>
-      <div class="btn" @click='search'>搜索</div>
+      <div class="btn" @click="search">搜索</div>
     </div>
     <div class="select-box">
       <div class="item" v-for="(item,index) in paixuList" @click="select(index)" :key="index">
@@ -24,7 +23,7 @@
         :immediate-check="false"
         class="list"
       >
-           <ol-store-card show-goods :info="item" v-for="item in list " :key="item.id"></ol-store-card>
+        <ol-store-card show-goods :info="item" v-for="item in list " :key="item.id"></ol-store-card>
       </van-list>
       <van-divider v-if="show">定位失败</van-divider>
     </div>
