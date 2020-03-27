@@ -1,34 +1,23 @@
 <template>
   <div id="home">
-    <!-- <div class="home-head">
-      <div class="search">
-        <van-cell-group>
-          <van-field v-model="name" clearable @keyup.enter="test" placeholder="搜索店名" />
-        </van-cell-group>
-      </div>
-    </div> -->
+    <div @click="$router.push('/search')" class="search-box">
+      <div
+        class="search-input"
+        :style="`box-shadow: 0 0 20px rgba(0, 0, 0, ${shadow});`"
+      >输入关键字以搜索美食～</div>
+    </div>
+
     <div class="home-body">
+      <ol-icon-nav @fnc='routers' :list='menuList'></ol-icon-nav>
       <van-list
         v-model="loading"
         :finished="finished"
         finished-text="没有更多了"
-        @load="loadMore()"
+        @load="httpStoreList()"
         :immediate-check="false"
         class="list"
       >
-        <div class="item" @click="tiaozhuan(item)" v-for="(item,index) in list" :key="index">
-          <div class="left">
-            <img :src="$getUrl(item.logo)" class="img" alt />
-          </div>
-          <div class="center">
-            <div class="center-title">{{item.name}}</div>
-            <div class="center-info">{{item.info}}</div>
-            <div class="center-tag">
-              <van-tag class="tag" v-for="(item,index) in item.label" :key="index">{{item}}</van-tag>
-            </div>
-          </div>
-          <div class="right">{{item.distance | juli}}km</div>
-        </div>
+        <ol-store-card show-goods :info="item" v-for="item in list " :key="item.id"></ol-store-card>
       </van-list>
       <van-divider v-if="show">定位失败</van-divider>
     </div>

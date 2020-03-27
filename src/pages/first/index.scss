@@ -1,0 +1,67 @@
+@import "@/styles/variable.scss";
+#first {
+    display: flex;
+    flex-direction: column;
+    .home-head{
+      margin-bottom: 10px;
+    }
+  
+    .home-body {
+      flex: 1;
+      overflow-y: auto;
+  
+      .list {
+        padding: 0 10px 10px 10px;
+  
+        .item {
+          background: white;
+          padding: 10px;
+          display: flex;
+          margin-bottom: 10px;
+  
+          .left {
+            margin-right: 10px;
+  
+            .img {
+              width: 90px;
+              height: 90px;
+              border-radius: 10px;
+              background-color: #eeeeee;
+            }
+          }
+  
+          .center {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+  
+            .center-title {
+              font-size: 15px;
+              margin-top: 10px;
+            }
+  
+            .center-info {
+              font-size: 13px;
+              color: #999;
+  
+            }
+  
+            .center-tag {
+              .tag {
+                margin-right: 10px;
+              }
+            }
+          }
+  
+          .right {
+            display: flex;
+            align-items: center;
+          }
+        }
+      }
+    }
+  
+  
+  }
+
+#first /deep/ {}
