@@ -104,10 +104,10 @@ export default {
         this.y = result.center[1];
         // 获取列表
         this.httpStoreList();
-        // this.$notify({
-        //   message: '定位失败~已切换ip定位~',
-        //   type: "warning"
-        // });
+        this.$notify({
+          message: '定位失败~已切换ip定位~',
+          type: "warning"
+        });
         return;
       } catch (error) {
 
@@ -118,10 +118,10 @@ export default {
     async httpStoreList() {
       this.loading = true;
       const res = await this.$http.post('/v2/store/list', {
-        // x: this.y,
-        // y: this.x,
-        x: 31.00674,
-        y: 121.235348,
+        x: this.y,
+        y: this.x,
+        // x: 31.00674,
+        // y: 121.235348,
         page: this.page,
         page_size: 10
       })

@@ -26,14 +26,49 @@
     }
 
     .brand-tag {
-        color: #6F3F15;
-        background-color: #fed363;
+        //门店的推广标签 
+        // 0:无
+        // 1:品牌
+        // 2:星选
+        // 3:推荐
+        // 4:火爆
+        // 5:品质
+
+
         font-size: 11px;
         padding: 4px 5px;
         display: inline-block;
         border-radius: 4px;
         line-height: 1;
         font-weight: bold;
+        white-space: nowrap;
+        margin-right: 10px;
+
+        &.t1 {
+            color: #6F3F15;
+            background-color: #fed363;
+        }
+
+        &.t2 {
+            // 
+            background-color: rgb(151, 150, 237);
+            color: #fff;
+        }
+
+        &.t3 {
+            background-color: rgb(88, 213, 152);
+            color: #fff;
+        }
+
+        &.t4 {
+            background-color: #fa5a57;
+            color: #fff;
+        }
+
+        &.t5 {
+            background-color: rgb(84, 226, 226);
+            color: #fff;
+        }
     }
 
     .top-box {

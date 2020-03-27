@@ -13,7 +13,21 @@
       </div>
       <div class="center-box">
         <div class="title">
-          <div class="brand-tag" style="margin-right: 10px;">品牌</div>
+          <!-- 
+门店的推广标签
+0:无
+1:品牌
+2:星选
+3:推荐
+4:火爆
+5:品质
+          -->
+          <div class="brand-tag t1" v-if="info.store_head_tag==1">品牌</div>
+          <div class="brand-tag t2" v-if="info.store_head_tag==2">星选</div>
+          <div class="brand-tag t3" v-if="info.store_head_tag==3">推荐</div>
+          <div class="brand-tag t4" v-if="info.store_head_tag==4">火爆</div>
+          <div class="brand-tag t5" v-if="info.store_head_tag==5">品质</div>
+
           <div>{{info.name}}</div>
         </div>
         <div class="cell">
