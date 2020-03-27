@@ -48,6 +48,9 @@ module.exports = {
         //     }
         // }
     },
+    head:{
+        title:"逐天外卖"
+    },
     mode: 'spa',
     srcDir: 'src/',
     build: {
@@ -63,15 +66,11 @@ module.exports = {
         '~/plugins/main.js',
     ],
     server: {
-        // port: 8090,
-        // host: '192.168.0.143',
-        // default: 80
-        // default: localhost
-        // port: 8082,
-        host: getLocalIP(),
+        // port: 80,  
+        // host: '192.168.0.107',
         // // default: 80
         // default: localhost
         // port: 8090,
-        // host: '192.168.2.1',
+        host: '192.168.2.1',
     },
 }   

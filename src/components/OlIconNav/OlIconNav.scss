@@ -17,4 +17,11 @@
     .van-swipe-item {
         padding-bottom: 30px;
     }
+    .van-grid-item__text{
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .van-grid-item__icon+.van-grid-item__text {
+        margin-top: 4px;
+    }
 }

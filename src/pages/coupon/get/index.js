@@ -1,25 +1,32 @@
 export default {
-    name: 'OlIconNav',
-    props: {
-        list:{
-            type:Array,
-            default:[]
-        }
-    },
+    name: 'get',
+    layout: "sub",
     data() {
         return {
-            msg:'dsadasjdasjda'
+            src:'',
+            qrcode1:''
         };
     },
     methods: {
         // 用于初始化一些数据
         init() {
-         },
+            this.update();
+            this.qrcode();
+        },
         // 用于更新一些数据
-        update() { },
-        tiaozhuang(data){
-            this.$emit('fnc',data)
-        }
+        async update() {
+            // const res = await this.$http.post('', {});
+        },
+        qrcode() {
+            // this.qrcode1 = new QRCode(this.$refs.Qrcode, {
+            //   text: `https://h5.take-out.yihuo-cloud.com/`,
+            //   width: 200,
+            //   height: 200,
+            //   colorDark: "#000000",
+            //   colorLight: "#ffffff",
+            //   correctLevel: QRCode.CorrectLevel.H
+            // })
+          },
     },
     // 计算属性
     computed: {},
@@ -31,6 +38,7 @@ export default {
     beforeMount() { },
     // el 被新创建的 vm.el 替换，并挂载到实例上去之后调用该钩子。
     mounted() {
+        this.init();
         this.$nextTick(() => { });
     },
     // 数据更新时调用，发生在虚拟 DOM 打补丁之前。

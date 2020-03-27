@@ -1,36 +1,34 @@
 export default {
-    name: 'OlIconNav',
-    props: {
-        list:{
-            type:Array,
-            default:[]
-        }
-    },
+    name: 'list',
     data() {
         return {
-            msg:'dsadasjdasjda'
+            list: [],
         };
     },
     methods: {
         // 用于初始化一些数据
         init() {
-         },
+            this.update();
+        },
         // 用于更新一些数据
-        update() { },
-        tiaozhuang(data){
-            this.$emit('fnc',data)
-        }
+        async update() {
+            const res = await this.$http.post('/coupon/list', {});
+            console.log(res)
+            this.list = res.data;
+        },
     },
     // 计算属性
     computed: {},
     // 包含 Vue 实例可用过滤器的哈希表。
-    filters: {},
+    filters: {
+    },
     // 在实例创建完成后被立即调用
     created() { },
     // 在挂载开始之前被调用：相关的 render 函数首次被调用。
     beforeMount() { },
     // el 被新创建的 vm.el 替换，并挂载到实例上去之后调用该钩子。
     mounted() {
+        this.init();
         this.$nextTick(() => { });
     },
     // 数据更新时调用，发生在虚拟 DOM 打补丁之前。
