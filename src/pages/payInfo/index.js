@@ -28,18 +28,40 @@ export default {
       return total.toFixed(2);
     },
     lastPrice() {
-      const coupon = this.coupons[this.chosenCoupon];
-      if (coupon.type == 1) {
-        return (this.totalPrice * Number(coupon.value_zen)).toFixed(2)
-      }
-      return (this.totalPrice - Number(coupon.value_zen)).toFixed(2)
+      // const coupon = this.coupons[this.chosenCoupon];
+      // let price = 0;
+      // if (coupon.type == 1) {
+      //   price = (this.totalPrice * Number(coupon.value_zen)).toFixed(2);
+      //   if (price < 0) {
+      //     return 0
+      //   }
+      //   return price
+      // }
+      // return (this.totalPrice - Number(coupon.value_zen)).toFixed(2)
+      return (this.oldPrice1-this.youhui).toFixed(2)
     },
     oldPrice1() {
       let old = this.list.filter(el => el.select_value > 0).map(el => el.o_price * el.select_value).reduce((old, el) => old + el, 0);
       return old.toFixed(2);
     },
     youhui() {
-      return parseFloat(this.oldPrice1 - this.totalPrice).toFixed(2);
+      const coupon = this.coupons[this.chosenCoupon];
+      let value_zen = 0;
+      let youhui=0;
+      try {
+        value_zen = coupon.value_zen;
+        if (coupon.type == 1) {
+          youhui = (this.oldPrice1 - this.totalPrice * Number(coupon.value_zen)).toFixed(2);
+        }else{
+          youhui = parseFloat(this.oldPrice1 - this.totalPrice + Number(value_zen)).toFixed(2)
+        }
+      } catch (error) {
+        value_zen = 0;
+      }
+      if(Number(youhui) > Number(this.oldPrice1)){
+        return this.oldPrice1
+      }
+      return youhui
     }
 
   },
@@ -67,7 +89,6 @@ export default {
         const couponRes = await this.$http.post('/coupon/list', {});
         if (couponRes.code >= 0) {
           this.couponList = couponRes.data;
-          console.log(this.couponList);
           this.couponList.forEach((_res, i) => {
             _res.startAt = _res.start_at;
             _res.condition_value = Number(_res.condition_value);

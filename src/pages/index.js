@@ -3,13 +3,13 @@ export default {
     title: '首页',
     data() {
         return {
-            
+
         };
     },
     methods: {
         // 用于初始化一些数据
         async init() {
-            // this.update();
+            this.update();
             this.show();
         },
         show() {
@@ -19,11 +19,18 @@ export default {
         },
         // 用于更新一些数据
         async update() {
+            if (!this.isAdd) {
+                localStorage.from_id = this.$route.query.from_id
+            }
 
         },
     },
     // 计算属性
-    computed: {},
+    computed: {
+        isAdd() {
+            return typeof this.$route.query.from_id == 'undefined';
+        }
+    },
     // 包含 Vue 实例可用过滤器的哈希表。
     filters: {},
     // 在实例创建完成后被立即调用
