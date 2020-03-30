@@ -30,7 +30,7 @@ export default {
         async update() {
             const userInfo = await this.$http.post('/user/info');
             if (userInfo.code > 0) {
-                this.shareurl = `https://h5.take-out.yihuo-cloud.com/?id=${userInfo.data.id}`
+                this.shareurl = `https://h5.take-out.yihuo-cloud.com/?from_id=${userInfo.data.id}`
             }
             const res = await this.$http.post('/prize/list', {});
             if (res.code > 0) {
