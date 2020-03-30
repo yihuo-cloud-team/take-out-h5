@@ -42,7 +42,6 @@ export default {
   methods: {
     // 用于初始化一些数据
     init() {
-      console.log(this)
       if(this.$route.query.id){
         this.form.store_class_id = this.$route.query.id
         this.title = this.$route.query.name
