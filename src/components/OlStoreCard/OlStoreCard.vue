@@ -57,7 +57,7 @@
         </div>
         <div class="cell">
           <van-icon name="shop-o" />
-          <div class="store_class" v-if="info.store_class">{{info.store_class.name}}</div>
+          <div class="store_class" v-if="info.store_class">{{info.store_class}}</div>
           <div class="store_class" v-else-if="info.info">{{info.info}}</div>
         </div>
       </div>
