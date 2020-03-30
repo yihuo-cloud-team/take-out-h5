@@ -1,5 +1,8 @@
 <template>
   <div id="prizedraw">
+    <div class="go-back" @click="$router.push('/home')">
+      <van-icon color="#fff" style="margin-left: -5px;" size="30" name="arrow-left" />
+    </div>
     <div class="bg">
       <img class="title-img" src="../../static/images/文字@2x.png" alt />
       <div class="rotator">

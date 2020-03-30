@@ -27,9 +27,6 @@ export default {
     },
     // 计算属性
     computed: {
-        isAdd() {
-            return typeof this.$route.query.from_id == 'undefined';
-        }
     },
     // 包含 Vue 实例可用过滤器的哈希表。
     filters: {},

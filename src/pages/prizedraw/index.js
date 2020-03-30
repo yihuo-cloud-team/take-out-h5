@@ -14,9 +14,9 @@ export default {
             blArr: [],
             prize_namelist: [],
             apis: [
-
+                'updateAppMessageShareData',
+                'updateTimelineShareData',
             ],
-            shareurl: '',
             show: false,
         };
     },
@@ -28,9 +28,9 @@ export default {
         },
         // 用于更新一些数据
         async update() {
-            const userInfo = await this.$http.post('/user/info');
-            if (userInfo.code > 0) {
-                this.shareurl = `https://h5.take-out.yihuo-cloud.com/?from_id=${userInfo.data.id}`
+            if (!this.isAdd) {
+                localStorage.from_id = this.$route.query.from_id
+                this.$router.push('/login');
             }
             const res = await this.$http.post('/prize/list', {});
             if (res.code > 0) {
@@ -143,6 +143,11 @@ export default {
             })
         },
         async wxFx() { // 微信分享
+            let shareurl = ''
+            const userInfo = await this.$http.post('/user/info');
+            if (userInfo.code > 0) {
+                shareurl = `https://h5.take-out.yihuo-cloud.com${this.$route.fullPath}?from_id=${userInfo.data.id}`
+            }
             const res = await this.$http.post('/jdk/sign', {
                 apis: this.apis,
                 url: "https://h5.take-out.yihuo-cloud.com" + this.$route.fullPath
@@ -157,9 +162,11 @@ export default {
             });
             //  朋友圈分享
             wx.ready(() => { //需在用户可能点击分享按钮前就先调用
+                console.warn(shareurl);
+
                 wx.updateAppMessageShareData({
                     title: '逐天外卖', // 分享标题
-                    link: this.shareurl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                    link: shareurl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                     imgUrl: 'https://api.take-out.yihuo-cloud.com/public/files/20200202/202002020250332716.jpg', // 分享图标
                     success: () => {
                         // 设置成功
@@ -167,10 +174,12 @@ export default {
 
                     }
                 });
-                wx.updateAppMessageShareData({
+
+
+                wx.updateTimelineShareData({
                     title: '逐天外卖', // 分享标题
                     desc: '', // 分享描述
-                    link: this.shareurl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                    link: shareurl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                     imgUrl: 'https://api.take-out.yihuo-cloud.com/public/files/20200202/202002020250332716.jpg', // 分享图标
                     success: () => {
                         // 设置成功
@@ -182,7 +191,11 @@ export default {
         },
     },
     // 计算属性
-    computed: {},
+    computed: {
+        isAdd() {
+            return typeof this.$route.query.from_id == 'undefined';
+        }
+    },
     // 包含 Vue 实例可用过滤器的哈希表。
     filters: {},
     // 在实例创建完成后被立即调用
