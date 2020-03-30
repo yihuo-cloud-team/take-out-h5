@@ -4,55 +4,53 @@
 }
 
 #get /deep/ {
-    background-image: url('~static/images/couponGetBg.png');
+    background-image: url("~static/images/couponGetBg.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     width: 100vw;
     height: 100vh;
-    #head{
+    #head {
         margin: 50px auto 90px;
         display: block;
     }
-    #main{
-        background: #FFF;
+    #main {
+        background: #fff;
         padding: 20px 0 45px;
-        #coupon{
+        #coupon {
             position: relative;
-            .couponBg{
+            .couponBg {
                 width: 100%;
             }
-            .text-box{
+            .text-box {
                 position: absolute;
                 top: 0;
                 height: 100%;
                 width: 100%;
-                color: #FFF;
+                color: #fff;
                 text-align: center;
                 // background: rgba($color: #000, $alpha: 0.5);
-                .title{
+                .title {
                     font-size: 18px;
                     padding-top: 5%;
                 }
-                .value_zen{
+                .value_zen {
                     font-size: 48px;
                     padding: 2.5% 0;
                 }
-                .condition_value{
+                .condition_value {
                     font-size: 16px;
                 }
-                .time{
-                    color: #6D7278;
+                .time {
+                    color: #6d7278;
                     font-size: 14px;
                     padding: 10%;
                 }
             }
         }
-        #qrcode{
-            display: block;
-            margin: 33px auto 0;
-            height: 112px;
-            width: 112px;
-            background: red;
+        #qrcode {
+            margin-top: 33px;
+            display: flex;
+            justify-content: center;
         }
     }
 }
