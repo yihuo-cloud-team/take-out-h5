@@ -169,24 +169,24 @@ export default {
   },
   // el 被新创建的 vm.el 替换，并挂载到实例上去之后调用该钩子。
   mounted() {
-
-    document.getElementById('home').addEventListener('scroll', this.scroll, false);
-
-
+  
     this.$nextTick(() => {
       this.init();
     });
-
   },
   // 数据更新时调用，发生在虚拟 DOM 打补丁之前。
   beforeUpdate() { },
   // keep-alive 组件激活时调用。
-  activated() { },
+  activated() {
+    document.getElementById('home').addEventListener('scroll', this.scroll, false);
+   },
   // keep-alive 组件停用时调用。
-  deactivated() { },
+  deactivated() { 
+      document.getElementById('home').removeEventListener("scroll", this.scroll, false);
+  },
   // 实例销毁之前调用。在这一步，实例仍然完全可用。
   beforeDestroy() {
-    document.getElementById('home').removeEventListener("scroll", this.scroll, false);
+  
   },
   //Vue 实例销毁后调用。
   destroyed() { },

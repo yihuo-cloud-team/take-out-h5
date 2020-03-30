@@ -164,6 +164,22 @@ export default {
       this.totalPrice = total.toFixed(2)
       this.totalText = totalText.toFixed(2)
     },
+    async save(id){
+      const res = await this.$http.post('/store/star', {
+        store_id: id.store_id
+      });
+      if(res.code>=0){
+        if(id.is_store_star==0){
+          this.$toast('收藏成功,可去我的收藏查看');
+        }else{
+          this.$toast('取消收藏成功');
+        }
+       
+        this.httpstore();
+      }else{
+        this.$toast(res.msg);
+      }
+    },
     router(info) {
       this.$router.push(`/qualification?store_id=${info.store_id}`)
     },
