@@ -35,6 +35,9 @@
         </div>
       </div>
     </div>
+    <van-overlay :show="show" @click="show = false">
+      <img style="width: 100%; height: 100%;" src="../../static/images/share_help.png" alt />
+    </van-overlay>
   </div>
 </template>
 <script src="./index.js"></script>
