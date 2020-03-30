@@ -48,8 +48,8 @@ module.exports = {
         //     }
         // }
     },
-    head:{
-        title:"逐天外卖"
+    head: {
+        title: "逐天外卖"
     },
     mode: 'spa',
     srcDir: 'src/',
@@ -71,6 +71,6 @@ module.exports = {
         // // default: 80
         // default: localhost
         // port: 8090,
-        host: '192.168.2.1',
+        host: '192.168.0.107',
     },
 }   

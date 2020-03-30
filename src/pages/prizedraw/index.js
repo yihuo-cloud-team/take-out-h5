@@ -13,6 +13,10 @@ export default {
             list: [],
             blArr: [],
             prize_namelist: [],
+            apis: [
+
+            ],
+            shareurl: ''
         };
     },
     methods: {
@@ -22,6 +26,10 @@ export default {
         },
         // 用于更新一些数据
         async update() {
+            const userInfo = await this.$http.post('/user/info');
+            if (userInfo.code > 0) {
+                this.shareurl = `https://h5.take-out.yihuo-cloud.com/?id=${userInfo.data.id}`
+            }
             const res = await this.$http.post('/prize/list', {});
             if (res.code > 0) {
                 this.list = res.data
@@ -134,7 +142,7 @@ export default {
                 signature: res.signature,// 必填，签名
                 jsApiList: res.jsApiList // 必填，需要使用的JS接口列表
             });
-        }
+        },
     },
     // 计算属性
     computed: {},
