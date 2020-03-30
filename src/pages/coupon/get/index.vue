@@ -14,6 +14,7 @@
           </div>
         </div>
         <div id="qrcode" ref="Qrcode"></div>
+        <!-- <div ref="Qrcode"></div> -->
     </div>
   </div>
 </template>
