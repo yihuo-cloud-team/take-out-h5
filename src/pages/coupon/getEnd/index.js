@@ -1,36 +1,50 @@
 export default {
-    name: 'get',
+    name: 'getEnd',
     layout: "sub",
     data() {
         return {
-            src:'',
-            qrcode1:''
+            form: {},
         };
     },
     methods: {
         // 用于初始化一些数据
         init() {
             this.update();
-            this.qrcode();
         },
         // 用于更新一些数据
         async update() {
-            // const res = await this.$http.post('', {});
+            const res = await this.$http.post('/coupon/info', { id: this.$route.query.temp_id });
+            console.log(res)
+            if (res.code >= 0) {
+                this.form = res.data;
+            }
+            console.log(this.form)
         },
-        qrcode() {
-            this.qrcode1 = new QRCode(this.$refs.Qrcode, {
-            //   text: `https://h5.take-out.yihuo-cloud.com/`,
-              text: `https://h5.take-out.yihuo-cloud.com/coupon/getEnd?temp_id=${this.$route.query.temp_id}`,
-              width: 112,
-              height: 112,
-              colorDark: "#000000",
-              colorLight: "#ffffff",
-              correctLevel: QRCode.CorrectLevel.H
-            })
-          },
+        async get() {
+            const data = {
+                id: Number(this.$route.query.temp_id),
+                temp_id: Number(this.$route.query.temp_id)
+            }
+            const res = await this.$http.post('/coupon/send', data);
+            if (res.code >= 0) {
+                this.$toast("领取成功！");
+                this.$router.push(`/coupon/list`);
+            } else {
+                this.$toast("领取失败！");
+            }
+        }
     },
     // 计算属性
-    computed: {},
+    computed: {
+        valueZen() {
+            if(this.form.value_zen==undefined){return}
+            if (this.form.type == 1) {
+                return this.form.value_zen * 10 + '折'
+            } else {
+                return this.form.value_zen + '元'
+            }
+        }
+    },
     // 包含 Vue 实例可用过滤器的哈希表。
     filters: {},
     // 在实例创建完成后被立即调用

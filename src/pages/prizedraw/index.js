@@ -16,13 +16,15 @@ export default {
             apis: [
 
             ],
-            shareurl: ''
+            shareurl: '',
+            show: false,
         };
     },
     methods: {
         // 用于初始化一些数据
         init() {
             this.update();
+            this.wxFx();
         },
         // 用于更新一些数据
         async update() {
@@ -59,10 +61,21 @@ export default {
             const res = await this.$http.post('/prize/prize_num', {});
             if (res.code > 0) {
                 this.number_tiems = res.data.num
-                if (res.data.num > 0) { this.click = true }
+                if (res.data.num > 0) {
+                    this.click = true
+                }
             }
         },
         async httpJx() {
+            if (this.number_tiems <= 0) {
+                let pd = await this.$dialog.confirm({
+                    title: '积分不足!!',
+                    message: '邀请好友注册获取更多积分'
+                })
+                if (pd == 'confirm') {
+                    this.show = true
+                }
+            }
             if (!this.click) return //判断是否正在抽奖
             this.build()
             await this.setDefault(); //上一轮抽奖完毕转动角度归零
@@ -141,6 +154,30 @@ export default {
                 nonceStr: res.nonceStr, // 必填，生成签名的随机串
                 signature: res.signature,// 必填，签名
                 jsApiList: res.jsApiList // 必填，需要使用的JS接口列表
+            });
+            //  朋友圈分享
+            wx.ready(() => { //需在用户可能点击分享按钮前就先调用
+                wx.updateAppMessageShareData({
+                    title: '逐天外卖', // 分享标题
+                    link: this.shareurl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                    imgUrl: 'https://api.take-out.yihuo-cloud.com/public/files/20200202/202002020250332716.jpg', // 分享图标
+                    success: () => {
+                        // 设置成功
+                        this.show = false
+
+                    }
+                });
+                wx.updateAppMessageShareData({
+                    title: '逐天外卖', // 分享标题
+                    desc: '', // 分享描述
+                    link: this.shareurl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                    imgUrl: 'https://api.take-out.yihuo-cloud.com/public/files/20200202/202002020250332716.jpg', // 分享图标
+                    success: () => {
+                        // 设置成功
+                        this.show = false
+
+                    }
+                })
             });
         },
     },
