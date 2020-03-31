@@ -1,12 +1,7 @@
 <template>
   <div id="prizedraw">
-    <div class="go-back" @click="$router.push('/')">
-      <van-icon
-        color="#fff"
-        style="margin-right: 5px; display: inline-block;"
-        size="14"
-        name="arrow-left"
-      />返回首页
+    <div class="go-back" @click="$router.push('/home')">
+      <van-icon color="#fff" style="margin-left: -5px;" size="30" name="arrow-left" />
     </div>
     <div class="bg">
       <img class="title-img" src="../../static/images/文字@2x.png" alt />
@@ -29,7 +24,7 @@
         </transition-group>
         <img class="img" @click="httpJx" src="../../static/images/转盘中心@3x.png" alt />
       </div>
-      <div class="tiems">剩余抽奖次数：{{number_tiems}}</div>
+      <div class="tiems">我的积分：{{number_tiems * 10}}</div>
       <img class="prize-logo" src="../../static/images/奖杯@2x.png" alt />
       <div class="prize-namelist">
         <div class="title">中奖名单</div>
