@@ -3,6 +3,8 @@ import config from '../plugins/config'
 
 export default function (context) {
 
+    // console.warn(context.from.query);
+    // return;
     if (typeof config.jwt() == 'undefined') {
         // 未登录
         if (location.search.indexOf('store_id') != -1) {

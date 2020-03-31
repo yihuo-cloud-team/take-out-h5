@@ -38,9 +38,11 @@ export default {
       const res1 = await this.$http.post('/h5/auth/openid', {
         code: code
       });
+        // 
       if (typeof localStorage.from_id != 'undefined') {
         res1.data.from_id = localStorage.from_id
       }
+        // 
       const res = await this.$http.post('/h5/auth/login',
         res1.data
       );
@@ -48,9 +50,10 @@ export default {
         localStorage.jwt = res.jwt;
         localStorage.userInfo = JSON.stringify(res.data);
         this.userInfo = res.data;
+        // 
         if (typeof localStorage.from_id != 'undefined') {
           localStorage.removeItem("from_id");
-          this.$router.push('/prizedraw')
+          this.$router.replace('/prizedraw')
         } else {
           if (typeof localStorage.location == 'undefined') {
             this.$router.replace("/home")

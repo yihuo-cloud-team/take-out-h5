@@ -30,7 +30,7 @@ export default {
         async update() {
             if (!this.isAdd) {
                 localStorage.from_id = this.$route.query.from_id
-                this.$router.push('/login');
+                // this.$router.replace('/login');
             }
             const res = await this.$http.post('/prize/list', {});
             if (res.code > 0) {
@@ -143,14 +143,16 @@ export default {
             })
         },
         async wxFx() { // 微信分享
+
             let shareurl = ''
             const userInfo = await this.$http.post('/user/info');
             if (userInfo.code > 0) {
-                shareurl = `https://h5.take-out.yihuo-cloud.com${this.$route.fullPath}?from_id=${userInfo.data.id}`
+                shareurl = `https://h5.take-out.yihuo-cloud.com${this.$route.path}?from_id=${userInfo.data.id}`
             }
+
             const res = await this.$http.post('/jdk/sign', {
                 apis: this.apis,
-                url: "https://h5.take-out.yihuo-cloud.com" + this.$route.fullPath
+                url: shareurl
             });
             wx.config({
                 debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
@@ -162,8 +164,6 @@ export default {
             });
             //  朋友圈分享
             wx.ready(() => { //需在用户可能点击分享按钮前就先调用
-                console.warn(shareurl);
-
                 wx.updateAppMessageShareData({
                     title: '逐天外卖', // 分享标题
                     link: shareurl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
