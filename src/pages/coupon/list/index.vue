@@ -24,6 +24,10 @@
         <button class="btn" @click="$router.push(`/goodsList?store_id=${item.store_id}&distance=0`)">立即使用</button>
       </div>
     </div>
+    <div class="empty" v-if="list.length<=0">
+      <div>暂无数据...</div>
+      <div><van-button @click="$router.push(`/home`)" type="default">回首页</van-button></div>
+    </div>
   </div>
 </template>
 <script src="./index.js"></script>

@@ -1,5 +1,6 @@
 export default {
     name: 'list',
+    layout: 'sub',
     data() {
         return {
             list: [],
