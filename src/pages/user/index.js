@@ -14,7 +14,9 @@ export default {
         async update() {
             // this.userInfo = JSON.parse(localStorage.userInfo);
             const res = await this.$http.post('/user/info');
-            this.userInfo = res.data;
+            if (res.code > 0) {
+                this.userInfo = res.data;
+            }
         },
         signOut() {
             localStorage.clear();

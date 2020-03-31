@@ -30,8 +30,7 @@ export default {
                 this.$toast("领取成功！");
                 this.$router.push(`/coupon/list`);
             } else {
-                // this.$toast("领取失败");
-                this.$toast(res);
+                this.$toast("领取失败！");
             }
         }
     },
