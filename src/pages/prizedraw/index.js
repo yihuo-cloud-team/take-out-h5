@@ -69,8 +69,8 @@ export default {
         async httpJx() {
             if (this.number_tiems <= 0) {
                 let pd = await this.$dialog.confirm({
-                    title: '抽奖次数不足!!',
-                    message: '邀请好友注册获取更多抽奖次数'
+                    title: '积分不足!!',
+                    message: '邀请好友注册获取更多积分'
                 })
                 if (pd == 'confirm') {
                     this.show = true
@@ -92,14 +92,13 @@ export default {
                     let title, message;
                     if (item.indexOf('谢谢惠顾') < 0) {
                         title = '中奖了！！';
-                        message = `获得${item}！！`
+                        message = `获得${item}一个！！`
                     } else {
                         title = item;
                     }
                     let res = await this.$http.post('/prize/save', {
                         id: this.list[this.default_rotate].id
                     });
-                    await this.httpitems()
                     loading.clear()
                     let pd = await this.$dialog.alert({
                         title: title,
@@ -112,6 +111,7 @@ export default {
                 } catch (error) {
 
                 }
+                this.httpitems()
             }, 3000);
 
 
