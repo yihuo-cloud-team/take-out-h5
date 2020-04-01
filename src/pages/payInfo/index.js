@@ -17,6 +17,7 @@ export default {
       couponList: [],
       coupons: [],
       disabledCoupons: [],
+      selectionCoupon: {}
     };
   },
   computed: {
@@ -38,7 +39,7 @@ export default {
       //   return price
       // }
       // return (this.totalPrice - Number(coupon.value_zen)).toFixed(2)
-      return (this.oldPrice1-this.youhui).toFixed(2)
+      return (this.oldPrice1 - this.youhui).toFixed(2)
     },
     oldPrice1() {
       let old = this.list.filter(el => el.select_value > 0).map(el => el.o_price * el.select_value).reduce((old, el) => old + el, 0);
@@ -47,18 +48,18 @@ export default {
     youhui() {
       const coupon = this.coupons[this.chosenCoupon];
       let value_zen = 0;
-      let youhui=0;
+      let youhui = 0;
       try {
         value_zen = coupon.value_zen;
         if (coupon.type == 1) {
           youhui = (this.oldPrice1 - this.totalPrice * Number(coupon.value_zen)).toFixed(2);
-        }else{
+        } else {
           youhui = parseFloat(this.oldPrice1 - this.totalPrice + Number(value_zen)).toFixed(2)
         }
       } catch (error) {
         value_zen = 0;
       }
-      if(Number(youhui) > Number(this.oldPrice1)){
+      if (Number(youhui) > Number(this.oldPrice1)) {
         return this.oldPrice1
       }
       return youhui
@@ -154,9 +155,12 @@ export default {
         })),
         buy_type: 'TAKE',
         remarks: this.remarks,
-        store_id: this.$route.query.store_id
+        store_id: this.$route.query.store_id,
         // id:this.data.coupons.id,
         // price:this.data.coupons.price
+      }
+      if (this.selectionCoupon.id) {
+        data.coupon_id = this.selectionCoupon.id
       }
       const res = await this.$http.post('/order/create', data);
 
@@ -213,6 +217,7 @@ export default {
       if (this.chosenCoupon == -1) return
       const coupon = this.coupons[this.chosenCoupon];
       coupon.value = (this.totalPrice - this.lastPrice) * 100;
+      this.selectionCoupon = coupon
 
     },
   },
