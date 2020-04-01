@@ -73,7 +73,6 @@ export default {
     // 用于更新一些数据
     async update() {
       this.list = JSON.parse(localStorage.getItem('select'));
-      let _this = this;
       try {
         const res = await this.$http.post('/address/list', {});
         if (res.code >= 0) {
@@ -85,7 +84,15 @@ export default {
             }
           })
         }
-        let params = new FormData(); //创建form对象
+        this.initCoupon();
+        this.getCoupon();
+      } catch (error) {
+
+      }
+    },
+    async getCoupon(){
+      let _this = this;
+      let params = new FormData(); //创建form对象
         const couponRes = await this.$http.post('/coupon/list', {});
         if (couponRes.code >= 0) {
           this.couponList = couponRes.data;
@@ -128,9 +135,9 @@ export default {
             }
           })
         }
-      } catch (error) {
-
-      }
+    },
+    initCoupon(){
+      this.couponList=[];
     },
     async submit() {
       if (!this.addressInfo.id) {
