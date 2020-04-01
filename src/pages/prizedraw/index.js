@@ -16,21 +16,62 @@ export default {
             apis: [
                 'updateAppMessageShareData',
                 'updateTimelineShareData',
+                'onMenuShareTimeline',
+                'onMenuShareAppMessage',
+                'onMenuShareQQ',
+                'onMenuShareWeibo',
+                'onMenuShareQZone',
+                'startRecord',
+                'stopRecord',
+                'onVoiceRecordEnd',
+                'playVoice',
+                'pauseVoice',
+                'stopVoice',
+                'onVoicePlayEnd',
+                'uploadVoice',
+                'downloadVoice',
+                'chooseImage',
+                'previewImage',
+                'uploadImage',
+                'downloadImage',
+                'translateVoice',
+                'getNetworkType',
+                'openLocation',
+                'getLocation',
+                'hideOptionMenu',
+                'showOptionMenu',
+                'hideMenuItems',
+                'showMenuItems',
+                'hideAllNonBaseMenuItem',
+                'showAllNonBaseMenuItem',
+                'closeWindow',
+                'scanQRCode',
+                'chooseWXPay',
+                'openProductSpecificView',
+                'addCard',
+                'chooseCard',
+                'openCard',
             ],
             show: false,
+            // shareurl: ''
         };
     },
     methods: {
         // 用于初始化一些数据
         init() {
             this.update();
-            this.wxFx();
         },
         // 用于更新一些数据
         async update() {
             if (!this.isAdd) {
                 localStorage.from_id = this.$route.query.from_id
                 // this.$router.replace('/login');
+                window.location.replace('https://h5.take-out.yihuo-cloud.com/prizedraw')
+            }
+            const userInfo = await this.$http.post('/user/info');
+            if (userInfo.code > 0) {
+                // this.shareurl = `https://h5.take-out.yihuo-cloud.com${this.$route.path}?from_id=${userInfo.data.id}`
+                this.wxFx(userInfo.data.id);
             }
             const res = await this.$http.post('/prize/list', {});
             if (res.code > 0) {
@@ -142,17 +183,10 @@ export default {
                 }
             })
         },
-        async wxFx() { // 微信分享
-
-            let shareurl = ''
-            const userInfo = await this.$http.post('/user/info');
-            if (userInfo.code > 0) {
-                shareurl = `https://h5.take-out.yihuo-cloud.com${this.$route.path}?from_id=${userInfo.data.id}`
-            }
-
+        async wxFx(user_id) { // 微信分享
             const res = await this.$http.post('/jdk/sign', {
                 apis: this.apis,
-                url: shareurl
+                url: `https://h5.take-out.yihuo-cloud.com${this.$route.path}`
             });
             wx.config({
                 debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
@@ -166,7 +200,8 @@ export default {
             wx.ready(() => { //需在用户可能点击分享按钮前就先调用
                 wx.updateAppMessageShareData({
                     title: '逐天外卖', // 分享标题
-                    link: shareurl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                    desc: '快来抽奖啦！！', // 分享描述
+                    link: `https://h5.take-out.yihuo-cloud.com${this.$route.path}?from_id=${user_id}`, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                     imgUrl: 'https://api.take-out.yihuo-cloud.com/public/files/20200202/202002020250332716.jpg', // 分享图标
                     success: () => {
                         // 设置成功
@@ -178,8 +213,7 @@ export default {
 
                 wx.updateTimelineShareData({
                     title: '逐天外卖', // 分享标题
-                    desc: '', // 分享描述
-                    link: shareurl, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                    link: `https://h5.take-out.yihuo-cloud.com${this.$route.path}?from_id=${user_id}`, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                     imgUrl: 'https://api.take-out.yihuo-cloud.com/public/files/20200202/202002020250332716.jpg', // 分享图标
                     success: () => {
                         // 设置成功

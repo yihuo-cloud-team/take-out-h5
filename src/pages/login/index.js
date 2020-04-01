@@ -38,11 +38,12 @@ export default {
       const res1 = await this.$http.post('/h5/auth/openid', {
         code: code
       });
-        // 
+      // 
+      // alert(localStorage.from_id)
       if (typeof localStorage.from_id != 'undefined') {
         res1.data.from_id = localStorage.from_id
       }
-        // 
+      // 
       const res = await this.$http.post('/h5/auth/login',
         res1.data
       );
@@ -53,7 +54,7 @@ export default {
         // 
         if (typeof localStorage.from_id != 'undefined') {
           localStorage.removeItem("from_id");
-          this.$router.replace('/prizedraw')
+          window.location.replace('https://h5.take-out.yihuo-cloud.com/prizedraw')
         } else {
           if (typeof localStorage.location == 'undefined') {
             this.$router.replace("/home")
@@ -62,7 +63,6 @@ export default {
 
           }
         }
-
       }
     },
   },
