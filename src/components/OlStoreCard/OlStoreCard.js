@@ -53,6 +53,7 @@ export default {
         },
         state() {
             // // (new Date()).Format("yyyy-M-d h:m:s.S")      ==> 2006-7-2 8:9:4.18
+            
             return this.info.is_open == 0 ? '商家已休息' : '';
             let week = this.info.week;
             if (typeof week == 'string') {

@@ -68,27 +68,16 @@ export default {
         if (res.code < 0) return;
         const list = res.data;
         const classTree = this.classTree;
-
         list.forEach(el => {
-
-
           el.select_value = 0;
           el.shows = false;
           let classi = classTree.find(classItem => classItem.id == el.class_id);
-
           if (classi) {
-
             classi.child.push(el);
-
           }
-
-
         });
-
-
         this.classTree = classTree
       } catch (e) {
-
       }
     },
     async httpstore() {

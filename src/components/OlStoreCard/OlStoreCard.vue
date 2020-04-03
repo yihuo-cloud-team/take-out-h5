@@ -1,9 +1,6 @@
 <template>
   <div class="ol-store-card" v-if="info">
-    <div
-      class="top-box"
-      @click="$router.push(`/goodsList?store_id=${info.store_id}&distance=${info.distance}`)"
-    >
+    <div class="top-box" @click="$router.push(`/goodsList?store_id=${info.store_id}`)">
       <!-- 主体信息 -->
       <div class="left-box">
         <div class="img-box">
@@ -55,9 +52,22 @@
           <div class="store-tag" v-for="label in info.label" :key="label">{{label}}</div>
           <!-- <div class="store-tag" v-for="i in 7" :key="i">好吃的饭好吃的饭好吃的饭</div> -->
         </div>
+         <template>
+              <template v-if="info.is_dada==0">
+                <span style="color:red;font-size:14px">商家暂未开通达达配送</span>
+              </template>
+              <template v-if="info.is_dada==1">
+                <template v-if="info.dada_money==0">
+                  <span style="color:red;font-size:14px">商家余额不足，无法配送</span>
+                </template>
+              </template>
+            </template>
         <div class="cell">
           <van-icon name="shop-o" />
-          <div class="store_class" v-if="info.store_class">{{info.store_class}}</div>
+          <div class="store_class" v-if="info.store_class">
+            {{info.store_class}}
+           
+          </div>
           <div class="store_class" v-else-if="info.info">{{info.info}}</div>
         </div>
       </div>
