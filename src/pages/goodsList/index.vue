@@ -8,15 +8,20 @@
         ></div>
         <div class="store-info">
           <img class="img" :src="$getUrl(info.logo)" alt />
-          <div class="name">{{info.name}}
-
-               <van-icon v-if="info.is_store_star==0" @click="save(info)" size="20" name="like-o" />
-               <van-icon v-if="info.is_store_star==1" @click="save(info)" size="20" color="#feb81c" name="like"/>
+          <div class="name">
+            {{info.name}}
+            <van-icon v-if="info.is_store_star==0" @click="save(info)" size="20" name="like-o" />
+            <van-icon
+              v-if="info.is_store_star==1"
+              @click="save(info)"
+              size="20"
+              color="#feb81c"
+              name="like"
+            />
           </div>
           <div class="tag">
             <van-tag v-for=" (item,index) in info.label" :key="index">{{item}}</van-tag>
           </div>
-        
         </div>
       </div>
     </div>
@@ -81,7 +86,11 @@
                 <div v-show="oldPrice!=0" class="right">已优惠{{youhui}}元</div>
               </div>
 
-              <div class="btn" v-if="totalPrice>=info.minimum_price" @click="submit">去支付</div>
+              <div
+                :class="info.is_dada==1?'btn':'btn1'"
+                v-if="totalPrice>=info.minimum_price"
+                @click="submit"
+              >去支付</div>
 
               <div
                 class="btn1"

@@ -125,7 +125,7 @@ export default {
           // x: 31.00674,
         // y: 121.235348,
         page: this.page,
-        page_size: 10
+        page_size:3
       })
       if (res.code > 0) {
         this.list = [...this.list, ...res.data];

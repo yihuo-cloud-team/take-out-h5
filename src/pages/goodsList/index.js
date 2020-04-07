@@ -12,6 +12,7 @@ export default {
       totalPrice: 0,//优惠价
       juli:false,
       oldPrice:0,//原价
+      is_dada:1
  
     };
   },
@@ -21,9 +22,15 @@ export default {
       if(this.$route.query.distance > 5000){
         this.juli = true;
       }
+      
       await this.update();
       await this.httpGoods();
       await this.httpstore();
+      if(this.info.is_dada==0){
+        this.$toast('商家暂未开通达达');
+      }else if(this.info.is_dada==2){
+        this.$toast('门店暂未开通达达');
+      }
     },
 
 
@@ -86,7 +93,8 @@ export default {
           store_id: this.$route.query.store_id
         });
         if (res.code >= 0) {
-          this.info = res.data
+          this.info = res.data;
+        
         }
       } catch (error) {
 
@@ -110,6 +118,13 @@ export default {
       //   this.$router.push('/pages/auth/auth');
       //   return;
       // }
+      if(this.info.is_dada==0){
+        this.$toast('商家未开通达达')
+        return false;
+      }else if(this.info.is_dada==2){
+        this.$toast('门店未开通达达')
+        return false;
+      }
       const classTree = this.classTree;
       let select = [];
       classTree.forEach(el => {
