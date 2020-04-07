@@ -23,7 +23,7 @@ export default {
     // 包含 Vue 实例可用过滤器的哈希表。
     filters: {
         dateToStr(end_at){
-            return new Date(end_at*1000).Format("yyyy-M-d h:m:s.S");
+            return new Date(end_at*1000).Format("yyyy-M-d h:m:s");
         }
     },
     // 在实例创建完成后被立即调用
