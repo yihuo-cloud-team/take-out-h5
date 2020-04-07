@@ -4,7 +4,7 @@
       <van-icon
         color="#fff"
         style="margin-right: 5px; display: inline-block;"
-        size="14"
+        size="16"
         name="arrow-left"
       />返回首页
     </div>
