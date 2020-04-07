@@ -18,7 +18,7 @@
               <div class="shop_name">{{item.storeInfo?item.storeInfo.name:""}}</div>
             </div>
             <div class="condition_value">满{{item.condition_value}}可用</div>
-            <div class="endTime">{{item.edit_time}}到期</div>
+            <div class="endTime">{{item.end_at | dateToStr}}到期</div>
           </div>
         </div>
         <div class="card-right">
