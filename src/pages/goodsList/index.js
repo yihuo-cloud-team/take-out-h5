@@ -139,6 +139,7 @@ export default {
         this.$toast("请至少选择一件商品");
       }
     },
+   
     bukexuan(){
       if(this.$route.query.distance>300){
         this.$toast('超出距离，无法点餐');

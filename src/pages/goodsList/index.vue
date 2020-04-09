@@ -42,8 +42,9 @@
               <div v-if="item.id==active" v-for="(item,bindex) in classTree" :key="bindex">
                 <div v-for="(item,index) in item.child" :key="index">
                   <div class="goods-item">
-                    <div class="left">
+                    <div class="left"   @click.stop="$router.push(`/imgInfo?id=${item.id}`)">
                       <img
+           
                         class="img"
                         :src="item.goods_head_list?$getUrl(item.goods_head_list[0]):''"
                         alt
@@ -116,10 +117,8 @@
             <div class="store-info">
               <van-cell-group>
                 <van-cell title="商家名称" :value="info.name" />
-
                 <van-cell title="商家地址" :value="info.address" />
                 <van-cell title="商家电话" :value="info.phone" />
-
                 <van-panel title="营业时间" :status="info.start_time+'--'+info.end_time">
                   <div class="tag-box">
                     <van-tag class="tag" v-for="(item,index) in info.week" :key="index">{{item}}</van-tag>
