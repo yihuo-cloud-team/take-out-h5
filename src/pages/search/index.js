@@ -7,15 +7,15 @@ export default {
     return {
       name: '',
       list: [],
-      title:"搜索",
+      title: "搜索",
       form: {
         x: 0,
         y: 0,
         orderBy: "",
         page: 1,
-        page_size: 10,
-        name:"",
-        store_class_id:''
+        page_size: 3,
+        name: "",
+        store_class_id: ''
       },
       show: false,
       finished: false,
@@ -23,26 +23,26 @@ export default {
       index: 0,
       bindex: 0,
       paixuList: [{
-          name: "综合排序"
-        },
-        {
-          name: "距离优先"
-        },
-        {
-          name: "销量优先"
-        },
+        name: "综合排序"
+      },
+      {
+        name: "距离优先"
+      },
+      {
+        name: "销量优先"
+      },
       ]
     };
   },
-  head(){
-    return{
-      title:this.title
+  head() {
+    return {
+      title: this.title
     }
   },
   methods: {
     // 用于初始化一些数据
     init() {
-      if(this.$route.query.id){
+      if (this.$route.query.id) {
         this.form.store_class_id = this.$route.query.id
         this.title = this.$route.query.name
       }
@@ -121,7 +121,7 @@ export default {
         this.finished = true;
       }
       this.loading = false;
-  
+
     },
     scroll(e) {
       let s = document.getElementById('search').scrollTop
@@ -135,9 +135,9 @@ export default {
       this.$router.push(`/goodsList?store_id=${item.store_id}&distance=${item.distance}`)
     },
     async search() {
-      this.form.page =1;
+      this.form.page = 1;
       this.finished = false;
-      this.list =[];
+      this.list = [];
       this.httpStoreList();
     },
 
@@ -148,29 +148,29 @@ export default {
   },
   // 包含 Vue 实例可用过滤器的哈希表。
   filters: {
-  
+
   },
   // 在实例创建完成后被立即调用
-  created() {},
+  created() { },
   // 在挂载开始之前被调用：相关的 render 函数首次被调用。
-  beforeMount() {},
+  beforeMount() { },
   // el 被新创建的 vm.el 替换，并挂载到实例上去之后调用该钩子。
   mounted() {
     this.init();
-    this.$nextTick(() => {});
+    this.$nextTick(() => { });
   },
   // 数据更新时调用，发生在虚拟 DOM 打补丁之前。
-  beforeUpdate() {},
+  beforeUpdate() { },
   // keep-alive 组件激活时调用。
-  activated() {},
+  activated() { },
   // keep-alive 组件停用时调用。
-  deactivated() {},
+  deactivated() { },
   // 实例销毁之前调用。在这一步，实例仍然完全可用。
-  beforeDestroy() {},
+  beforeDestroy() { },
   //Vue 实例销毁后调用。
-  destroyed() {},
+  destroyed() { },
   // 当捕获一个来自子孙组件的错误时被调用。
-  errorCaptured() {},
+  errorCaptured() { },
   // 包含 Vue 实例可用指令的哈希表。
   directives: {},
   // 一个对象，键是需要观察的表达式，值是对应回调函数。
